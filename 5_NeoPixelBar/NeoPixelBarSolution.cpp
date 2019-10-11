@@ -1,0 +1,136 @@
+/*
+ * Lessons with 16 LEDs NeoPixel bar
+ */
+
+/*
+ * WICHTIGE TASTENKOMBINATIONEN
+ * Formatieren: "strg" + "F"
+ * Definition finden: "F3"
+ * Autocompletion: "strg" + Leertaste
+ * Verwendung suchen: "strg" + "G"
+ *
+ * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
+ */
+
+#include <Arduino.h>
+#include "Breadboard.h"
+
+#include <Adafruit_NeoPixel.h>
+#include <math.h>
+
+#define VERSION_EXAMPLE "1.1"
+
+// How many NeoPixels are mounted on the bar?
+#define NUM_PIXELS      16
+
+// Forward declarations
+uint32_t Wheel(uint8_t WheelPos);
+
+// When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
+Adafruit_NeoPixel MyNeoPixelBar = Adafruit_NeoPixel(NUM_PIXELS, PIN_NEOPIXEL, NEO_GRB + NEO_KHZ800);
+
+//The setup function is called once at startup of the sketch
+void setup() {
+	// Start serial output
+	Serial.begin(115200);
+	// Just to know which program is running on my Arduino
+	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+	initBreadboardPins();
+
+	MyNeoPixelBar.begin(); // This initializes the NeoPixel library.
+
+	/*
+	 * Setze alle Pixel auf rot. Die Parameter der color Funktion bedeuten: Color(<rot>, <grün>, <blau>)
+	 */
+	uint8_t tValue = 255;
+
+	for (unsigned int i = 0; i < NUM_PIXELS; i++) {
+		Serial.print("Value=");
+		Serial.println(tValue);
+		MyNeoPixelBar.setPixelColor(i, MyNeoPixelBar.Color(tValue, 0, 0)); // Red
+	}
+	MyNeoPixelBar.show();
+	delay(2000);
+
+	/*
+	 * Aufgabe 2. Steigere die Helligkeit kontinuierlich, indem Du tValue beim ersten Pixel auf 1 setzt
+	 * und für jedes weiter Pixel einen konstanten Wert addierst.
+	 * Wie ist die Formel für den konstanten Wert, wenn ich 16 Werte von 1 bis 255 haben will?
+	 *
+	 * Hast Du eine Idee warum das nicht gleichmäßig aussieht?
+	 * Versuche es mal mit dem Startwert "float tRedValueFloat = M_SQRT2;" und multipliziere ihn mit M_SQRT2.
+	 * Das gibt eine exponentielle Helligkeitszunahme (= das Verhältnis zwischen zwei benachbarten Werten ist immer gleich).
+	 */
+
+	/*
+	 * Start with 0 and add 16
+	 */
+	uint8_t tRedValue = 0;
+	Serial.print("RED=");
+	for (unsigned int i = 0; i < NUM_PIXELS; i++) {
+		MyNeoPixelBar.setPixelColor(i, MyNeoPixelBar.Color(tRedValue, 0, 0));
+		Serial.print(tRedValue);
+		Serial.print(" ");
+		tRedValue += 256 / NUM_PIXELS; // add 16
+	}
+	Serial.println();
+	MyNeoPixelBar.show();
+	delay(4000);
+
+	/*
+	 * Start with M_SQRT2 and multiply with M_SQRT2
+	 */
+	float tRedValueFloat = M_SQRT2;
+	Serial.print("RED*=");
+	for (unsigned int i = 0; i < NUM_PIXELS; i++) {
+		MyNeoPixelBar.setPixelColor(i, MyNeoPixelBar.Color((tRedValueFloat + 0.5), 0, 0));
+		Serial.print(tRedValueFloat);
+		Serial.print(" ");
+		tRedValueFloat *= M_SQRT2; // gives exponential values
+	}
+	Serial.println();
+	MyNeoPixelBar.show();
+	delay(8000);
+
+	/*
+	 * Aufgabe 3. Gebe einen Regenbogen aus. Benutze die Funktion Wheel() um an die Regenbogenfarben zu kommen.
+	 * Wheel() akzeptiert Werte von 0 bis 255, erzeuge also 16 (NUMPIXELS) verschiedene Werte von 0 bis ungefähr 255.
+	 */
+	for (unsigned int i = 0; i < NUM_PIXELS; i++) {
+		MyNeoPixelBar.setPixelColor(i, Wheel(i * (256 / NUM_PIXELS)));
+	}
+	MyNeoPixelBar.show();
+	delay(2000);
+
+}
+
+void loop() {
+	static uint8_t tWheelOffset = 0; // "static" -> keep value between loops
+
+	/*
+	 * Zusatzaufgabe 3. Der Regenbogen, der unten ausgegeben wird, soll pro Durchlauf bei einer anderen Farbe (Wert für Wheel()) anfangen.
+	 */
+	for (unsigned int i = 0; i < NUM_PIXELS; i++) {
+		MyNeoPixelBar.setPixelColor(i, Wheel(tWheelOffset + (i * (256 / NUM_PIXELS))));
+	}
+	MyNeoPixelBar.show();
+	tWheelOffset++;
+
+	delay(20);
+}
+
+// Input a value 0 to 255 to get a color value.
+// The colors are a transition r - g - b - back to r.
+uint32_t Wheel(uint8_t WheelPos) {
+	WheelPos = 255 - WheelPos;
+	if (WheelPos < 85) {
+		return Adafruit_NeoPixel::Color(255 - (WheelPos * 3), 0, WheelPos * 3);
+	} else if (WheelPos < 170) {
+		WheelPos -= 85;
+		return Adafruit_NeoPixel::Color(0, WheelPos * 3, 255 - (WheelPos * 3));
+	} else {
+		WheelPos -= 170;
+		return Adafruit_NeoPixel::Color(WheelPos * 3, 255 - (WheelPos * 3), 0);
+	}
+}
