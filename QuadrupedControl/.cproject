@@ -28,7 +28,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Servo/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Adafruit_NeoPixel}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/HCSR04/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/QuadrupedControl/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/PlayRtttl/src}&quot;"/>
 								</option>
@@ -45,7 +44,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Servo/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Adafruit_NeoPixel}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/HCSR04/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/QuadrupedControl/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/PlayRtttl/src}&quot;"/>
 								</option>
@@ -62,7 +60,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Servo/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/Adafruit_NeoPixel}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/HCSR04/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/QuadrupedControl/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/QuadrupedControl/libraries/PlayRtttl/src}&quot;"/>
 								</option>

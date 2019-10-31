@@ -82,12 +82,12 @@ void loop() {
 		 * Ausgabe der Werte, die in dem Array sind
 		 */
 		Serial.print("Spiele einen Ton mit Tonhöhe ");
-		Serial.print(MelodyShort[tNoteIndex]);
+		Serial.print(MelodyAlleMeineEntchen[tNoteIndex]);
 		Serial.print(" und Dauer ");
-		Serial.print(1000 / MelodyShortNoteDurations[tNoteIndex]);
+		Serial.print(1000 / MelodyAlleMeineEntchenNoteDurations[tNoteIndex]);
 		// Warte bis der Ton zu Ende ist und ein bischen (0.3 mal) länger
 		Serial.print("ms und warte danach ");
-		Serial.print(300 / MelodyShortNoteDurations[tNoteIndex]);
+		Serial.print(300 / MelodyAlleMeineEntchenNoteDurations[tNoteIndex]);
 		Serial.println(" Millisekunden");
 
 		// to calculate the note duration, take one second divided by the note type.

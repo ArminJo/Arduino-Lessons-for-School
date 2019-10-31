@@ -23,25 +23,33 @@
 
 #define	DELAY_LOOP			100
 
+// Variablen für Zusatzaufgabe
+static int sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+
 // The loop routine runs over and over again forever
 void loop() {
-	// Variablen für Zusatzaufgabe
-	static int sOldRightButtonValue = 5;
-	static int sOldLeftButtonValue = 5;
 
 	/*
 	 * Zusatzaufgabe. Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
+	 * Vergleiche dazu aktuellen Wert mit altem Wert.
 	 */
-	Serial.print("RightButton is ");
-	Serial.println(digitalRead(PIN_RIGHT_BUTTON));
-	Serial.print("LeftButton is ");
-	Serial.println(digitalRead(PIN_LEFT_BUTTON));
 
 	/*
 	 * Aufgabe 1. Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
 	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
-	 * 		Siehe auch letzes Statement unten in setup().
+	 * 		Siehe auch letze Statements unten in setup().
 	 */
+	// Right button handling
+	if (digitalRead(PIN_RIGHT_BUTTON) == 0) {
+		Serial.println("RightButton is 0");
+		digitalWrite(PIN_RED_LED, HIGH);
+	} else {
+		Serial.println("RightButton is 1");
+	}
+
+	// Left button handling
+
 
 	/*
 	 * Aufgabe 2. Gebe einen Ton von 1760 Hz aus, wenn der rechte Button gedrückt ist.
@@ -71,8 +79,10 @@ void setup() {
 
 	// Let LED blink for 600 ms
 	digitalWrite(PIN_RED_LED, HIGH);
+	digitalWrite(PIN_GREEN_LED, HIGH);
 	delay(600);
 	digitalWrite(PIN_RED_LED, LOW);
+	digitalWrite(PIN_GREEN_LED, LOW);
 
 }
 

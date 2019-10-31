@@ -36,21 +36,9 @@
 
 #include "QuadrupedControl.h"
 
-#if defined(QUADRUPED_HAS_NEOPIXEL)
-#include "QuadrupedNeoPixel.h"
-#endif
-
-#if defined(QUADRUPED_IR_CONTROL)
+#if defined(QUADRUPED_HAS_IR_CONTROL)
 #include "IRCommandDispatcher.h"
 #include "IRCommandMapping.h" // for IR_REMOTE_NAME
-#endif
-
-#if defined(QUADRUPED_HAS_US_DISTANCE)
-#include "HCSR04.h"
-#endif
-
-#if defined(QUADRUPED_PLAYS_RTTTL)
-#include <PlayRtttl.h>
 #endif
 
 #include "QuadrupedServoControl.h"
@@ -58,69 +46,25 @@
 #include "Commands.h"
 #include "ADCUtils.h"
 
+#if defined(QUADRUPED_PLAYS_RTTTL)
+#include <PlayRtttl.h>
+#endif
+
+#if defined(QUADRUPED_HAS_NEOPIXEL)
+#include "QuadrupedNeoPixel.h"
+#endif
+
+#if defined(QUADRUPED_HAS_US_DISTANCE)
+#include "HCSR04.h"
+ServoEasing USServo;    // Servo for US sensor
+#endif
+
+//#define INFO // comment this out to see serial info output
 
 #if defined(QUADRUPED_HAS_NEOPIXEL)
 color32_t sBarBackgroundColorArray[PIXELS_ON_ONE_BAR] = { COLOR32_RED_QUARTER, COLOR32_RED_QUARTER, COLOR32_RED_QUARTER,
-COLOR32_YELLOW, COLOR32_YELLOW,
-COLOR32_GREEN_QUARTER, COLOR32_GREEN_QUARTER, COLOR32_GREEN_QUARTER };
+COLOR32_YELLOW, COLOR32_YELLOW, COLOR32_GREEN_QUARTER, COLOR32_GREEN_QUARTER, COLOR32_GREEN_QUARTER };
 #endif
-/*
- * The auto move function. Put your own moves here.
- *
- * Servos available:
- *  frontLeftPivotServo, frontLeftLiftServo
- *  backLeftPivotServo, backLeftLiftServo
- *  backRightPivotServo, backRightLiftServo
- *  frontRightPivotServo, frontRightLiftServo
- *
- * sBodyHeightAngle contains the normal angle of lift servos.
- *
- * Useful commands:
- *
- * sMovingDirection = MOVE_DIRECTION_FORWARD; // MOVE_DIRECTION_LEFT etc.
- * moveCreep(1);
- * centerServos();
- * moveTrot(1);
- * moveTurn(1);
- * doLeanLeft();
- * doLeanRight();
- * basicTwist(30);
- * doWave();
- * delayAndCheck(1000);
- *
- * To move the front left lift servo use:
- * frontLeftLiftServo.easeTo(LIFT_LOWEST_ANGLE);
- *
- * To move all lift servos simultaneously:
- * setLiftServos(LIFT_LOWEST_ANGLE, LIFT_HIGHEST_ANGLE, LIFT_HIGHEST_ANGLE, LIFT_HIGHEST_ANGLE);
- *
- * To move all pivot servos simultaneously:
- * setPivotServos(100, 100, 80, 80);
- */
-
-/*
- * comment this out and put your own code here
- */
-//void doAutoMove() {
-//    return;
-//}
-/*
- * Create your own basic movement here
- * Is mapped to the star on the remote
- */
-void doTest() {
-    doBeep();
-
-#if defined(QUADRUPED_HAS_NEOPIXEL)
-    QuadrupedNeoPixelBar.clear();
-    LeftNeoPixelBar.ScannerExtended(COLOR32_CYAN, 3, sServoSpeed / 2, 0, FLAG_SCANNER_EXT_ROCKET | FLAG_SCANNER_EXT_VANISH_COMPLETE,
-    DIRECTION_DOWN);
-#endif
-
-    frontLeftLiftServo.easeTo(LIFT_HIGHEST_ANGLE);
-    frontLeftPivotServo.easeTo(25);
-    frontLeftLiftServo.easeTo(sBodyHeightAngle);
-}
 
 #define VERSION_EXAMPLE "3.0"
 // 3.0 NeoPixel and distance sensor added
@@ -129,11 +73,11 @@ void doTest() {
 // 1.1 mirror computation at transformAndSetPivotServos and transformOneServoIndex
 
 void setup() {
-    // initialize the digital pin as an output.
     pinMode(LED_BUILTIN, OUTPUT);
     Serial.begin(115200);
-    while (!Serial)
-        ; //delay for Leonardo
+#if defined(__AVR_ATmega32U4__)
+    while (!Serial); //delay for Leonardo, but this loops forever for Maple Serial
+#endif
     // Just to know which program is running on my Arduino
     Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
@@ -146,27 +90,29 @@ void setup() {
 #if defined(QUADRUPED_HAS_US_DISTANCE)
     Serial.println(F("Init US distance sensor"));
     initUSDistancePins(PIN_TRIGGER_OUT, PIN_ECHO_IN);
+    USServo.attach(PIN_US_SERVO);
+    USServo.write(90); // start value
 #endif
 
     /*
-     * set servo to 90 degree WITHOUT trim and wait
+     * set servo to 90 degree WITHOUT trim and wait 2 seconds
      */
     resetServosTo90Degree();
+    delay(2000);
 
     /*
-     * set servo to 90 degree with trim and wait
+     * Read trim values and set servo to 90 degree with trim and wait
      */
     eepromReadAndSetServoTrim();
-    resetServosTo90Degree();
+//    resetServosTo90Degree();
 
-    delay(500); // Otherwise it starts to play after reset and is then interrupted
 #if defined(QUADRUPED_PLAYS_RTTTL)
     playRtttlBlockingPGM(PIN_SPEAKER, Short);
 #else
     tone(PIN_SPEAKER, 2000, 300);
 #endif
 
-    delay(2000);
+    delay(1000);
 
     /*
      * Set to initial height
@@ -174,7 +120,7 @@ void setup() {
     centerServos();
     convertBodyHeightAngleToHeight();
 
-#if defined(QUADRUPED_IR_CONTROL)
+#if defined(QUADRUPED_HAS_IR_CONTROL)
     setupIRDispatcher();
     Serial.print(F("Listening to IR remote of type "));
     Serial.println(IR_REMOTE_NAME);
@@ -198,15 +144,15 @@ void loop() {
     handleUSSensor();
 #endif
 
-#if defined(QUADRUPED_IR_CONTROL)
+#if defined(QUADRUPED_HAS_IR_CONTROL)
     /*
      * Check for IR commands and execute them.
      * Returns only AFTER finishing of requested movement
      */
     loopIRDispatcher();
 #if defined(QUADRUPED_HAS_NEOPIXEL)
-    if (sJustCalledMainCommand) {
-        sJustCalledMainCommand = false;
+    if (sJustCalledExclusiveIRCommand) {
+        sJustCalledExclusiveIRCommand = false;
         sStartOrChangeNeoPatterns = true;
     }
 #endif
@@ -216,10 +162,10 @@ void loop() {
      */
     if (!sAtLeastOneValidIRCodeReceived && (millis() > MILLIS_OF_INACTIVITY_BEFORE_SWITCH_TO_AUTO_MOVE)) {
 #if defined(QUADRUPED_HAS_NEOPIXEL)
-        clearPatternsSlowlyBlocking();
+        wipeOutPatternsBlocking();
 #endif
-#if !defined(EMPTY_MAPPING)
-        doAutoMove();
+#if !defined(USE_USER_DEFINED_MOVEMENTS)
+        doQuadrupedAutoMove();
 #endif
         sAtLeastOneValidIRCodeReceived = true; // do auto move only once
     }
@@ -227,14 +173,14 @@ void loop() {
     /*
      * Get attention that no command was received since 2 minutes and quadruped may be switched off
      */
-    if (millis() - sLastTimeOfValidIRCodeReceived > MILLIS_OF_INACTIVITY_BEFORE_REMINDER_MOVE) {
+    if (millis() - sLastTimeOfIRCodeReceived > MILLIS_OF_INACTIVITY_BEFORE_REMINDER_MOVE) {
         doAttention();
         // next attention in 1 minute
-        sLastTimeOfValidIRCodeReceived += MILLIS_OF_INACTIVITY_BETWEEN_REMINDER_MOVE;
+        sLastTimeOfIRCodeReceived += MILLIS_OF_INACTIVITY_BETWEEN_REMINDER_MOVE;
     }
 #else
     delayAndCheck(5000);
-    doAutoMove();
+    doQuadrupedAutoMove();
     delayAndCheck(25000);
 #endif
 
@@ -248,7 +194,7 @@ void loop() {
         delay(800);
         tone(PIN_SPEAKER, 700, 500);
 #if defined(QUADRUPED_HAS_NEOPIXEL)
-        clearPatternsSlowlyBlocking();
+        wipeOutPatternsBlocking();
 #endif
         delay(10000);  // blocking wait for next check
     }
@@ -284,10 +230,11 @@ void handleUSSensor() {
         uint16_t tDistance = getUSDistanceAsCentiMeter();
         if (sLastDistance != tDistance) {
             sLastDistance = tDistance;
-            Serial.print(F("Distance="));
-            Serial.print(tDistance);
-            Serial.println(F("cm"));
-
+#ifdef INFO
+//            Serial.print(F("Distance="));
+//            Serial.print(tDistance);
+//            Serial.println(F("cm"));
+#endif
 #if defined(QUADRUPED_HAS_NEOPIXEL)
             // Show bar if no other pattern is active
             if (FrontNeoPixelBar.ActivePattern == PATTERN_NONE) {
@@ -311,13 +258,23 @@ void handleUSSensor() {
         }
     }
 }
-#endif
 
-void doBeep() {
-    tone(PIN_SPEAKER, 2000, 200);
-    delayAndCheck(400);
-    tone(PIN_SPEAKER, 2000, 200);
+void doUSRight() {
+    if (!sCurrentCommandIsRepeat && USServo.getCurrentAngle() > 15) {
+        USServo.write(USServo.getCurrentAngle() - 15);
+    }
 }
+void doUSLeft() {
+    if (!sCurrentCommandIsRepeat && USServo.getCurrentAngle() < 165) {
+        USServo.write(USServo.getCurrentAngle() + 15);
+    }
+}
+void doUSScan() {
+    if (!sCurrentCommandIsRepeat) {
+        USServo.write(90);
+    }
+}
+#endif
 
 /*
  * Special delay function for the quadruped control.
@@ -330,9 +287,9 @@ bool delayAndCheck(uint16_t aDelayMillis) {
 // check only once per delay
     if (!checkForLowVoltage()) {
         do {
-#if defined(QUADRUPED_IR_CONTROL)
-            if (checkIRInput()) {
-                Serial.println(F("IR stop received -> exit from delayAndCheck"));
+#if defined(QUADRUPED_HAS_IR_CONTROL)
+            if (checkIRInputForNonExclusiveCommand()) {
+                Serial.println(F("Invalid or exclusive command received -> set stop"));
                 sActionType = ACTION_TYPE_STOP;
                 return true;
             }
@@ -341,7 +298,7 @@ bool delayAndCheck(uint16_t aDelayMillis) {
         } while (millis() - tStartMillis < aDelayMillis);
         return false;
     }
-#if defined(QUADRUPED_IR_CONTROL)
+#if defined(QUADRUPED_HAS_IR_CONTROL)
     sActionType = ACTION_TYPE_STOP;
 #endif
     return true;

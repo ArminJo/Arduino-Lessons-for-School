@@ -10,17 +10,19 @@
 
 #include <stdint.h>
 
-#define QUADRUPED_IR_CONTROL
+#define QUADRUPED_HAS_IR_CONTROL
 #define QUADRUPED_HAS_NEOPIXEL
 //#define QUADRUPED_HAS_US_DISTANCE
+//#define QUADRUPED_PLAYS_RTTTL
 
-#if defined(QUADRUPED_IR_CONTROL)
+#if defined(QUADRUPED_HAS_IR_CONTROL)
 #define IR_RECEIVER_PIN  A0
 #endif
 
 #if defined(QUADRUPED_HAS_US_DISTANCE)
 #define PIN_TRIGGER_OUT     A3
 #define PIN_ECHO_IN         A4
+#define PIN_US_SERVO        13 // let pin 2 left for future external interrupts
 
 #define MILLIS_BETWEEN_MEASUREMENTS 200 // 5 per second
 

@@ -25,14 +25,12 @@
 
 #define	DELAY_LOOP			100
 
+// Variablen für Zusatzaufgabe
+static int sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+
 // The loop routine runs over and over again forever
 void loop() {
-	// Variablen für Zusatzaufgabe
-	// Sie werden hier am Anfang auf einen Wert gesetzt, der nie von digitalRead() geliefert wird,
-	// damit der Button Startwert immer einmal angezeigt wird.
-	static int sOldRightButtonValue = 5;
-	static int sOldLeftButtonValue = 5;
-
 	/*
 	 * Zusatzaufgabe. Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
 	 */
@@ -56,43 +54,54 @@ void loop() {
 	 * Aufgabe 2. Gebe einen Ton von 1760 Hz aus, wenn der rechte Button gedrückt ist.
 	 * Gebe einen Ton von 2200 Hz aus, wenn der linke Button gedrückt ist.
 	 * 		Siehe auch letzes Statement unten in setup().
-	 */
-	digitalWrite(PIN_GREEN_LED, LOW);
-	digitalWrite(PIN_RED_LED, LOW);
-
-	if (digitalRead(PIN_RIGHT_BUTTON) == LOW) {
-		digitalWrite(PIN_GREEN_LED, HIGH);
-		tone(PIN_SPEAKER, 1760, DELAY_LOOP);
-	}
-	if (digitalRead(PIN_LEFT_BUTTON) == LOW) {
-		tone(PIN_SPEAKER, 2200, DELAY_LOOP);
-		digitalWrite(PIN_RED_LED, HIGH);
-	}
-
-	/*
 	 * Zusatz: Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
 	 */
+
+	/*
+	 * Check if both buttons are active
+	 */
 	if (digitalRead(PIN_RIGHT_BUTTON) == LOW && digitalRead(PIN_LEFT_BUTTON) == LOW) {
-		tone(PIN_SPEAKER, 2640, DELAY_LOOP);
+		digitalWrite(PIN_GREEN_LED, HIGH);
+		digitalWrite(PIN_RED_LED, HIGH);
+		tone(PIN_SPEAKER, 2640);
+	} else if (digitalRead(PIN_RIGHT_BUTTON) == HIGH && digitalRead(PIN_LEFT_BUTTON) == HIGH) {
+		digitalWrite(PIN_GREEN_LED, LOW);
+		digitalWrite(PIN_RED_LED, LOW);
+		noTone(PIN_SPEAKER);
+	} else if (digitalRead(PIN_RIGHT_BUTTON) == LOW && digitalRead(PIN_LEFT_BUTTON) == HIGH) {
+		/*
+		 * Only right button active
+		 */
+		digitalWrite(PIN_GREEN_LED, HIGH);
+		digitalWrite(PIN_RED_LED, LOW);
+		tone(PIN_SPEAKER, 1760);
+	} else {
+		/*
+		 * Only left button active
+		 */
+		if (digitalRead(PIN_LEFT_BUTTON) == LOW) {
+			tone(PIN_SPEAKER, 2200);
+			digitalWrite(PIN_GREEN_LED, LOW);
+			digitalWrite(PIN_RED_LED, HIGH);
+		}
 	}
 
-	// Wait for end of tone()
 	delay(DELAY_LOOP);
 }
 
 // The setup function is called once at startup of the program
 void setup() {
-	// Start serial output
+// Start serial output
 	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
+// Just to know which program is running on my Arduino
 	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION " from " __DATE__));
 
 	initBreadboardPins();
 
-	// Play 2200 Hz for 600 ms.
+// Play 2200 Hz for 600 ms.
 	tone(PIN_SPEAKER, 2200, 600);
 
-	// Let LED blink for 600 ms
+// Let LED blink for 600 ms
 	digitalWrite(PIN_RED_LED, HIGH);
 	delay(600);
 	digitalWrite(PIN_RED_LED, LOW);
