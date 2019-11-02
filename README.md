@@ -15,6 +15,9 @@ If it is not available, you have to check `Update local json files` in `Arduino/
 If `File/Import/General/Existing Projects into Workspace` does not work, just can create a new Arduino project and choose `default cpp file`. Then copy the content of the lesson to the new cpp file.
 
 ## Universal breadboard layout for lessons
+![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
+![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Schaltplan.png)
 ![Universal breadboard front](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Front.jpg)
 ![Universal breadboard top](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Top.jpg)
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Back.jpg)
+
