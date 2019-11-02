@@ -77,7 +77,6 @@ void setup() {
 //		Serial.println(i * (256 / NUM_PIXELS));
 //		MyNeoPixelBar.setPixelColor(i, Wheel(i * (256 / NUM_PIXELS)));
 //	}
-
 	delay(4000);
 
 }

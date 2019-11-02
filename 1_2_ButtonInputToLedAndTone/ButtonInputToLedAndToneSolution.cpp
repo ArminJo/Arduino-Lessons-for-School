@@ -50,10 +50,23 @@ void loop() {
 	/*
 	 * Aufgabe 1. Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
 	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
-	 *
+	 * LOW ist 0 / false, HIGH ist 1 / true
+	 */
+	if (digitalRead(PIN_RIGHT_BUTTON) == LOW) {
+		digitalWrite(PIN_GREEN_LED, HIGH);
+	} else {
+		digitalWrite(PIN_GREEN_LED, LOW);
+	}
+
+	// Etwas eleganter aber dasselbe, denn logische Werte werden mit "!" negiert.
+	// The simple version, using bool values and negation operator !
+	digitalWrite(PIN_GREEN_LED, !digitalRead(PIN_LEFT_BUTTON));
+
+	/*
 	 * Aufgabe 2. Gebe einen Ton von 1760 Hz aus, wenn der rechte Button gedrückt ist.
 	 * Gebe einen Ton von 2200 Hz aus, wenn der linke Button gedrückt ist.
-	 * 		Siehe auch letzes Statement unten in setup().
+	 * Bedingungen weden mit "&&" AND verknüpft
+	 *
 	 * Zusatz: Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
 	 */
 
@@ -61,29 +74,22 @@ void loop() {
 	 * Check if both buttons are active
 	 */
 	if (digitalRead(PIN_RIGHT_BUTTON) == LOW && digitalRead(PIN_LEFT_BUTTON) == LOW) {
-		digitalWrite(PIN_GREEN_LED, HIGH);
-		digitalWrite(PIN_RED_LED, HIGH);
 		tone(PIN_SPEAKER, 2640);
 	} else if (digitalRead(PIN_RIGHT_BUTTON) == HIGH && digitalRead(PIN_LEFT_BUTTON) == HIGH) {
-		digitalWrite(PIN_GREEN_LED, LOW);
-		digitalWrite(PIN_RED_LED, LOW);
+		/*
+		 * No button active
+		 */
 		noTone(PIN_SPEAKER);
 	} else if (digitalRead(PIN_RIGHT_BUTTON) == LOW && digitalRead(PIN_LEFT_BUTTON) == HIGH) {
 		/*
 		 * Only right button active
 		 */
-		digitalWrite(PIN_GREEN_LED, HIGH);
-		digitalWrite(PIN_RED_LED, LOW);
 		tone(PIN_SPEAKER, 1760);
-	} else {
+	} else { // Warum darf hier das "if" fehlen?
 		/*
 		 * Only left button active
 		 */
-		if (digitalRead(PIN_LEFT_BUTTON) == LOW) {
-			tone(PIN_SPEAKER, 2200);
-			digitalWrite(PIN_GREEN_LED, LOW);
-			digitalWrite(PIN_RED_LED, HIGH);
-		}
+		tone(PIN_SPEAKER, 2200);
 	}
 
 	delay(DELAY_LOOP);

@@ -38,7 +38,7 @@ void loop() {
 	/*
 	 * Aufgabe 1. Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
 	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
-	 * 		Siehe auch letze Statements unten in setup().
+	 * LOW ist 0 / false, HIGH ist 1 / true
 	 */
 	// Right button handling
 	if (digitalRead(PIN_RIGHT_BUTTON) == 0) {
@@ -54,11 +54,14 @@ void loop() {
 	/*
 	 * Aufgabe 2. Gebe einen Ton von 1760 Hz aus, wenn der rechte Button gedrückt ist.
 	 * Gebe einen Ton von 2200 Hz aus, wenn der linke Button gedrückt ist.
-	 * 		Siehe auch letzes Statement unten in setup().
+	 * Bedingungen weden mit "&&" AND verknüpft
+	 *
 	 * Zusatz: Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
 	 */
-	if (false) {
-		tone(PIN_SPEAKER, 1000, DELAY_LOOP);
+	if (digitalRead(PIN_RIGHT_BUTTON) == 0 && digitalRead(PIN_LEFT_BUTTON) == 0) {
+		tone(PIN_SPEAKER, 2640);
+	} else {
+		noTone(PIN_SPEAKER);
 	}
 
 	// Wait to reduce serial output
@@ -74,13 +77,16 @@ void setup() {
 
 	initBreadboardPins();
 
-	// Play 2200 Hz for 600 ms.
-	tone(PIN_SPEAKER, 2200, 600);
+	// Play 2200 Hz.
+	tone(PIN_SPEAKER, 2200);
 
 	// Let LED blink for 600 ms
 	digitalWrite(PIN_RED_LED, HIGH);
 	digitalWrite(PIN_GREEN_LED, HIGH);
 	delay(600);
+
+	// Stop tone
+	noTone(PIN_SPEAKER);
 	digitalWrite(PIN_RED_LED, LOW);
 	digitalWrite(PIN_GREEN_LED, LOW);
 

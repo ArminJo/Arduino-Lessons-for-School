@@ -25,23 +25,24 @@
 void loop() {
 
 	// Einlesen der Werte des Drehreglers
-	int tAnalogValue = analogRead(PIN_POTENTIOMETER);
+	int tAnalogValue = analogRead(PIN_POTENTIOMETER); // oder PIN_LDR
 	// Ausgeben des Zahlenwerts
 	Serial.print("Eingelesener Wert=");
 	Serial.println(tAnalogValue);
 
 	/*
-	 * Aufgabe 1. Erzeuge einen Ton dessen Tonhöhe abhängig vom eingelesenen Wert ist.
-	 * Benutze tone() wie in 1_Melodie
+	 * Aufgabe 1. Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
+	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
 	 */
 //	int tFrequency = map(tAnalogValue, 0, 1023, 100, 4000);
 
 	/*
 	 * Aufgabe 2. Lese stattdessen den Spannungswert vom lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
+	 * Wie sieht die Ausagabe im Arduino Plotter aus?
 	 */
 
 	/*
-	 * Schwere Zusatzaufgabe 3. Print bargraph
+	 * Schwere Zusatzaufgabe. Print bargraph
 	 * Gebe den analogen Wert als variabel lange Zeichenkette von z.B. '#' aus.
 	 * 		Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 16 bekommst.
 	 * 		benutze einen for loop der so oft läuft, wie der errechnete Wert angibt.
@@ -52,7 +53,7 @@ void loop() {
 	delay(300);
 }
 
-//The setup function is called once at startup of the sketch
+// The setup function is called once at startup of the sketch
 void setup() {
 	// Start serial output
 	Serial.begin(115200);

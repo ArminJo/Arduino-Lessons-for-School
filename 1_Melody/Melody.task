@@ -1,5 +1,6 @@
 /*
- * Erzeuge eine Melodie
+ * Spiele eine Melodie
+ * Play a melody
  *
  * Copyright 2019 Armin Joachimsmeyer
  * This code is released under GPLv3 license.
@@ -50,11 +51,11 @@ void loop() {
 	Serial.print(1000 / MelodyShortNoteDurations[0]);
 	// Warte bis der Ton zu Ende ist und ein bischen (0.3 mal) länger
 	Serial.print("ms und warte danach ");
-	Serial.println(1300 / MelodyShortNoteDurations[0]);
-	Serial.print(" Millisekunden");
+	Serial.print(300 / MelodyShortNoteDurations[0]);
+	Serial.println(" Millisekunden");
 
 	tone(PIN_SPEAKER, MelodyShort[0], 1000 / MelodyShortNoteDurations[0]);
-		// Warte bis der Ton zu Ende ist und ein bischen (0.3 mal) länger
+	// Warte bis der Ton zu Ende ist und ein bischen (0.3 mal) länger
 	delay(1300 / MelodyShortNoteDurations[0]);
 
 	// Spiele den zweiten Ton
@@ -64,7 +65,6 @@ void loop() {
 	// Spiele den dritten Ton
 	tone(PIN_SPEAKER, MelodyShort[2], 1000 / MelodyShortNoteDurations[2]);
 	delay(1300 / MelodyShortNoteDurations[2]);
-
 
 	// Pause nach der Melodie, bevor es weitergeht
 	delay(5000);

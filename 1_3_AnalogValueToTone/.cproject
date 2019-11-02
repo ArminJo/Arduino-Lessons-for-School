@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
-		<cconfiguration id="io.sloeber.core.toolChain.release.232924779.987816831">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="io.sloeber.core.toolChain.release.232924779.987816831" moduleId="org.eclipse.cdt.core.settings" name="Solution">
+		<cconfiguration id="io.sloeber.core.toolChain.release.629520166">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="io.sloeber.core.toolChain.release.629520166" moduleId="org.eclipse.cdt.core.settings" name="Aufgabe">
 				<externalSettings/>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -12,86 +12,36 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.232924779.987816831" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="io.sloeber.core.toolChain.release.232924779.987816831." name="/" resourcePath="">
-						<toolChain id="io.sloeber.core.toolChain.release.477852947" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.833531590" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
-							<builder buildPath="${workspace_loc:/1_3_AnalogValueToTone}/Solution" id="io.sloeber.sketch.builder.1919783400" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
-							<tool id="io.sloeber.tool.sketch.compiler.cpp.1616433230" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.2079227852" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="io.sloeber.core.toolChain.release.629520166.1495824308" name="/" resourcePath="">
+						<toolChain id="io.sloeber.core.toolChain.release.111297704" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.2037766521" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
+							<builder buildPath="${workspace_loc:/1_3_AnalogValueToTone}/Release" id="io.sloeber.sketch.builder.1771355969" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
+							<tool id="io.sloeber.tool.sketch.compiler.cpp.1069730438" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.229483703" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
 								</option>
-								<inputType id="io.sloeber.compiler.cpp.sketch.input.646294102" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
+								<inputType id="io.sloeber.compiler.cpp.sketch.input.1578221873" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
-							<tool id="io.sloeber.tool.compiler.c.972750760" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.828652255" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
+							<tool id="io.sloeber.tool.compiler.c.992169547" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1546124377" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
 								</option>
-								<inputType id="io.sloeber.compiler.c.sketch.input.1894491363" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
+								<inputType id="io.sloeber.compiler.c.sketch.input.1310846937" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
-							<tool id="io.sloeber.tool.sketch.compiler.s.559527412" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1272493711" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
+							<tool id="io.sloeber.tool.sketch.compiler.s.102282178" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1847011539" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
 								</option>
-								<inputType id="io.sloeber.compiler.S.sketch.input.453102931" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
+								<inputType id="io.sloeber.compiler.S.sketch.input.835505537" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
 							</tool>
-							<tool id="io.sloeber.tool.ar.871527731" name="Arduino archiver" superClass="io.sloeber.tool.ar"/>
-							<tool id="io.sloeber.tool.combine.532074450" name="Arduino combiner" superClass="io.sloeber.tool.combine"/>
-							<tool id="io.sloeber.tool.objcopy.eep.83119628" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep"/>
-							<tool id="io.sloeber.tool.size.1227719013" name="Arduino tool Print Size" superClass="io.sloeber.tool.size"/>
-						</toolChain>
-					</folderInfo>
-					<sourceEntries>
-						<entry excluding="AnalogValueToTone.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-					</sourceEntries>
-				</configuration>
-			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-		</cconfiguration>
-		<cconfiguration id="io.sloeber.core.toolChain.release.232924779">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="io.sloeber.core.toolChain.release.232924779" moduleId="org.eclipse.cdt.core.settings" name="Aufgabe">
-				<externalSettings/>
-				<extensions>
-					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
-					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-				</extensions>
-			</storageModule>
-			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.232924779" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg">
-					<folderInfo id="io.sloeber.core.toolChain.release.232924779." name="/" resourcePath="">
-						<toolChain id="io.sloeber.core.toolChain.release.1283342220" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
-							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.98694342" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
-							<builder buildPath="${workspace_loc:/1_3_AnalogValueToTone}/Solution" id="io.sloeber.sketch.builder.57453745" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
-							<tool id="io.sloeber.tool.sketch.compiler.cpp.1070329687" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.602250425" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
-								</option>
-								<inputType id="io.sloeber.compiler.cpp.sketch.input.593945735" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.compiler.c.1469324365" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1883239623" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
-								</option>
-								<inputType id="io.sloeber.compiler.c.sketch.input.3786189" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.sketch.compiler.s.1691579954" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.2028975754" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
-								</option>
-								<inputType id="io.sloeber.compiler.S.sketch.input.568740280" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
-							</tool>
-							<tool id="io.sloeber.tool.ar.289876219" name="Arduino archiver" superClass="io.sloeber.tool.ar"/>
-							<tool id="io.sloeber.tool.combine.1158683822" name="Arduino combiner" superClass="io.sloeber.tool.combine"/>
-							<tool id="io.sloeber.tool.objcopy.eep.271279027" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep"/>
-							<tool id="io.sloeber.tool.size.1388737171" name="Arduino tool Print Size" superClass="io.sloeber.tool.size"/>
+							<tool id="io.sloeber.tool.ar.1553849439" name="Arduino archiver" superClass="io.sloeber.tool.ar"/>
+							<tool id="io.sloeber.tool.combine.128815656" name="Arduino combiner" superClass="io.sloeber.tool.combine"/>
+							<tool id="io.sloeber.tool.objcopy.eep.1085460300" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep"/>
+							<tool id="io.sloeber.tool.size.949799915" name="Arduino tool Print Size" superClass="io.sloeber.tool.size"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
@@ -101,14 +51,63 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
+		<cconfiguration id="io.sloeber.core.toolChain.release.629520166.1324637989">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="io.sloeber.core.toolChain.release.629520166.1324637989" moduleId="org.eclipse.cdt.core.settings" name="Solution">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166.1324637989" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="io.sloeber.core.toolChain.release.629520166.1324637989." name="/" resourcePath="">
+						<toolChain id="io.sloeber.core.toolChain.release.316957051" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.958315065" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
+							<builder buildPath="${workspace_loc:/1_3_AnalogValueToTone}/Release" id="io.sloeber.sketch.builder.354265662" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
+							<tool id="io.sloeber.tool.sketch.compiler.cpp.1050382070" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.1467370887" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.cpp.sketch.input.1635964639" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.compiler.c.1757006568" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1068170730" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.c.sketch.input.764609283" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.sketch.compiler.s.939720125" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1269789013" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_3_AnalogValueToTone/core/variant}&quot;"/>
+								</option>
+								<inputType id="io.sloeber.compiler.S.sketch.input.392752499" name="Assembly source files" superClass="io.sloeber.compiler.S.sketch.input"/>
+							</tool>
+							<tool id="io.sloeber.tool.ar.85313326" name="Arduino archiver" superClass="io.sloeber.tool.ar"/>
+							<tool id="io.sloeber.tool.combine.951795369" name="Arduino combiner" superClass="io.sloeber.tool.combine"/>
+							<tool id="io.sloeber.tool.objcopy.eep.1784767831" name="Arduino tool objcopy command" superClass="io.sloeber.tool.objcopy.eep"/>
+							<tool id="io.sloeber.tool.size.213477238" name="Arduino tool Print Size" superClass="io.sloeber.tool.size"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="AnalogValueToTone.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="1_3_AnalogValueToTone.null.276384233" name="1_3_AnalogValueToTone"/>
+		<project id="1_3_AnalogValueToTone.null.1440757953" name="1_3_AnalogValueToTone"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
