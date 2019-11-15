@@ -19,8 +19,6 @@
 							<builder buildPath="${workspace_loc:/1_2_ButtonInputToLedAndSerial}/Aufgabe" id="io.sloeber.sketch.builder.1053049478" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1429841263" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.66340906" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>
@@ -28,8 +26,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.2122037552" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1504149851" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>
@@ -37,8 +33,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.405757614" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.264392017" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>
@@ -75,8 +69,6 @@
 							<builder buildPath="${workspace_loc:/1_2_ButtonInputToLedAndSerial}/Solution" id="io.sloeber.sketch.builder.1836453600" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1022020925" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.1417850678" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>
@@ -84,8 +76,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.60347833" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.127963163" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>
@@ -93,8 +83,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.240077850" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1537723772" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_2_ButtonInputToLedAndSerial/core/variant}&quot;"/>
 								</option>

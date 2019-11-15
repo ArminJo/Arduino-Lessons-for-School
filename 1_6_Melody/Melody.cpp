@@ -2,8 +2,19 @@
  * Spiele eine Melodie
  * Play a melody
  *
- * Copyright 2019 Armin Joachimsmeyer
- * This code is released under GPLv3 license.
+ * Thema:
+ * - Arrays und Loops dafür.
+ * - sizeof() Funktion.
+ *
+ *  Copyright 2019 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
+ *
+ *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
+ *
+ *  Arduino-Lessons-for-School is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  */
 
 /*
@@ -30,7 +41,7 @@ NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4 };
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
 uint8_t MelodyShortNoteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
 
-int MelodyAlleMeineEntchen[27] = {
+int MelodyAlleMeineEntchen[] = {
 NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_G4, NOTE_G4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_G4, NOTE_A4, NOTE_A4, NOTE_A4,
 NOTE_A4, NOTE_G4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_D4, NOTE_D4, NOTE_C4 };
 uint8_t MelodyAlleMeineEntchenNoteDurations[] = { 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 1, 4, 4, 4, 4, 1, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 1 };
@@ -66,8 +77,24 @@ void loop() {
 	tone(PIN_SPEAKER, MelodyShort[2], 1000 / MelodyShortNoteDurations[2]);
 	delay(1300 / MelodyShortNoteDurations[2]);
 
+	/*
+	 * Aufgabe 1. - Arrays + Loops
+	 *
+	 * Gebe alle 8 Töne mit den richtigen delays aus.
+	 * Baue einen Loop mit for, der den Programmcode vereinfacht.
+	 * Benutze "for (int i = 0; i < 8; ++i) {"
+	 */
+
 	// Pause nach der Melodie, bevor es weitergeht
 	delay(5000);
+
+	/*
+	 * Aufgabe 2. - sizeof() Funktion
+	 *
+	 * Gebe die 2. Melodie aus.
+	 * Die Länge eines Arrays in Byte ist: sizeof(MelodyAlleMeineEntchen)
+	 * Die Anzahl der Einträge  Arrays ist: sizeof(MelodyAlleMeineEntchen) / sizeof(MelodyAlleMeineEntchen[0])
+	 */
 }
 
 //The setup function is called once at startup of the sketch

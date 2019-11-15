@@ -6,6 +6,7 @@
  * - Einlesen analoger Werte.
  * - map() Funktion.
  * - Verwendung von Variablen in der Loopdefinition.
+ * - Arduino Plotter.
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
@@ -44,18 +45,30 @@ void loop() {
 	Serial.println(tAnalogValue);
 
 	/*
-	 * Aufgabe 1. Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
+	 * Aufgabe 1. - Potentiometer, Einlesen analoger Werte, map() Funktion.
+	 *
+	 * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
 	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
 	 */
 //	int tFrequency = map(tAnalogValue, 0, 1023, 100, 4000);
 
 	/*
-	 * Aufgabe 2. Lese stattdessen den Spannungswert vom lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
+	 * Aufgabe 2. - LDR/Lichtwiderstand
+	 *
+	 * Lese stattdessen den Spannungswert vom lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
 	 * Wie sieht die Ausagabe im Arduino Plotter aus?
 	 */
 
 	/*
-	 * Schwere Zusatzaufgabe. Print bargraph - Verwendung von Variablen in der Loopdefinition
+	 * Aufgabe 3. - Arduino Plotter
+	 *
+	 * Gebe beide Werte für den Arduino Plotter aus
+	 * 	Die erste Zeile enthält die Texte für die Legende
+	 * 	Alle anderen Zeilen enthalten die mit Space getrennten Werte.
+	 */
+
+	/*
+	 * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
 	 *
 	 * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
 	 * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",

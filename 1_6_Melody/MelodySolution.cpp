@@ -1,8 +1,20 @@
 /*
  * Erzeuge eine Melodie
+ * Solution
  *
- * Copyright 2019 Armin Joachimsmeyer
- * This code is released under GPLv3 license.
+ * Thema:
+ * - Arrays und Loops dafür.
+ * - sizeof() Funktion.
+ *
+ *  Copyright 2019 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
+ *
+ *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
+ *
+ *  Arduino-Lessons-for-School is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  */
 
 /*
@@ -41,10 +53,14 @@ uint8_t MelodyAlleMeineEntchenNoteDurations[] = { 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 
 void loop() {
 
 	/*
-	 * Eine Schleife für die erste Melodie
-	 * sizeof() wird ersetzt durch die Anzahl der Bytes im Array, so dass man nicht selber zählen muss
+	 * Aufgabe 1. - Arrays + Loops
+	 *
+	 * Gebe alle 8 Töne mit den richtigen delays aus.
+	 * Baue einen Loop mit for, der den Programmcode vereinfacht.
+	 * Benutze "for (int i = 0; i < 8; ++i) {"
 	 */
-	for (unsigned int tNoteIndex = 0; tNoteIndex < sizeof(MelodyShortNoteDurations); tNoteIndex++) {
+
+	for (unsigned int tNoteIndex = 0; tNoteIndex < 8; tNoteIndex++) {
 		/*
 		 * Ausgabe der Werte, die in dem Array sind
 		 */
@@ -72,8 +88,11 @@ void loop() {
 	delay(5000);
 
 	/*
-	 * Und eine Schleife für die zweite Melodie
-	 * Das ist übrigens die exakte Notation für sizeof, wenn es sich nicht um ein Array aus Bytes handelt
+	 * Aufgabe 2. - sizeof() Funktion
+	 *
+	 * Gebe die 2. Melodie aus.
+	 * Die Länge eines Arrays in Byte ist: sizeof(MelodyAlleMeineEntchen)
+	 * Die Anzahl der Einträge  Arrays ist: sizeof(MelodyAlleMeineEntchen) / sizeof(MelodyAlleMeineEntchen[0])
 	 */
 	for (unsigned int tNoteIndex = 0; tNoteIndex < (sizeof(MelodyAlleMeineEntchen) / sizeof(MelodyAlleMeineEntchen[0]));
 			tNoteIndex++) {

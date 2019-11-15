@@ -45,7 +45,7 @@ void loop() {
 	int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
 	/*
-	 * Aufgabe 1. if / else Anweisung, Logisches invertieren.
+	 * Aufgabe 1. - if / else Anweisung, Logisches invertieren.
 	 *
 	 * Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
 	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
@@ -62,7 +62,7 @@ void loop() {
 	digitalWrite(PIN_RED_LED, !digitalRead(PIN_LEFT_BUTTON));
 
 	/*
-	 * Aufgabe 2. Statische Variable.
+	 * Aufgabe 2. - Statische Variable.
 	 *
 	 * Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
 	 * Vergleiche dazu aktuellen Wert mit altem Wert ( z.B. sOldRightButtonValue).
