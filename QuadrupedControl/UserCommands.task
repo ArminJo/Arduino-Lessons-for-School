@@ -46,7 +46,9 @@
 #endif
 
 /*
- * The auto move function. Put your own moves here.
+ * ---------------------------------
+ * QUADRUPED PROGRAMMING CHEAT SHEET
+ * ---------------------------------
  *
  * Servos available:
  *  frontLeftPivotServo, frontLeftLiftServo
@@ -54,11 +56,11 @@
  *  backRightPivotServo, backRightLiftServo
  *  frontRightPivotServo, frontRightLiftServo
  *
+ * Useful variables:
  * sBodyHeightAngle contains the normal angle of lift servos.
+ * sMovingDirection  controls and contains the current direction. Can be MOVE_DIRECTION_FORWARD, MOVE_DIRECTION_LEFT etc.
  *
- * Useful commands:
- *
- * sMovingDirection = MOVE_DIRECTION_FORWARD; // MOVE_DIRECTION_LEFT etc.
+ * High level movements:
  * moveCreep(1);
  * centerServos();
  * moveTrot(1);
@@ -67,19 +69,27 @@
  * doLeanRight();
  * basicTwist(30);
  * doWave();
+ *
+ * Timing:
  * delayAndCheck(1000);
  *
  * To move the front left lift servo, use e.g.:
  * frontLeftLiftServo.easeTo(convertLegPercentHeightToAngle(100));
+ *
+ * To move multiple servos simultaneously:
+ * frontLeftPivotServo.setEaseTo(0);
+ * frontLeftLiftServo.setEaseTo(LIFT_MAX_ANGLE);
+ * synchronizeAllServosStartAndWaitForAllServosToStop();
  *
  * To move all lift servos simultaneously:
  * setLiftServos(LIFT_LOWEST_ANGLE, LIFT_LOWEST_ANGLE, LIFT_HIGHEST_ANGLE, LIFT_HIGHEST_ANGLE);
  *
  * To move all pivot servos simultaneously:
  * setPivotServos(100, 100, 80, 80);
- */
-
-/*
+ *
+ * To get the current angle of a servo:
+ * getCurrentAngle();
+ *
  * Quadrupeds with NeoPixel have the strips:
  * RightNeoPixelBar, FrontNeoPixelBar, LeftNeoPixelBar
  * QuadrupedNeoPixelBar (all bars chained together)
@@ -87,12 +97,24 @@
  * The following patterns are available:
  * RainbowCycle(), ColorWipe(), Fade()
  * Stripes(), Heartbeat(), ScannerExtended(), Fire(), Delay()
+ *
  */
 
 /*
- * Create your own basic movement here
- * doTest is mapped to the star on the remote
+ * Here you can create your own movements.
+ *
+ * The speed and height commands on the remote are already active.
+ * They modify the variables sServoSpeed and sBodyHeightAngle.
+ *
+ * I recommend to implement the following movements:
+ * 1. A twist forth and back.
+ * 2. Bows in different directions.
+ * 3. Wave with one leg. Lift up diagonal legs and modify the positions of the other two so that the body tilts in the right direction.
+ * 4. Turn. To get the current angle of a servo, use getCurrentAngle().
+ *
  */
+
+// doTest() is mapped to the star on the remote
 void doTest() {
     sActionType = ACTION_TYPE_TEST;
 
@@ -110,9 +132,9 @@ void doTest() {
      * Here the movement starts
      * Set multiple servos simultaneously
      */
-    sServoNextPositionArray[FRONT_LEFT_LIFT] = convertLegPercentHeightToAngle(100);
-    sServoNextPositionArray[BACK_RIGHT_LIFT] = convertLegPercentHeightToAngle(20);
-    synchronizeMoveAllServosAndCheckInputAndWait();
+    frontLeftLiftServo.setEaseTo(convertLegPercentHeightToAngle(100)); // 100 is leg at upper limit
+    backRightLiftServo.setEaseTo(convertLegPercentHeightToAngle(20)); // 20 is leg low
+    synchronizeAllServosStartAndWaitForAllServosToStop();
 
     frontLeftPivotServo.easeTo(25);
     /*

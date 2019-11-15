@@ -1,8 +1,19 @@
 /*
- * Lessons with 2 Buttons 2 LEDs and a speaker or piezo
+ * Lessons with 2 buttons 2 LEDs and a speaker or piezo
  *
- * Copyright 2018 Armin Joachimsmeyer
- * This code is released under GPLv3 license.
+ * Thema:
+ * - if / else Anweisung, logisches invertieren.
+ * - Statische Variable.
+ *
+ *  Copyright 2019 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
+ *
+ *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
+ *
+ *  Arduino-Lessons-for-School is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  */
 
 /*
@@ -30,38 +41,44 @@ static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 // The loop routine runs over and over again forever
 void loop() {
 
-	/*
-	 * Zusatzaufgabe. Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
-	 * Vergleiche dazu aktuellen Wert mit altem Wert.
-	 */
+
 
 	/*
-	 * Aufgabe 1. Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
+	 * Aufgabe 1. - if / else Anweisung, logisches invertieren.
+	 *
+	 * Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
 	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
 	 * LOW ist 0 / false, HIGH ist 1 / true
 	 */
 	// Right button handling
 	if (digitalRead(PIN_RIGHT_BUTTON) == 0) {
-		Serial.println("RightButton is 0");
 		digitalWrite(PIN_RED_LED, HIGH);
 	} else {
-		Serial.println("RightButton is 1");
+		// hier fehlt noch was
 	}
 
 	// Left button handling
 
-
 	/*
-	 * Aufgabe 2. Gebe einen Ton von 1760 Hz aus, wenn der rechte Button gedrückt ist.
-	 * Gebe einen Ton von 2200 Hz aus, wenn der linke Button gedrückt ist.
-	 * Bedingungen weden mit "&&" AND verknüpft
+	 * Aufgabe 2. - Statische Variable.
 	 *
-	 * Zusatz: Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
+	 * Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
+	 * Vergleiche dazu aktuellen Wert mit altem Wert ( z.B. sOldRightButtonValue).
 	 */
-	if (digitalRead(PIN_RIGHT_BUTTON) == 0 && digitalRead(PIN_LEFT_BUTTON) == 0) {
-		tone(PIN_SPEAKER, 2640);
+	int tNewRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+	int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+
+	if (tNewRightButtonValue == 0) {
+		Serial.println("RightButton is 0");
 	} else {
-		noTone(PIN_SPEAKER);
+		Serial.println("RightButton is 1");
+	}
+
+	if (sOldLeftButtonValue != tNewLeftButtonValue) {
+		// Das ist die einfachere Ausgabemöglichkeit
+		Serial.print("LeftButton is ");
+		Serial.println(tNewLeftButtonValue);
+		// Was fehlt hier?
 	}
 
 	// Wait to reduce serial output

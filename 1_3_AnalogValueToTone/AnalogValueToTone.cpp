@@ -1,8 +1,21 @@
 /*
  * Lessons for reading analog values
  *
- * Copyright 2018 Armin Joachimsmeyer
- * This code is released under GPLv3 license.
+ * Thema:
+ * - Potentiometer, LDR/Lichtwiderstand.
+ * - Einlesen analoger Werte.
+ * - map() Funktion.
+ * - Verwendung von Variablen in der Loopdefinition.
+ *
+ *  Copyright 2019 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
+ *
+ *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
+ *
+ *  Arduino-Lessons-for-School is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  */
 
 /*
@@ -42,11 +55,16 @@ void loop() {
 	 */
 
 	/*
-	 * Schwere Zusatzaufgabe. Print bargraph
-	 * Gebe den analogen Wert als variabel lange Zeichenkette von z.B. '#' aus.
-	 * 		Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 16 bekommst.
+	 * Schwere Zusatzaufgabe. Print bargraph - Verwendung von Variablen in der Loopdefinition
+	 *
+	 * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
+	 * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",
+	 * ... für Werte von 240 bis 255 "###############" (15 '#').
+	 *
+	 * Anleitung:
+	 * 		Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 15 bekommst.
 	 * 		benutze einen for loop der so oft läuft, wie der errechnete Wert angibt.
-	 * 		Benutze Serial.print("#"); im loop.
+	 * 		Benutze Serial.print('#'); im loop.
 	 * 		Nach dem loop einmal Serial.println() nicht vergessen.
 	 */
 

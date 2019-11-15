@@ -23,17 +23,18 @@ Je 2 Schüler teilen sich einen Rechner / Laptop, wobei sicher auch andere Gruppe
 ## Inhalt der ersten Stunden
 ### 1. Stunde
 Vorstellung, Vorkenntnisse und Erwartungen.<br/>
-Zum Einsteig das Doodle [50 Jahre "Kids Coding"](https://www.google.com/doodles/celebrating-50-years-of-kids-coding?doodle=32615474). Dazu muss man allerdings online sein :-(.<br/> 
-Hier werden die Konzepte Anweisung und Wiederholungen/Schleifen benutzt.<br/> 
+Zum Einsteig wird dann das das Doodle [50 Jahre "Kids Coding"](https://www.google.com/doodles/celebrating-50-years-of-kids-coding?doodle=32615474) gespielt. Dazu muss man allerdings online sein :-(.<br/> 
+Hier werden die Konzepte **Anweisung** und **Wiederholungen/Schleifen** benutzt.<br/> 
 Danach werden die Kinder in 2 Gruppen aufgeteilt. 
-Jede Gruppe schreibt auf Notizzetteln auf, was der menschliche Roboter aus der anderen Gruppe machen muss, um vom Klassenraum ins Lehrerzimmer zu kommen. Schleifen und Umwege sind erlaubt!<br/> 
+Jede Gruppe schreibt auf Notizzetteln auf, was der **menschliche Roboter** aus der anderen Gruppe machen muss, um vom Klassenraum ins Lehrerzimmer zu kommen. Schleifen und Umwege sind erlaubt!<br/> 
 Oft ist dann die Doppelstunde auch schon rum.
 
 ### 2. Stunde
 Jetzt bekommt der erste menschliche Roboter seine Anweisungen/Notizzettel und darf das Programm abbarbeiten. Danach ist die andere Gruppe dran.<br/> 
-Zur Vertiefung kann man noch gemeinsam ein Flussdiagramm z.B. fürs Kuchenbacken entwickeln. Hier kommt am Ende die Abfrage, ob der Kuchen OK ist, oder ob man noch 5 Minuten warten soll und dann nochmal nachsieht. Das ist ein neues Konzept, nämlich die Bedingung/Entscheidung.<br/> 
+Zur Vertiefung kann man noch gemeinsam ein **Flussdiagramm** z.B. fürs Kuchenbacken entwickeln. Hier kommt am Ende die Abfrage, ob der Kuchen OK ist, oder ob man noch 5 Minuten warten soll und dann nochmal nachsieht.<br/>
+Das ist ein neues Konzept, nämlich die **Bedingung/Entscheidung** (für eine Schleife).<br/> 
 Danach wird mit Scratch ein Spiel gebaut.<br/> 
-**Aufgabe**
+#### Aufgabe:
 -	Wir holen 2 Figuren und 1 Objekt (z.B. Bananen oder Diamant).
 -	Eine Figur bewegt sich in 20er Schritten mit den Pfeiltasten, die andere mit den wasd Tasten.
 -	Die Figuren fangen am Rand an.
@@ -49,8 +50,8 @@ Danach wird mit Scratch ein Spiel gebaut.<br/>
 Weiter mit dem Programmieren des Scratch Spiels.
 
 ### 4. Stunde
-Um das Konzept einer Variablen zu vertiefen, gibt es die N-Eck Aufgabe in Scratch.<br/> 
-**Aufgabe**
+Um das Konzept einer Variablen zu vertiefen, gibt es die **n-Eck Aufgabe** in Scratch.<br/> 
+#### Aufgabe:
 -  Mit Scratch 40 3-Ecke zeichnen, die Farbe, Größe und Position ist jedes Mal zufällig.
 -  Wenn eine Taste gedrückt wird, z.B. die Leertaste, dann wird alles gelöscht und es werden 40 n+1-Ecke gezeichnet. Also erstmal 4-Ecke, dann 5-Ecke usw.
 
