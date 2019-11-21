@@ -1,7 +1,9 @@
 /*
- * Lessons with 2 buttons 2 LEDs and a speaker or piezo
+ * Lessons with 2 buttons 2 LEDs
+ * Den Zustand der beiden Buttons einlesen und und auf dem Serial Monitor ausgeben.
  *
  * Thema:
+ * - Einlesen digitaler Werte.
  * - if / else Anweisung, logisches invertieren.
  * - Statische Variable.
  *

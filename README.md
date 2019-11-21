@@ -60,9 +60,46 @@ Bei dieser Aufgabe müssen Variablen in Formeln/Berechnungen verwendet werden. Da
 
 ### 5. Stunde
 Der Aufbau eines Breadboards wird erklärt die Boards werden ausgeteilt und mit der ersten Aufgabe **1\_1_Ampel** angefangen.<br/> 
-Das Beispiel kann man erst einmal auf den Arduino laden und dann beobachten was es macht.<br/> 
+Das Beispiel kann man erst einmal auf den Arduino laden und dann beobachten was es macht.<br/>
+Für die Lösung der Aufgabe ist es gut, eine Ampel live sehen zu können oder ein Video davon zu zeigen. 
+Die meisten Kinder kennen die Gelb Phasen nicht richtig.<br/>
 Je nachdem kann man die Kinder auch vorher die Boards zusammenstecken lassen, das ist sicher nett, ich hatte dazu leider keine Geduld.
 
+# Inhalt der Aufgaben
+## 1_1_Ampel
+Die 3 LED's so ansteuern, dass sie wie eine Verkehrsampel leuchten.
+- Ausgabe digitaler Werte auf einem Arduino Pin.
+- Warten mit delay().
+
+## 1_2_ButtonInputToLedAndSerial
+Den Zustand der beiden Buttons einlesen und und auf dem Serial Monitor ausgeben.
+- Einlesen digitaler Werte.
+- if / else Anweisung, logisches invertieren.
+- Statische Variable.
+
+## 1_2_ButtonInputToTone
+Den Zustand der beiden Buttons einlesen und je nach gedrückten Buttons verschiedene Töne ausgeben.
+- Ausgabe eines Tons.
+- Verknüpfung von Bedingungen.
+
+## 1_3_AnalogValueToTone
+Einen Spannungswert, der durch ein Potentiometer oder einen lichtempfindlichen Widerstand (LDR) erzeugt wird, einlesen und in eine Tonhöhe verwandeln.
+- Potentiometer, LDR/Lichtwiderstand.
+- Einlesen analoger Werte.
+- map() Funktion.
+- Verwendung von Variablen in der Loopdefinition.
+
+## 1_4_AnalogValueToPlotter
+Werte im Arduino Plotter ansehen und das Maximum und Minimum berechnen.
+- Potentiometer, LDR/Lichtwiderstand.
+- Einlesen analoger Werte.
+- Arduino Plotter.
+- Minimum / Maximum finden.
+
+## 1_6_Melody
+Eine Melodie ausgeben.
+- Arrays und Loops über Arrays.
+- sizeof() Funktion.
 
 # Universal breadboard layout for all lessons
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
@@ -72,4 +109,6 @@ Je nachdem kann man die Kinder auch vorher die Boards zusammenstecken lassen, da
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Back.jpg)
 ![Universal breadboard connection schema](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_connections.jpg)
 ![Universal breadboard top and bottom view](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_top_bottom.jpg)
+
+### If you are interested in an English translation, please send me a mail.
 

@@ -1,5 +1,5 @@
 /*
- * Lessons with 2 buttons 2 LEDs and a speaker or piezo
+ * Lessons with 2 buttons 2 LEDs
  * Solution
  *
  * Thema:

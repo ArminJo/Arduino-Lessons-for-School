@@ -1,8 +1,10 @@
 /*
  * Lessons with 2 buttons 2 LEDs and a speaker or piezo
+ * Den Zustand der beiden Buttons einlesen und je nach gedrückten Buttons verschiedene Töne ausgeben.
  *
  * Thema:
- * - Verknüpfung von Bedingungen
+ * - Ausgabe eines Tons.
+ * - Verknüpfung von Bedingungen.
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.

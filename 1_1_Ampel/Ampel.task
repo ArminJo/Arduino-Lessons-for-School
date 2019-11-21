@@ -1,6 +1,10 @@
 /*
  * Lesson trafic light with 3 LEDs red, yellow and green
  *
+ * Thema:
+ * - Ausgabe digitaler Werte auf einem Ardiono Pin.
+ * - Warten mit delay().
+ *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
  *

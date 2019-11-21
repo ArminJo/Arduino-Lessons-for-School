@@ -1,12 +1,12 @@
 /*
  * Lessons for reading analog values
+ * Einen Spannungswert, der durch ein Potentiometer oder einen lichtempfindlichen Widerstand (LDR) erzeugt wird, einlesen und in eine Tonhöhe verwandeln.
  *
  * Thema:
  * - Potentiometer, LDR/Lichtwiderstand.
  * - Einlesen analoger Werte.
  * - map() Funktion.
  * - Verwendung von Variablen in der Loopdefinition.
- * - Arduino Plotter.
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
@@ -57,14 +57,6 @@ void loop() {
 	 *
 	 * Lese stattdessen den Spannungswert vom lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
 	 * Wie sieht die Ausagabe im Arduino Plotter aus?
-	 */
-
-	/*
-	 * Aufgabe 3. - Arduino Plotter
-	 *
-	 * Gebe beide Werte für den Arduino Plotter aus
-	 * 	Die erste Zeile enthält die Texte für die Legende
-	 * 	Alle anderen Zeilen enthalten die mit Space getrennten Werte.
 	 */
 
 	/*

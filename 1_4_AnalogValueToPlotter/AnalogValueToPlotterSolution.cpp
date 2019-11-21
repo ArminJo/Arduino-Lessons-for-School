@@ -57,7 +57,10 @@ void loop() {
 	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
 	 */
 	if (sLDRMinimum > tAnalogValueLDR) {
-		;
+		sLDRMinimum = tAnalogValueLDR;
+	}
+	if (sLDRMaximum < tAnalogValueLDR) {
+		sLDRMaximum = tAnalogValueLDR;
 	}
 
 	Serial.print(' ');
@@ -66,6 +69,8 @@ void loop() {
 	Serial.print(sLDRMaximum);
 	Serial.println(); // End of data set
 
+
+
 	/*
 	 * Aufgabe 3.
 	 *
@@ -73,8 +78,9 @@ void loop() {
 	 * der vorher nicht 2 Oktaven war wie beim Potentiometer.
 	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
 	 */
-	//int tFrequency = map(tAnalogValueLDR, 0, 1023, 440, 1760); // 2 octaves
-	//tone(PIN_SPEAKER, tFrequency);
+	int tFrequency = map(tAnalogValueLDR, sLDRMinimum, sLDRMaximum, 440, 1760); // 2 octaves
+	tone(PIN_SPEAKER, tFrequency);
+
 	delay(300);
 }
 

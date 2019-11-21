@@ -57,7 +57,7 @@ void loop() {
 	 * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
 	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
 	 */
-	int tFrequency = map(tAnalogValue, 0, 1023, 100, 4000);
+	int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
 	tone(PIN_SPEAKER, tFrequency);
 
 	/*

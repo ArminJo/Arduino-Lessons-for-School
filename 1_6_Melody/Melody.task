@@ -1,9 +1,9 @@
 /*
- * Spiele eine Melodie
  * Play a melody
+ * Spiele eine Melodie
  *
  * Thema:
- * - Arrays und Loops dafür.
+ * - Arrays und Loops über Arrays.
  * - sizeof() Funktion.
  *
  *  Copyright 2019 Armin Joachimsmeyer
