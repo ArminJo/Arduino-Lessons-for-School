@@ -43,8 +43,6 @@ static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 // The loop routine runs over and over again forever
 void loop() {
 
-
-
 	/*
 	 * Aufgabe 1. - if / else Anweisung, logisches invertieren.
 	 *
@@ -96,16 +94,11 @@ void setup() {
 
 	initBreadboardPins();
 
-	// Play 2200 Hz.
-	tone(PIN_SPEAKER, 2200);
-
 	// Let LED blink for 600 ms
 	digitalWrite(PIN_RED_LED, HIGH);
 	digitalWrite(PIN_GREEN_LED, HIGH);
 	delay(600);
 
-	// Stop tone
-	noTone(PIN_SPEAKER);
 	digitalWrite(PIN_RED_LED, LOW);
 	digitalWrite(PIN_GREEN_LED, LOW);
 

@@ -38,26 +38,31 @@
 // Die loop Funktion läuft unendlich durch.
 void loop() {
 
-	// Einlesen der Werte des Drehreglers
+	/*
+	 *  Aufgabe 1. - Übersetzen, hochladen und im Serial Monitor ansehen.
+	 *
+	 *  Einlesen der Werte des Drehreglers (oder des LDR's)
+	 *  Welche Werte liefert analogRead()?
+	 */
 	int tAnalogValue = analogRead(PIN_POTENTIOMETER); // oder PIN_LDR
 	// Ausgeben des Zahlenwerts
 	Serial.print("Eingelesener Wert=");
 	Serial.println(tAnalogValue);
 
 	/*
-	 * Aufgabe 1. - Potentiometer, Einlesen analoger Werte, map() Funktion.
+	 * Aufgabe 2. - Potentiometer, einlesen analoger Werte, map() Funktion.
 	 *
 	 * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
 	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
-	 */
-//	int tFrequency = map(tAnalogValue, 0, 1023, 100, 4000);
-
-	/*
-	 * Aufgabe 2. - LDR/Lichtwiderstand
 	 *
-	 * Lese stattdessen den Spannungswert vom lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
-	 * Wie sieht die Ausagabe im Arduino Plotter aus?
+	 * Aufgabe 3. - LDR/Lichtwiderstand
+	 *
+	 * Lese stattdessen den Spannungswert am lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
+	 * Welche Werte bekomme ich da?
+	 * Wie muss ich map() ändern, um den vollen Tonumfang zu erreichen?
 	 */
+//	int tFrequency = map(tAnalogValue, ???, ???, 440, 1760); // 2 octaves
+//	tone(PIN_SPEAKER, 2200);
 
 	/*
 	 * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
@@ -85,4 +90,6 @@ void setup() {
 
 	initBreadboardPins();
 
+	// Play 2200 Hz for 600 milliseconds.
+	tone(PIN_SPEAKER, 2200, 600);
 }
