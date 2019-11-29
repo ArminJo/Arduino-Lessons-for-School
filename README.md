@@ -96,10 +96,23 @@ Werte im Arduino Plotter ansehen und das Maximum und Minimum berechnen.
 - Arduino Plotter.
 - Minimum / Maximum finden.
 
+## 1_5_USToPentatonic
+Ultraschall Entfernungswert einlesen und je nach Entfernung verschiedene Töne aus einer pentatonischen Reihe abspielen.
+- Datenblatt eines Abstandsmessers lesen und ihn richtig ansteuern.
+- Ultraschall Abstandssensor einlesen.
+- Laufzeit des Schalls in Abstand umrechnen.
+- Werte aus Array holen.
+
 ## 1_6_Melody
 Eine Melodie ausgeben.
 - Arrays und Loops über Arrays.
 - sizeof() Funktion.
+
+## 3_PlayChristmasMelodyUS
+Bei richtigem Abstand ein zufälliges Weichnachtslied spielen.
+- Ultraschall Abstandssensor einlesen.
+- Eine Library benutzen um Weichnachstlieder abzuspielen.
+
 
 # Universal breadboard layout for all lessons
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)

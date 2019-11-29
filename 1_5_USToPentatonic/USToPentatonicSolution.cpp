@@ -2,7 +2,10 @@
  * Lessons for reading HC-SR04 US Sensor and generating tones from a pentatonic scale.
  *
  * Thema:
+ * - Datenblatt eines Abstandsmessers lesen und ihn richtig ansteuern.
  * - Ultraschall Abstandssensor einlesen.
+ * - Laufzeit des Schalls in Abstand umrechnen.
+ * - Werte aus Array holen.
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
