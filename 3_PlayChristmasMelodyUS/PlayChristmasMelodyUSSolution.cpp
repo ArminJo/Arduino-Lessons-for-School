@@ -23,6 +23,12 @@
 
 #define VERSION_EXAMPLE "1.0"
 
+/*
+ * The range for the melody to start
+ */
+#define MINIMUM_DISTANCE_CENTIMETER 40
+#define MAXIMUM_DISTANCE_CENTIMETER 120
+
 BlinkLed RedLed(PIN_RED_LED);
 BlinkLed YellowLed(PIN_YELLOW_LED);
 BlinkLed GreenLed(PIN_GREEN_LED);
@@ -40,11 +46,13 @@ void setup() {
 	initUSDistancePins(PIN_TRIGGER_OUT, PIN_ECHO_IN);
 
 	randomSeed(getUSDistance());
+	delay(500); // to avoid sound directly at power up
+
 	/*
 	 * Play first song
 	 */
 	playRandomSongAndBlink();
-	YellowLed.off(); // switch it manually off here
+	RedLed.off(); // switch it manually off here
 }
 
 /*
@@ -54,40 +62,55 @@ void setup() {
  * 			3. Warte solange bis eine Messung ausserhalb der obigen 2 Werte liegt, um zu vermeiden, dass andauernd Melodien gespielt werden.
  */
 void loop() {
+	static uint8_t sInRangeCounter = 0;
+
 	unsigned int tCentimeter = getUSDistanceAsCentiMeter();
 	Serial.print("Distance=");
-	Serial.println(tCentimeter);
-	delay(100);
-	if (tCentimeter > 40 && tCentimeter < 120) {
-		playRandomSongAndBlink();
+	Serial.print(tCentimeter);
+    Serial.println("cm.");
 
-		// wait for distance to be out of range for 4 consecutive readings
-		uint8_t tCounter = 0;
-		tCentimeter = getUSDistanceAsCentiMeter();
-		while (tCounter < 4) {
-			Serial.print("Distance=");
-			Serial.print(tCentimeter);
-			if (tCentimeter < 40 || tCentimeter > 120) {
-				tCounter++;
-				Serial.print(" counter=");
-				Serial.print(tCounter);
-				Serial.println();
-			} else {
-				tCounter = 0; // reset to start condition
-				Serial.print(" still in range. Wait for ");
+	if (tCentimeter > MINIMUM_DISTANCE_CENTIMETER && tCentimeter < MAXIMUM_DISTANCE_CENTIMETER) {
+		sInRangeCounter++;
+		if (sInRangeCounter >= 3) {
+			/*
+			 * Now an object is for a longer time in the right range.
+			 * Play one song and wait for the object to leave the range
+			 * As long as the object is in range, the red LED is active
+			 */
+			playRandomSongAndBlink();
+			sInRangeCounter = 0;
+
+			// wait for distance to be out of range for 4 consecutive readings
+			uint8_t tCounter = 0;
+			tCentimeter = getUSDistanceAsCentiMeter();
+			while (tCounter < 4) {
+				Serial.print("Distance=");
+				Serial.print(tCentimeter);
+			    Serial.print("cm.");
+
+				if (tCentimeter < MINIMUM_DISTANCE_CENTIMETER || tCentimeter > MAXIMUM_DISTANCE_CENTIMETER) {
+					tCounter++;
+				} else {
+					tCounter = 0; // reset to start condition
+					Serial.print(" Still in range.");
+				}
+				Serial.print(" Wait for ");
 				Serial.print(4 - tCounter);
 				Serial.println(" distances out of range.");
+
+				delay(1000);
 			}
-			YellowLed.update();
-			tCentimeter = getUSDistanceAsCentiMeter();
-			delay(200);
 		}
+	} else {
+		sInRangeCounter = 0;
 	}
-	YellowLed.off();
+
+	RedLed.off();
+	delay(200);
 }
 
 /*
- * Leaves yellow led blinking
+ * Leaves red LED on
  */
 void playRandomSongAndBlink() {
 	char StringBuffer[16];
@@ -111,8 +134,9 @@ void playRandomSongAndBlink() {
 		GreenLed.update();
 		delay(1);
 	}
-// switch off only 2 leds, the third will blink until the "thing in the right distance" is gone
-	RedLed.off();
+	// switch off only 2 LEDs, the red one will be on until the "object in the right distance" is gone
+	YellowLed.off();
 	GreenLed.off();
+	RedLed.on();
 	delay(2000);
 }

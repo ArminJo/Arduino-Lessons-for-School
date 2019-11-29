@@ -23,6 +23,10 @@
 
 #define VERSION_EXAMPLE "1.0"
 
+BlinkLed RedLed(PIN_RED_LED);
+BlinkLed YellowLed(PIN_YELLOW_LED);
+BlinkLed GreenLed(PIN_GREEN_LED);
+
 //The setup function is called once at startup of the sketch
 void setup() {
 	// Start serial output
@@ -32,6 +36,9 @@ void setup() {
 
 	initBreadboardPins();
 	initUSDistancePins(PIN_TRIGGER_OUT, PIN_ECHO_IN);
+
+	randomSeed(getUSDistance());
+	delay(500); // to avoid sound directly at power up
 }
 
 /*
