@@ -25,8 +25,8 @@
 #define PIN_LEFT_LED     	PIN_RED_LED
 #define PIN_START_LED    	PIN_YELLOW_LED
 
-#define PIN_RIGHT_BUTTON   A1
-#define PIN_LEFT_BUTTON    A4
+#define PIN_PLAYER_1_BUTTON   A1
+#define PIN_PLAYER_3_BUTTON   A4
 
 #define PIN_LASER	        5
 #define PIN_SERVO_HORIZONTAL 6
@@ -51,12 +51,13 @@ void initBreadboardPins() {
 	pinMode(PIN_GREEN_LED, OUTPUT);
 
 	// Prepare for buttons at the pins
-	pinMode(PIN_RIGHT_BUTTON, INPUT_PULLUP);
-	pinMode(PIN_LEFT_BUTTON, INPUT_PULLUP);
+	pinMode(PIN_PLAYER_1_BUTTON, INPUT_PULLUP);
+	pinMode(PIN_PLAYER_3_BUTTON, INPUT_PULLUP);
 
 	pinMode(PIN_LASER, OUTPUT);
 	pinMode(PIN_TRIGGER_OUT, OUTPUT);
-	pinMode(PIN_SPEAKER, OUTPUT);
+//  Is done by tone()	
+//	pinMode(PIN_SPEAKER, OUTPUT);
 	pinMode(LED_BUILTIN, OUTPUT);
 
 }

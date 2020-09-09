@@ -7,9 +7,9 @@
  *  Copyright (C) 2018-2019  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
- *  This file is part of PlayRttl https://github.com/ArminJo/PlayRttl.
+ *  This file is part of Arduino-Utils https://github.com/ArminJo/Arduino-Utils.
  *
- *  PlayRttl is free software: you can redistribute it and/or modify
+ *  Arduino-Utils is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -25,6 +25,19 @@
 #include <Arduino.h>
 
 #include "BlinkLed.h"
+
+/*
+ * The simple blocking variant
+ */
+void blinkLEDBlocking(uint8_t aLedPin, uint16_t aDelay, uint8_t aRepetitions) {
+    for (int i = 0; i < aRepetitions; ++i) {
+        digitalWrite(aLedPin, HIGH);
+        delay(aDelay);
+        digitalWrite(aLedPin, LOW);
+        delay(aDelay);
+    }
+}
+
 
 BlinkLed::BlinkLed(uint8_t aLedPin) {
     init(aLedPin, false);

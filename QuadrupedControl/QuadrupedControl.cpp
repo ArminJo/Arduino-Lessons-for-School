@@ -47,7 +47,7 @@
 #include "ADCUtils.h"
 
 #if defined(QUADRUPED_PLAYS_RTTTL)
-#include <PlayRtttl.h>
+#include <PlayRtttl.h> // Click here to get the library: http://librarymanager/All#PlayRtttl
 #endif
 
 #if defined(QUADRUPED_HAS_NEOPIXEL)
@@ -85,7 +85,7 @@ void setup() {
     setSpeedForAllServos(sServoSpeed);
 
     // Just for setting channel and reference
-    getVCCVoltageMillivoltSimple();
+    printVCCVoltageMillivolt(&Serial);
 
 #if defined(QUADRUPED_HAS_US_DISTANCE)
     Serial.println(F("Init US distance sensor"));
@@ -175,6 +175,7 @@ void loop() {
      */
     if (millis() - sLastTimeOfIRCodeReceived > MILLIS_OF_INACTIVITY_BEFORE_REMINDER_MOVE) {
         doAttention();
+        printVCCVoltageMillivolt(&Serial);
         // next attention in 1 minute
         sLastTimeOfIRCodeReceived += MILLIS_OF_INACTIVITY_BETWEEN_REMINDER_MOVE;
     }
@@ -294,7 +295,6 @@ bool delayAndCheck(uint16_t aDelayMillis) {
                 return true;
             }
 #endif
-            yield();
         } while (millis() - tStartMillis < aDelayMillis);
         return false;
     }

@@ -47,6 +47,11 @@
 			<locationURI>WORKSPACE_LOC/libraries/Adafruit_NeoPixel</locationURI>
 		</link>
 		<link>
+			<name>libraries/FrequencyDetector</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/libraries/FrequencyDetector</locationURI>
+		</link>
+		<link>
 			<name>libraries/IRLremote</name>
 			<type>2</type>
 			<locationURI>WORKSPACE_LOC/libraries/IRLremote</locationURI>
@@ -80,6 +85,11 @@
 			<name>libraries/ServoEasing</name>
 			<type>2</type>
 			<locationURI>WORKSPACE_LOC/libraries/ServoEasing</locationURI>
+		</link>
+		<link>
+			<name>libraries/Wire</name>
+			<type>2</type>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.1/libraries/Wire</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

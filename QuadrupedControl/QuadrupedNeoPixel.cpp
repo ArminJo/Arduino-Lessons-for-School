@@ -51,12 +51,12 @@ bool sCallShowSynchronized; // Flag set e.g. by main loop to show the pattern sy
 NeoPatterns QuadrupedNeoPixelBar = NeoPatterns(NUM_PIXELS, PIN_NEOPIXEL, NEO_GRB + NEO_KHZ800, &QuadrupedOnPatternCompleteHandler,
         true);
 // false -> do not allow show on partial NeoPixel bar
-NeoPatterns RightNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_RIGHT_BAR, PIXELS_ON_ONE_BAR,
-        &QuadrupedOnPatternCompleteHandler, false, true);
-NeoPatterns FrontNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_FRONT_BAR, PIXELS_ON_ONE_BAR,
-        &QuadrupedOnPatternCompleteHandler, false, true);
-NeoPatterns LeftNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_LEFT_BAR, PIXELS_ON_ONE_BAR,
-        &QuadrupedOnPatternCompleteHandler, false, true);
+NeoPatterns RightNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_RIGHT_BAR, PIXELS_ON_ONE_BAR, false,
+        &QuadrupedOnPatternCompleteHandler, true);
+NeoPatterns FrontNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_FRONT_BAR, PIXELS_ON_ONE_BAR, false,
+        &QuadrupedOnPatternCompleteHandler, true);
+NeoPatterns LeftNeoPixelBar = NeoPatterns(&QuadrupedNeoPixelBar, PIXEL_OFFSET_LEFT_BAR, PIXELS_ON_ONE_BAR, false,
+        &QuadrupedOnPatternCompleteHandler, true);
 
 uint16_t getDelayFromSpeed() {
     uint16_t tDelay = 12000 / sServoSpeed;
@@ -92,9 +92,9 @@ void doPatternFire() {
 
 void doPatternHeartbeat() {
     uint16_t tDelay = getDelayFromSpeed();
-    RightNeoPixelBar.Heartbeat(COLOR32_GREEN_HALF, tDelay, 3);
-    FrontNeoPixelBar.Heartbeat(COLOR32_BLUE_HALF, tDelay, 3);
-    LeftNeoPixelBar.Heartbeat(COLOR32_RED_HALF, tDelay, 3);
+    RightNeoPixelBar.Heartbeat(COLOR32_GREEN_HALF, tDelay, 2);
+    FrontNeoPixelBar.Heartbeat(COLOR32_BLUE_HALF, tDelay, 2);
+    LeftNeoPixelBar.Heartbeat(COLOR32_RED_HALF, tDelay, 2);
 }
 
 void initNeoPatterns() {
@@ -137,12 +137,11 @@ bool isAtLeastOnePatternActive() {
  * Calling of updateAllServos() is controlled by the misused ICNC1 / Input Capture Noise Canceler flag, which is set by ServoEasing.
  *
  * Update all servos from list and check if all servos have stopped.
- * Can not call yield() here, since we are in an ISR context here.
  */
 void handleServoTimerInterrupt() {
 #if defined(USE_PCA9685_SERVO_EXPANDER)
     // Otherwise it will hang forever in I2C transfer
-    sei();
+    interrupts(); // Enable interrupts
 #endif
 // Check the (misused) ICNC1 flag, which signals that ServoEasing interrupts were enabled again.
     if (TCCR1B & _BV(ICNC1)) {
@@ -166,7 +165,7 @@ void handleServoTimerInterrupt() {
  * and must therefore be synchronized with the servo pulse generation.
  * @return - true if at least one pattern is active.
  */
-bool handleQuadrupedNeoPixelUpdate() {
+void handleQuadrupedNeoPixelUpdate() {
 
     /*
      * Check for patterns start or update.
@@ -176,22 +175,28 @@ bool handleQuadrupedNeoPixelUpdate() {
         handleAutomaticMovementPattern(); // To trigger NeoPatterns generation
     }
 
+#if VERSION_NEOPATTERNS_NUMERICAL >= 220
+    if (!QuadrupedNeoPixelBar.updateAllPartialPatterns()) {
+        if (sCallShowSynchronized) {
+            // show anyway
+            QuadrupedNeoPixelBar.show();
+        }
+    }
+    sCallShowSynchronized = false;
+
+#else
     bool tNeedShow = sCallShowSynchronized;
     if (tNeedShow) {
         sCallShowSynchronized = false;
     }
 
-    bool tAtLeastOnePatternActive = false;
     if (RightNeoPixelBar.ActivePattern != PATTERN_NONE) {
-        tAtLeastOnePatternActive = true;
         tNeedShow |= RightNeoPixelBar.update();
     }
     if (FrontNeoPixelBar.ActivePattern != PATTERN_NONE) {
-        tAtLeastOnePatternActive = true;
         tNeedShow |= FrontNeoPixelBar.update();
     }
     if (LeftNeoPixelBar.ActivePattern != PATTERN_NONE) {
-        tAtLeastOnePatternActive = true;
         tNeedShow |= LeftNeoPixelBar.update();
     }
     if (QuadrupedNeoPixelBar.ActivePattern != PATTERN_NONE) {
@@ -200,7 +205,9 @@ bool handleQuadrupedNeoPixelUpdate() {
     } else if (tNeedShow) {
         QuadrupedNeoPixelBar.show();
     }
-    return tAtLeastOnePatternActive;
+
+#endif
+
 }
 
 /*
@@ -255,7 +262,7 @@ void handleAutomaticMovementPattern() {
 #ifdef INFO
             Serial.println(F("Starting Heartbeat"));
 #endif
-            QuadrupedNeoPixelBar.Heartbeat(COLOR32_BLUE_QUARTER, getDelayFromSpeed(), 3, FLAG_DO_NOT_CLEAR);
+            QuadrupedNeoPixelBar.Heartbeat(COLOR32_BLUE_QUARTER, getDelayFromSpeed(), 2, FLAG_DO_NOT_CLEAR);
             break;
 
         default:

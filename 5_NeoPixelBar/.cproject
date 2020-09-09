@@ -12,7 +12,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.1251252894" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.1251252894" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg" postannouncebuildStep="Assembler listing" postbuildStep="avr-objdump -h -S ${BuildArtifactFileBaseName}.elf  &gt; ${BuildArtifactFileBaseName}.lss">
 					<folderInfo id="io.sloeber.core.toolChain.release.1251252894.78497178" name="/" resourcePath="">
 						<toolChain id="io.sloeber.core.toolChain.release.956259140" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.1626272623" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
@@ -65,7 +65,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.1251252894.333183114" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.1251252894.333183114" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg" postannouncebuildStep="Assembler listing" postbuildStep="avr-objdump -h -S ${BuildArtifactFileBaseName}.elf  &gt; ${BuildArtifactFileBaseName}.lss">
 					<folderInfo id="io.sloeber.core.toolChain.release.1251252894.333183114." name="/" resourcePath="">
 						<toolChain id="io.sloeber.core.toolChain.release.1952311321" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.942415842" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>

@@ -12,33 +12,27 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166" name="Aufgabe" parent="org.eclipse.cdt.build.core.emptycfg" postannouncebuildStep="Assembler listing" postbuildStep="avr-objdump -h -S ${BuildArtifactFileBaseName}.elf  &gt; ${BuildArtifactFileBaseName}.lss">
 					<folderInfo id="io.sloeber.core.toolChain.release.629520166.1495824308" name="/" resourcePath="">
 						<toolChain id="io.sloeber.core.toolChain.release.111297704" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.2037766521" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
 							<builder buildPath="${workspace_loc:/1_3_AnalogValueToPlotter}/Release" id="io.sloeber.sketch.builder.1771355969" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1069730438" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.229483703" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.229483703" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.cpp.sketch.input.1578221873" name="CPP source files" superClass="io.sloeber.compiler.cpp.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.992169547" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1546124377" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.1546124377" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
 								<inputType id="io.sloeber.compiler.c.sketch.input.1310846937" name="C Source Files" superClass="io.sloeber.compiler.c.sketch.input"/>
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.102282178" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1847011539" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.1847011539" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
@@ -51,7 +45,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="USToPentatonicSolution.cpp|AnalogValueToPlotterSolution.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="USToPentatonicSolution.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -68,15 +62,13 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166.1697643965" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="io.sloeber.core.toolChain.release.629520166.1697643965" name="Solution" parent="org.eclipse.cdt.build.core.emptycfg" postannouncebuildStep="Assembler listing" postbuildStep="avr-objdump -h -S ${BuildArtifactFileBaseName}.elf  &gt; ${BuildArtifactFileBaseName}.lss">
 					<folderInfo id="io.sloeber.core.toolChain.release.629520166.1697643965." name="/" resourcePath="">
 						<toolChain id="io.sloeber.core.toolChain.release.1140720549" name="Arduino Toolchain (Sloeber edition)" superClass="io.sloeber.core.toolChain.release">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="io.sloeber.targetplatform.810369727" name="Arduino Target" osList="all" superClass="io.sloeber.targetplatform"/>
 							<builder buildPath="${workspace_loc:/1_3_AnalogValueToPlotter}/Release" id="io.sloeber.sketch.builder.2052908354" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="io.sloeber.sketch.builder"/>
 							<tool id="io.sloeber.tool.sketch.compiler.cpp.1843695271" name="Arduino C++ Compiler" superClass="io.sloeber.tool.sketch.compiler.cpp">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.cpp.sketch.option.incpath.852685688" name="Include Paths (-I)" superClass="io.sloeber.compiler.cpp.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
@@ -84,8 +76,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.compiler.c.1982862834" name="Arduino C Compiler" superClass="io.sloeber.tool.compiler.c">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.c.sketch.option.incpath.893541989" name="Include Paths (-I)" superClass="io.sloeber.compiler.c.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
@@ -93,8 +83,6 @@
 							</tool>
 							<tool id="io.sloeber.tool.sketch.compiler.s.1362296557" name="Arduino Assembler" superClass="io.sloeber.tool.sketch.compiler.s">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="io.sloeber.compiler.asm.sketch.option.incpath.2086930816" name="Include Paths (-I)" superClass="io.sloeber.compiler.asm.sketch.option.incpath" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/core}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_4_AnalogValueToPlotter/core/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/1_5_USToPentatonic/core/variant}&quot;"/>
 								</option>
@@ -107,7 +95,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="USToPentatonic.cpp|AnalogValueToPlotter.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="USToPentatonic.cpp|libraries/?*/**/?xamples/**|libraries/?*/**/?xtras/**|libraries/?*/**/test*/**|libraries/?*/**/third-party/**|libraries/**/._*|libraries/?*/utility/*/*" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -115,7 +103,7 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="1_4_AnalogValueToPlotter.null.1440757953" name="1_4_AnalogValueToPlotter"/>
+		<project id="1_5_USToPentatonic.null.1440757953" name="1_5_USToPentatonic"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>

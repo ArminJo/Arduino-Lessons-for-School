@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>1_4_AnalogValueToPlotter</name>
+	<name>1_5_USToPentatonic</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -39,7 +39,7 @@
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.1/variants/standard</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.1/variants/eightanaloginputs</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -23,7 +23,7 @@ Je 2 Schüler teilen sich einen Rechner / Laptop, wobei sicher auch andere Gruppe
 ## Inhalt der ersten Stunden
 ### 1. Stunde
 Vorstellung, Vorkenntnisse und Erwartungen.<br/>
-Zum Einsteig wird dann das das Doodle [50 Jahre "Kids Coding"](https://www.google.com/doodles/celebrating-50-years-of-kids-coding?doodle=32615474) gespielt. Dazu muss man allerdings online sein :-(.<br/> 
+Zum Einsteig wird dann das das Doodle [50 Jahre "Kids Coding"](https://www.google.com/logos/2017/logo17/logo17.html?hl=de) gespielt. Dazu muss man allerdings online sein :-(.<br/> 
 Hier werden die Konzepte **Anweisung** und **Wiederholungen/Schleifen** benutzt.<br/> 
 Danach werden die Kinder in 2 Gruppen aufgeteilt. 
 Jede Gruppe schreibt auf Notizzetteln auf, was der **menschliche Roboter** aus der anderen Gruppe machen muss, um vom Klassenraum ins Lehrerzimmer zu kommen. Schleifen und Umwege sind erlaubt!<br/> 
@@ -50,6 +50,7 @@ Danach wird mit Scratch ein Spiel gebaut.<br/>
 Weiter mit dem Programmieren des Scratch Spiels.
 
 ### 4. Stunde
+http://compute-it.toxicode.fr/?hour-of-code und danach http://silentteacher.toxicode.fr/ Beide sind der Hit.
 Um das Konzept einer Variablen zu vertiefen, gibt es die **n-Eck Aufgabe** in Scratch.<br/> 
 #### Aufgabe:
 -  Mit Scratch 40 3-Ecke zeichnen, die Farbe, Größe und Position ist jedes Mal zufällig.

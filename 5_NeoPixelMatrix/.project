@@ -47,6 +47,11 @@
 			<locationURI>WORKSPACE_LOC/libraries/Adafruit_NeoPixel</locationURI>
 		</link>
 		<link>
+			<name>libraries/FrequencyDetector</name>
+			<type>2</type>
+			<locationURI>WORKSPACE_LOC/libraries/FrequencyDetector</locationURI>
+		</link>
+		<link>
 			<name>libraries/NeoPatterns</name>
 			<type>2</type>
 			<locationURI>WORKSPACE_LOC/libraries/NeoPatterns</locationURI>

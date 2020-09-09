@@ -34,10 +34,12 @@
 
 #define VERSION_EXAMPLE "1.0"
 
+int sLDRMinimum = 1023; // Warum wird das Minimum mit einem so hohen Wert vorbelegt?
+int sLDRMaximum = 0;
+
 // Die loop Funktion läuft unendlich durch.
 void loop() {
-	static int sLDRMinimum = 1023;
-	static int sLDRMaximum = 0;
+
 	/*
 	 * Aufgabe 1.
 	 *
@@ -46,6 +48,8 @@ void loop() {
 	 */
 	int tAnalogValuePotentiometer = analogRead(PIN_POTENTIOMETER);
 	int tAnalogValueLDR = analogRead(PIN_LDR);
+
+	//Ausgabe der ersten 2 Werte
 	Serial.print(tAnalogValuePotentiometer);
 	Serial.print(' '); // This is only one character, no string!
 	Serial.print(tAnalogValueLDR);
@@ -53,29 +57,32 @@ void loop() {
 	/*
 	 * Aufgabe 2.
 	 *
-	 * Compute the minimum and maximum of the LDR readout values.
 	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
 	 */
-	if (sLDRMinimum > tAnalogValueLDR) {
+	if (tAnalogValueLDR < sLDRMinimum) {
 		;
 	}
 
+	// Ausgabe des LDR Minimums und Maximums
 	Serial.print(' ');
 	Serial.print(sLDRMinimum);
 	Serial.print(' ');
 	Serial.print(sLDRMaximum);
-	Serial.println(); // End of data set
 
 	/*
 	 * Aufgabe 3.
 	 *
-	 * Verbessere mit Hilfe des Minimums und Maximums den ausgegebenen Frequenzbereich des LDR Wertes,
-	 * der vorher nicht 2 Oktaven war wie beim Potentiometer.
-	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
+	 * Berechne jetzt zusätzlich das Minimum und Maximum der Werte des Potentiometers und gebe sie aus.
+	 * Dazu muss:
+	 * 1. Die Überschrift erweitert werden
+	 * 2. 2 Variablen für das Minimum und Maximum angelegt werden
+	 * 3. Die Minimum und Maximum Werte berechnet werden
+	 * 4. Die Minimum und Maximum Werte ausgegeben werden
 	 */
-	//int tFrequency = map(tAnalogValueLDR, 0, 1023, 440, 1760); // 2 octaves
-	//tone(PIN_SPEAKER, tFrequency);
-	delay(300);
+
+	Serial.println(); // End of data set
+
+	delay(100);
 }
 
 // The setup function is called once at startup of the sketch
@@ -88,5 +95,5 @@ void setup() {
 	initBreadboardPins();
 
 	// Print legend for plotter data
-	Serial.println("Potentiometer LDR Minimum Maximum");
+	Serial.println("Potentiometer LDR LDR_Minimum LDR_Maximum");
 }

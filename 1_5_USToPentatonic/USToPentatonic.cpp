@@ -51,7 +51,7 @@ void loop() {
 	digitalWrite(PIN_TRIGGER_OUT, LOW);
 
 	unsigned long tUSPulseMicros = pulseInLong(PIN_ECHO_IN, HIGH, 20000);
-	uint8_t tUSCentimeter;
+	uint8_t tUSCentimeter = 0;
 	Serial.print("Eingelesener Wert ist:");
 	Serial.print(tUSPulseMicros);
 	Serial.println();
@@ -65,6 +65,7 @@ void loop() {
 	 */
 	uint8_t tIndex = map(tUSCentimeter, 0, 50, 0, ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1);
 
+//	tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[0]); // Den richtigen Ton der Tonleiter ausgeben
 	delay(200); // Delay to make is easier to play a melody
 }
 
@@ -76,7 +77,7 @@ void setup() {
 	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
 	initBreadboardPins();
-	for (int i = 0; i < ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1; ++i) {
+	for (uint8_t i = 0; i < ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1; ++i) {
 		tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[i]);
 		delay(500);
 	}

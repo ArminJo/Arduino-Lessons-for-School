@@ -50,35 +50,21 @@ void loop() {
 	Serial.println(tAnalogValue);
 
 	/*
-	 * Aufgabe 2. - Potentiometer, einlesen analoger Werte, map() Funktion.
+	 * Aufgabe 2. - Umwandeld des eingelesenen Werts in einen Ton.
 	 *
 	 * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
 	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
 	 *
-	 * Aufgabe 3. - LDR/Lichtwiderstand
+	 * Aufgabe 3. - LDR/Lichtwiderstand statt Potentiometer einlesen.
 	 *
-	 * Lese stattdessen den Spannungswert am lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
+	 * Lese statt des Potentiometers den Spannungswert am lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
 	 * Welche Werte bekomme ich da?
 	 * Wie muss ich map() ändern, um den vollen Tonumfang zu erreichen?
 	 */
 //	int tFrequency = map(tAnalogValue, ???, ???, 440, 1760); // 2 octaves
 //	tone(PIN_SPEAKER, 2200);
 
-	/*
-	 * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
-	 *
-	 * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
-	 * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",
-	 * ... für Werte von 240 bis 255 "###############" (15 '#').
-	 *
-	 * Anleitung:
-	 * 		Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 15 bekommst.
-	 * 		benutze einen for loop der so oft läuft, wie der errechnete Wert angibt.
-	 * 		Benutze Serial.print('#'); im loop.
-	 * 		Nach dem loop einmal Serial.println() nicht vergessen.
-	 */
-
-	delay(300);
+	delay(200);
 }
 
 // The setup function is called once at startup of the sketch
