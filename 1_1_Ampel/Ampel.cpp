@@ -1,5 +1,5 @@
 /*
- * Lesson trafic light with 3 LEDs red, yellow and green
+ * Lesson traffic light with 3 LEDs red, yellow and green
  *
  * Thema:
  * - Ausgabe digitaler Werte auf einem Ardiono Pin.
@@ -23,7 +23,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", ">=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 

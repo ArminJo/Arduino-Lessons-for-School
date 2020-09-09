@@ -1,5 +1,5 @@
 /*
- * Lessons with 3 LEDs in red yellow and green
+ * Lesson traffic light with 3 LEDs red, yellow and green
  * Solution
  *
  *  Copyright 2019 Armin Joachimsmeyer
@@ -20,7 +20,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", ">=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 

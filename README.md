@@ -11,10 +11,12 @@ All lessons work on a universal breadboard layout, and can easily be adapted by 
 # Sloeber installation directory and Platform folder
 My sloeber is installed at `E:\Elektro\sloeber`, so it will work out of the box if you use the same location. If you have no E: drive you can use the command subst E: "C:<Path to sloeber root directory>"<br/>
 My workspace directory is `E:\WORKSPACE_SLOEBER`, but any other location will do.
-To easy import the examples you must have the right "_Platform folder_" installed. Check under `Arduino/Preferences/Arduino/Platform and Boards/arduino/Arduino AVR Boards` if version `1.8.1` is available and checked.
-If it is not available, you have to check `Update local json files` in `Arduino/Preferences/Arduino/Third party index url's` and then restart sloeber and check the `1.8.1` entry.<br/>
-If `File/Import/General/Existing Projects into Workspace` does not work, just can create a new Arduino project and choose `default cpp file`. Then copy the content of the lesson to the new cpp file.
+To easy import the examples you must have the right "_Platform folder_" installed. Check under `Arduino/Preferences/Arduino/Platform and Boards/arduino/Arduino AVR Boards` if version `1.8.3` is available and checked.
+If it is not available, you have to check `Update local json files` in `Arduino/Preferences/Arduino/Third party index url's` and then restart sloeber and check the `1.8.3` entry.<br/>
+If `File/Import/General/Existing Projects into Workspace` does not work, just can create a new Arduino project and choose `default cpp file`. Then copy the content of the lesson to the new cpp file.<br/>
 
+After importing the project, you must check if the right `Port` is selected. On my computer it is COM6. After this you may check if the `Processor` -especially the right bootloader- is selected. After import, the `ATmega328P` is selected. It is the new version with the faster and smaller bootloader. If the upload does not work with this setting, just select the other one `ATmega328P (Old Bootloader)`. If this does not work either, check your port number with the Windows device manager (or the Arduino IDE, it shows the available port numbers) and check your USB cable.<br/>
+![Selection of right Nano module](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Sloeber_Nano_choices.jpg)
 
 # Kursaufbau
 Der Arduino Kurs besteht aus **8-10 Schülern** der 8. und 9. Klassen. Er dauert eine **Doppelstunde** / 1,5 Zeitstunden pro Woche. 
@@ -60,7 +62,7 @@ Tipp: Die Werte, die zum Malen eines N-Ecks benötigt werden, kann man aus der Ec
 Bei dieser Aufgabe müssen Variablen in Formeln/Berechnungen verwendet werden. Das ist eine wichtige Anwendung von Variablen!
 
 ### 5. Stunde
-Der Aufbau eines Breadboards wird erklärt die Boards werden ausgeteilt und mit der ersten Aufgabe **1\_1_Ampel** angefangen.<br/> 
+Der Aufbau eines Breadboards wird erklärt, die Boards werden ausgeteilt und mit der ersten Aufgabe **1\_1_Ampel** angefangen.<br/> 
 Das Beispiel kann man erst einmal auf den Arduino laden und dann beobachten was es macht.<br/>
 Für die Lösung der Aufgabe ist es gut, eine Ampel live sehen zu können oder ein Video davon zu zeigen. 
 Die meisten Kinder kennen die Gelb Phasen nicht richtig.<br/>
