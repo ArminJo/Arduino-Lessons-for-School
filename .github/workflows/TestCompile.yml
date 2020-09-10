@@ -1,0 +1,62 @@
+# TestCompile.yml
+# Github workflow script to test compile all examples of an Arduino library repository.
+#
+# Copyright (C) 2020  Armin Joachimsmeyer
+# https://github.com/ArminJo/Github-Actions
+#
+
+# This is the name of the workflow, visible on GitHub UI.
+name: TestCompile
+on:
+  push: # see: https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
+    paths:
+    - '**.cpp'
+    - '**.h'
+    - '**TestCompile.yml'
+  pull_request:
+jobs:
+  build:
+    name: Test compiling examples for UNO
+    runs-on: ubuntu-latest
+    env:
+      REQUIRED_LIBRARIES: Servo,Adafruit Motor Shield V2 Library,PlayRtttl,Adafruit NeoPixel,NeoPatterns
+
+    strategy:
+      matrix:
+        arduino-boards-fqbn:
+          - arduino:avr:uno
+
+        include:
+          - arduino-boards-fqbn: arduino:avr:uno
+            build-properties:
+              BD_RobotCar:
+                -DBLUETOOTH_BAUD_RATE=BAUD_115200
+                -DUSE_STANDARD_SERIAL
+                -DUSE_US_SENSOR_1_PIN_MODE
+                -DDISTANCE_SERVO_IS_MOUNTED_HEAD_DOWN
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Checkout new BlueDisplay library
+        uses: actions/checkout@v2
+        with:
+          repository: ArminJo/Arduino-BlueDisplay
+          ref: master
+          path: CustomLibrary # must contain string "Custom"
+
+      # Use the arduino-test-compile script, because it is faster
+      - name: Compile all examples using the bash script arduino-test-compile.sh
+        env:
+          # Passing parameters to the script by setting the appropriate ENV_* variables.
+          ENV_ARDUINO_BOARD_FQBN: ${{ matrix.arduino-boards-fqbn }}
+          ENV_REQUIRED_LIBRARIES: ${{ env.REQUIRED_LIBRARIES }}
+          ENV_EXAMPLES_BUILD_PROPERTIES: ${{ toJson(matrix.build-properties) }}
+          ENV_SKETCH_NAMES: Ampel.cpp,ButtonInputToLedAndSerial.cpp,ButtonInputToTone.cpp,AnalogValueToTone.cpp,AnalogValueToPlotter.cpp,USDistanceWarner.cpp,USToPentatonic.cpp,Melody.cpp,PlayChristmasMelodyUS.cpp,NeoPixelBar.cpp,NeoPixelMatrix.cpp,RobotCar.cpp
+
+        run: |
+          wget --quiet https://raw.githubusercontent.com/ArminJo/arduino-test-compile/master/arduino-test-compile.sh
+            ls -l arduino-test-compile.sh
+            chmod +x arduino-test-compile.sh
+            ./arduino-test-compile.sh

@@ -37,16 +37,16 @@ Zur Vertiefung kann man noch gemeinsam ein **Flussdiagramm** z.B. fürs Kuchenbac
 Das ist ein neues Konzept, nämlich die **Bedingung/Entscheidung** (für eine Schleife).<br/> 
 Danach wird mit Scratch ein Spiel gebaut.<br/> 
 #### Aufgabe:
--	Wir holen 2 Figuren und 1 Objekt (z.B. Bananen oder Diamant).
--	Eine Figur bewegt sich in 20er Schritten mit den Pfeiltasten, die andere mit den wasd Tasten.
--	Die Figuren fangen am Rand an.
--	Das Objekt wird zufällig positioniert.
--	Wir machen 2 Variablen, z.B. Player1 und Player2, die beim Start auf 0 gesetzt werden.
--	Wenn das Objekt einen Player berührt wird die entsprechende Variable hochgezählt und das Objekt an einen neuen zufälligen Platz verschoben.
--	Zusatzaufgabe: wenn das Objekt nach dem verschieben direkt wieder einen Player berührt, dann wird es wieder zufällig verschoben.
--	Wenn eine Variable 10 erreicht, wird ein Sound abgespielt und das Spiel beendet.
--	Zusatzaufgabe: Wenn ein Player am Bildschirmrand ankommt soll er am entgegengesetzten Bildschirmrand erscheinen. Dazu muss man die existierenden Variablen x-Position etc. verwenden.
--	Zusatzaufgabe: Benutze nicht feste Schrittweiten, sondern Variablen SchrittweitePlayer1 + 2, die am Anfang auf 10 gesetzt wird. Die kann bei jedem Punkt verändert werden (z.B. +10).
+-    Wir holen 2 Figuren und 1 Objekt (z.B. Bananen oder Diamant).
+-    Eine Figur bewegt sich in 20er Schritten mit den Pfeiltasten, die andere mit den wasd Tasten.
+-    Die Figuren fangen am Rand an.
+-    Das Objekt wird zufällig positioniert.
+-    Wir machen 2 Variablen, z.B. Player1 und Player2, die beim Start auf 0 gesetzt werden.
+-    Wenn das Objekt einen Player berührt wird die entsprechende Variable hochgezählt und das Objekt an einen neuen zufälligen Platz verschoben.
+-    Zusatzaufgabe: wenn das Objekt nach dem verschieben direkt wieder einen Player berührt, dann wird es wieder zufällig verschoben.
+-    Wenn eine Variable 10 erreicht, wird ein Sound abgespielt und das Spiel beendet.
+-    Zusatzaufgabe: Wenn ein Player am Bildschirmrand ankommt soll er am entgegengesetzten Bildschirmrand erscheinen. Dazu muss man die existierenden Variablen x-Position etc. verwenden.
+-    Zusatzaufgabe: Benutze nicht feste Schrittweiten, sondern Variablen SchrittweitePlayer1 + 2, die am Anfang auf 10 gesetzt wird. Die kann bei jedem Punkt verändert werden (z.B. +10).
 
 ### 3. Stunde
 Weiter mit dem Programmieren des Scratch Spiels.

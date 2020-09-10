@@ -127,7 +127,7 @@ void playRandomSongAndBlink() {
 	char StringBuffer[16];
 	Serial.println();
 	Serial.print("Now playing: ");
-	startPlayRandomRtttlFromArrayPGM(PIN_SPEAKER, RTTTLChristmasMelodies, ARRAY_SIZE_CHRISTMAS_SONGS, StringBuffer,
+	startPlayRandomRtttlFromArrayPGM(PIN_SPEAKER, RTTTLChristmasMelodies, ARRAY_SIZE_CHRISTMAS_MELODIES, StringBuffer,
 			sizeof(StringBuffer));
 	Serial.println(StringBuffer);
 

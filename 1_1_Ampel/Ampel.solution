@@ -1,9 +1,6 @@
 /*
  * Lesson traffic light with 3 LEDs red, yellow and green
- *
- * Thema:
- * - Ausgabe digitaler Werte auf einem Ardiono Pin.
- * - Warten mit delay().
+ * Solution
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
@@ -32,39 +29,13 @@
 
 #define VERSION_EXAMPLE "1.0"
 
-#define    DELAY_SHORT            700      // 0,7 Sekunden
-#define    DELAY_LONG            3000    // 3 Sekunden
+#define    DELAY_SHORT            700
+#define    DELAY_LONG            4000
 
-// Die loop Funktion läuft unendlich durch.
+
+// the loop routine runs over and over again forever
 void loop() {
-
-
-    //Rote LED an (HIGH)
     digitalWrite(PIN_RED_LED, HIGH);
-
-    // 3 Sekunden warten
-    delay(DELAY_LONG);
-
-    // Gelbe LED auch an
-    digitalWrite(PIN_YELLOW_LED, HIGH);
-
-    // kurz warten
-    delay(DELAY_SHORT);
-
-    // Rote LED aus
-    digitalWrite(PIN_RED_LED, LOW);
-    // Gelbe LED aus, grüne LED an
-
-    /*
-     * Aufgabe 1. Programmiere die fehlenden Ampelphasen grün und gelb.
-     */
-
-    /*
-     * Aufgabe 2. Wenn es grün ist: Statt einmal mit "delay(DELAY_LONG_MS);" zu warten, warte 4 mal und gebe jedesmal einen Ton von 440 Hz aus.
-     *         Benutze einen loop um das nicht 4 mal hinschreiben zu müssen.
-     */
-//    tone(PIN_SPEAKER, 440, DELAY_LONG / 8);
-//    delay(DELAY_LONG / 4);
 
     /*
      * Zusatzaufgabe 3.
@@ -74,6 +45,34 @@ void loop() {
      *         Darin ein delay mit einem 100stel der Zeit von delay(DELAY_LONG).
      *         Außerdem darin auch ein if (digitalRead(PIN_RIGHT_BUTTON)==LOW) { break;}.
      */
+    for (int i = 0; i < 100; ++i) {
+        if (digitalRead(PIN_RIGHT_BUTTON) == LOW || digitalRead(PIN_LEFT_BUTTON) == LOW) {
+            break;
+        }
+        delay(DELAY_LONG / 100);
+    }
+
+    digitalWrite(PIN_YELLOW_LED, HIGH);
+    delay(DELAY_SHORT);
+
+    digitalWrite(PIN_RED_LED, LOW);
+    digitalWrite(PIN_YELLOW_LED, LOW);
+    digitalWrite(PIN_GREEN_LED, HIGH);
+
+    /*
+     * Aufgabe 2. Gebe 4 mal einen Ton von 440 Hz aus, wenn es grün ist.
+     *      Benutze einen loop um das nicht 4 mal hinschreiben zu müssen.
+     */
+    for (int i = 0; i < 4; ++i) {
+        tone(PIN_SPEAKER, 440, DELAY_LONG / 8);
+        delay(DELAY_LONG / 4);
+    }
+
+    digitalWrite(PIN_GREEN_LED, LOW);
+    digitalWrite(PIN_YELLOW_LED, HIGH);
+    delay(DELAY_SHORT);
+
+    digitalWrite(PIN_YELLOW_LED, LOW);
 
 }
 
@@ -86,4 +85,3 @@ void setup() {
 
     initBreadboardPins();
 }
-

@@ -64,7 +64,7 @@ void loop() {
 	Serial.println(tCentimeter);
 	delay(100);
 	if (tCentimeter < 60) {
-		int tIndexOfSong = random(ARRAY_SIZE_CHRISTMAS_SONGS);
+		int tIndexOfSong = random(ARRAY_SIZE_CHRISTMAS_MELODIES);
 		playRtttlBlockingPGM(PIN_SPEAKER, RTTTLChristmasMelodies[2]);
 		delay(2000);
 	}
