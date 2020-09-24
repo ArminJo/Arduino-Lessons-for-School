@@ -27,7 +27,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -39,64 +39,64 @@
 // the loop routine runs over and over again forever:
 void loop() {
 
-	/*
-	 *  Aufgabe 1. - Übersetzen, hochladen und im Serial Monitor ansehen.
-	 *
-	 *  Einlesen der Werte des Drehreglers (oder des LDR's)
-	 *  Welche Werte liefert analogRead()?
-	 */
-	// read the input on analog pin:
-	int tAnalogValue = analogRead(PIN_POTENTIOMETER);
+    /*
+     *  Aufgabe 1. - Übersetzen, hochladen und im Serial Monitor ansehen.
+     *
+     *  Einlesen der Werte des Drehreglers (oder des LDR's)
+     *  Welche Werte liefert analogRead()?
+     */
+// read the input on analog pin:
+    int tAnalogValue = analogRead(PIN_POTENTIOMETER);
 
-	tAnalogValue = analogRead(PIN_LDR);
+    tAnalogValue = analogRead(PIN_LDR);
 
-	Serial.print("Eingelesener Wert=");
-	Serial.println(tAnalogValue);
+    Serial.print("Eingelesener Wert=");
+    Serial.println(tAnalogValue);
 
-	/*
-	 * Aufgabe 2. - Potentiometer, einlesen analoger Werte, map() Funktion.
-	 *
-	 * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
-	 * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
-	 *
-	 * Aufgabe 3. - LDR/Lichtwiderstand
-	 *
-	 * Lese stattdessen den Spannungswert am lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
-	 * Welche Werte bekomme ich da?
-	 * Wie muss ich map() ändern, um den vollen Tonumfang zu erreichen?
-	 */
-//	int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
-	int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
-	tone(PIN_SPEAKER, tFrequency);
+    /*
+     * Aufgabe 2. - Potentiometer, einlesen analoger Werte, map() Funktion.
+     *
+     * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
+     * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.
+     *
+     * Aufgabe 3. - LDR/Lichtwiderstand
+     *
+     * Lese stattdessen den Spannungswert am lichtempfindlichen Widerstand am PIN_LDR ein und gebe ihn aus.
+     * Welche Werte bekomme ich da?
+     * Wie muss ich map() ändern, um den vollen Tonumfang zu erreichen?
+     */
+//int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
+    int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
+    tone(PIN_SPEAKER, tFrequency);
 
-	/*
-	 * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
-	 *
-	 * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
-	 * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",
-	 * ... für Werte von 240 bis 255 "###############" (15 '#').
-	 *
-	 * Anleitung:
-	 * 		Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 15 bekommst.
-	 * 		benutze einen for loop der so oft läuft, wie der errechnete Wert angibt.
-	 * 		Benutze Serial.print('#'); im loop.
-	 * 		Nach dem loop einmal Serial.println() nicht vergessen.
-	 */
-	for (int i = 0; i < tAnalogValue / 64; ++i) {
-		Serial.print('#');
-	}
-	Serial.println();
+    /*
+     * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
+     *
+     * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
+     * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",
+     * ... für Werte von 240 bis 255 "###############" (15 '#').
+     *
+     * Anleitung:
+     * Teile den analogen Wert, so dass Du einen Wert zwischen 0 und 15 bekommst.
+     * benutze einen for loop der so oft läuft, wie der errechnete Wert angibt.
+     * Benutze Serial.print('#'); im loop.
+     * Nach dem loop einmal Serial.println() nicht vergessen.
+     */
+    for (int i = 0; i < tAnalogValue / 64; ++i) {
+        Serial.print('#');
+    }
+    Serial.println();
 
-	delay(300);
+    delay(300);
 }
 
 //The setup function is called once at startup of the sketch
 void setup() {
-	// Start serial output
-	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
-	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+// Start serial output
+    Serial.begin(115200);
+// Just to know which program is running on my Arduino
+    Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
-	initBreadboardPins();
+    initBreadboardPins();
 
 }

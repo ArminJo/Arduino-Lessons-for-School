@@ -59,18 +59,18 @@ void doRotation(BDButton * aTheTouchedButton, int16_t aValue) {
 }
 
 /*
- * Store user speed input as MaxSpeed
+ * Store user speed input as DriveSpeed
  */
 void doStoreSpeed(float aValue) {
     uint16_t tValue = aValue;
     if (tValue > 10 && tValue < 256) {
         // must use value for compensation not compensated value
-        rightMotor.MaxSpeed = tValue;
-        rightMotor.writeMotorvaluesToEeprom();
+        RobotCarMotorControl.rightCarMotor.DriveSpeed = tValue;
+        RobotCarMotorControl.rightCarMotor.writeMotorvaluesToEeprom();
 
         // use the same value here !
-        leftMotor.MaxSpeed = tValue;
-        leftMotor.writeMotorvaluesToEeprom();
+        RobotCarMotorControl.leftCarMotor.DriveSpeed = tValue;
+        RobotCarMotorControl.leftCarMotor.writeMotorvaluesToEeprom();
     }
     printMotorValues();
 }
@@ -79,15 +79,15 @@ void doStoreSpeed(float aValue) {
  * Request speed value as number
  */
 void doGetSpeedAsNumber(BDButton * aTheTouchedButton, int16_t aValue) {
-    BlueDisplay1.getNumberWithShortPrompt(&doStoreSpeed, "Max speed [11-255]", sLastSpeedSliderValue);
+    BlueDisplay1.getNumberWithShortPrompt(&doStoreSpeed, "Drive speed [11-255]", sLastSpeedSliderValue);
 }
 
 /*
  * stop and reset motors
  */
 void doReset(BDButton * aTheTouchedButton, int16_t aValue) {
-    RobotCarMotorControl.stopMotors();
     startStopRobotCar(false);
+    RobotCarMotorControl.resetControlValues();
 }
 
 void initTestPage(void) {
@@ -170,6 +170,8 @@ void drawTestPage(void) {
 #  endif
 #ifdef USE_ENCODER_MOTOR_CONTROL
     TouchButtonCalibrate.drawButton();
+#else
+    TouchButtonCompensation.drawButton();
 #endif
     PWMDcMotor::MotorValuesHaveChanged = true; // trigger drawing of values
 }

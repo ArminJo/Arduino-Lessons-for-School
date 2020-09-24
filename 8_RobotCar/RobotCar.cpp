@@ -1,12 +1,9 @@
 /*
  *  RobotCar.cpp
  *
- *  Variant without BlueDisplay control.
+ *  Simple motor control for RobotCar. It tries to drive a square.
  *
- *  Enables autonomous driving of a 2 or 4 wheel car with an Arduino and a Adafruit Motor Shield V2.
- *  To avoid obstacles a HC-SR04 Ultrasonic sensor mounted on a SG90 Servo continuously scans the area.
- *
- *  Copyright (C) 2016-2020  Armin Joachimsmeyer
+ *  Copyright (C) 2020  Armin Joachimsmeyer
  *  armin.joachimsmeyer@gmail.com
  *
  *  This file is part of Arduino-RobotCar https://github.com/ArminJo/Arduino-RobotCar.
@@ -23,27 +20,33 @@
 
 #include <Arduino.h>
 
-#include "RobotCar.h"
-#include "Distance.h"
-
-#include "HCSR04.h"
+#include "CarMotorControl.h"
 
 #define VERSION_EXAMPLE "1.0"
 
+/*
+ * Pins for direct motor control with PWM and full bridge
+ * Pins 9 + 10 are reserved for Servo
+ * 2 + 3 are reserved for encoder input
+ */
+#define PIN_LEFT_MOTOR_FORWARD      4
+#define PIN_LEFT_MOTOR_BACKWARD     7
+#define PIN_LEFT_MOTOR_PWM          5 // Must be PWM capable
+
+#define PIN_RIGHT_MOTOR_FORWARD     8
+#define PIN_RIGHT_MOTOR_BACKWARD   12 // Pin 9 is already reserved for distance servo
+#define PIN_RIGHT_MOTOR_PWM         6 // Must be PWM capable
+
+#define PIN_SPEAKER                11
+
 //Car Control
-CarMotorControl RobotCar;
-
-//#define PLOTTER_OUTPUT
-
-unsigned int getDistanceAndPlayTone();
+CarMotorControl RobotCarMotorControl;
 
 /*
  * Start of robot car control program
  */
 void setup() {
     Serial.begin(115200);
-    Serial.print(F("MCUSR="));
-    Serial.println(MCUSR, HEX);
 
     // Just to know which program is running on my Arduino
 #ifdef PLOTTER_OUTPUT
@@ -52,47 +55,19 @@ void setup() {
     Serial.println("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__);
 #endif
 
-    RobotCar.init(PIN_TWO_WD_DETECTION);
-    RobotCar.setDefaultsForFixedDistanceDriving();
-    initDistance();
+    RobotCarMotorControl.init(PIN_RIGHT_MOTOR_FORWARD, PIN_RIGHT_MOTOR_BACKWARD, PIN_RIGHT_MOTOR_PWM, PIN_LEFT_MOTOR_FORWARD, PIN_LEFT_MOTOR_BACKWARD, PIN_LEFT_MOTOR_PWM);
 
     tone(PIN_SPEAKER, 2200, 100);
-    delay(500);
-    RobotCar.setSpeed(60);
+    delay(2000);
 }
 
 void loop() {
 
-    unsigned int tCentimeter = getDistanceAndPlayTone();
-
-    if (tCentimeter > 40) {
-        Serial.println("Go distance 10 cm");
-        RobotCar.goDistanceCentimeter(10);
-    } else if (tCentimeter < 20) {
-        Serial.println("Go distance -10 cm");
-        RobotCar.goDistanceCentimeter(-10);
-    } else {
-        delay(50);
+    for (int i = 0; i < 4; ++i) {
+        RobotCarMotorControl.goDistanceCentimeter(40);
+        RobotCarMotorControl.rotateCar(90, TURN_FORWARD, true);
     }
-}
+    delay(5000);
 
-unsigned int getDistanceAndPlayTone() {
-    /*
-     * Get distance
-     */
-    unsigned int tCentimeter = getUSDistanceAsCentiMeter();
-#ifdef PLOTTER_OUTPUT
-    Serial.println(tCentimeter);
-#else
-    Serial.print("Distance=");
-    Serial.print(tCentimeter);
-    Serial.println("cm.");
-#endif
-    /*
-     * play tone
-     */
-    int tFrequency = map(tCentimeter, 0, 100, 440, 1760); // 2 octaves per meter
-    tone(PIN_SPEAKER, tFrequency, 200);
-    return tCentimeter;
 }
 

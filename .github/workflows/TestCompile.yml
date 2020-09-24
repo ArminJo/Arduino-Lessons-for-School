@@ -44,7 +44,14 @@ jobs:
         with:
           repository: ArminJo/Arduino-BlueDisplay
           ref: master
-          path: CustomLibrary # must contain string "Custom"
+          path: CustomLibraryBD # must contain string "Custom"
+
+      - name: Checkout new PWMMotorControl library
+        uses: actions/checkout@v2
+        with:
+          repository: ArminJo/PWMMotorControl
+          ref: master
+          path: CustomLibraryPWM # must contain string "Custom"
 
       # Use the arduino-test-compile script, because it is faster
       - name: Compile all examples using the bash script arduino-test-compile.sh

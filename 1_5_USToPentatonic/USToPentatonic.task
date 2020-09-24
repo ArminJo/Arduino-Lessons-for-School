@@ -25,7 +25,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -38,47 +38,47 @@
 // Die loop Funktion läuft unendlich durch.
 void loop() {
 
-	/*
-	 * Aufgabe 1.
-	 *
-	 * Sieh Dir das Datenblatt des Ultraschall Entfernungsmessers an.
-	 * Wandele den Rückgabewert in Centimeter um.
-	 */
-	// need minimum 10 usec Trigger Pulse
-	digitalWrite(PIN_TRIGGER_OUT, HIGH);
-	delayMicroseconds(10);
-	// falling edge starts measurement
-	digitalWrite(PIN_TRIGGER_OUT, LOW);
+    /*
+     * Aufgabe 1.
+     *
+     * Sieh Dir das Datenblatt des Ultraschall Entfernungsmessers an.
+     * Wandele den Rückgabewert in Centimeter um.
+     */
+    // need minimum 10 usec Trigger Pulse
+    digitalWrite(PIN_TRIGGER_OUT, HIGH);
+    delayMicroseconds(10);
+    // falling edge starts measurement
+    digitalWrite(PIN_TRIGGER_OUT, LOW);
 
-	unsigned long tUSPulseMicros = pulseInLong(PIN_ECHO_IN, HIGH, 20000);
-	uint8_t tUSCentimeter = 0;
-	Serial.print("Eingelesener Wert ist:");
-	Serial.print(tUSPulseMicros);
-	Serial.println();
+    unsigned long tUSPulseMicros = pulseInLong(PIN_ECHO_IN, HIGH, 20000);
+    uint8_t tUSCentimeter = 0;
+    Serial.print("Eingelesener Wert ist:");
+    Serial.print(tUSPulseMicros);
+    Serial.println();
 
-	/*
-	 * Aufgabe 2.
-	 *
-	 * Wandele den Abstand in eine Frequenz um, die du aus dem Array NoteC5ToC7Pentatonic holst.
-	 * das Array hat ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC Einträge.
-	 *
-	 */
-	uint8_t tIndex = map(tUSCentimeter, 0, 50, 0, ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1);
+    /*
+     * Aufgabe 2.
+     *
+     * Wandele den Abstand in eine Frequenz um, die du aus dem Array NoteC5ToC7Pentatonic holst.
+     * das Array hat ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC Einträge.
+     *
+     */
+    uint8_t tIndex = map(tUSCentimeter, 0, 50, 0, ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1);
 
-//	tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[0]); // Den richtigen Ton der Tonleiter ausgeben
-	delay(200); // Delay to make is easier to play a melody
+//    tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[0]); // Den richtigen Ton der Tonleiter ausgeben
+    delay(200); // Delay to make is easier to play a melody
 }
 
 // The setup function is called once at startup of the sketch
 void setup() {
-	// Start serial output
-	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
-	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+    // Start serial output
+    Serial.begin(115200);
+    // Just to know which program is running on my Arduino
+    Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
-	initBreadboardPins();
-	for (uint8_t i = 0; i < ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1; ++i) {
-		tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[i]);
-		delay(500);
-	}
+    initBreadboardPins();
+    for (uint8_t i = 0; i < ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1; ++i) {
+        tone(PIN_SPEAKER, NoteC5ToC7Pentatonic[i]);
+        delay(500);
+    }
 }

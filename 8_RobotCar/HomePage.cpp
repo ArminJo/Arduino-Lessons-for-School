@@ -96,7 +96,7 @@ void initHomePage(void) {
 #ifdef ENABLE_RTTTL
     TouchButtonMelody.init(BUTTON_WIDTH_3_POS_2, BUTTON_HEIGHT_4_LINE_4 - (TEXT_SIZE_22_HEIGHT + BUTTON_DEFAULT_SPACING_QUARTER),
     BUTTON_WIDTH_3, BUTTON_HEIGHT_8, COLOR_BLACK, F("Melody"), TEXT_SIZE_22,
-            FLAG_BUTTON_DO_BEEP_ON_TOUCH | FLAG_BUTTON_TYPE_TOGGLE_RED_GREEN, false, &doPlayMelody);
+            FLAG_BUTTON_DO_BEEP_ON_TOUCH | FLAG_BUTTON_TYPE_TOGGLE_RED_GREEN, sPlayMelody, &doPlayMelody);
 #endif
 
 #ifdef CAR_HAS_LASER
@@ -114,10 +114,11 @@ void drawHomePage(void) {
     drawCommonGui();
     BlueDisplay1.drawText(HEADER_X + TEXT_SIZE_22_WIDTH, (2 * TEXT_SIZE_22_HEIGHT), F("Control"));
 
+#if defined(CAR_HAS_4_WHEELS)
     char tCarTypeString[] = "4WD";
-    if (RobotCarMotorControl.is2WDCar) {
-        tCarTypeString[0] = '2';
-    }
+#else
+    char tCarTypeString[] = "2WD";
+#endif
 
     BlueDisplay1.drawText(HEADER_X + (3 * TEXT_SIZE_22_WIDTH), (3 * TEXT_SIZE_22_HEIGHT), tCarTypeString);
 
@@ -137,6 +138,8 @@ void drawHomePage(void) {
     TouchButtonDirection.drawButton();
 #ifdef USE_ENCODER_MOTOR_CONTROL
     TouchButtonCalibrate.drawButton();
+#else
+    TouchButtonCompensation.drawButton();
 #endif
 
     SliderUSPosition.setValueAndDrawBar(sLastServoAngleInDegrees);
@@ -167,6 +170,8 @@ void startHomePage(void) {
     TouchButtonDirection.setPosition(BUTTON_WIDTH_8_POS_4, BUTTON_HEIGHT_8_LINE_4);
 #ifdef USE_ENCODER_MOTOR_CONTROL
     TouchButtonCalibrate.setPosition(BUTTON_WIDTH_8_POS_5, BUTTON_HEIGHT_8_LINE_4);
+#else
+    TouchButtonCompensation.setPosition(BUTTON_WIDTH_8_POS_5, BUTTON_HEIGHT_8_LINE_4);
 #endif
     TouchButtonNextPage.setCaption(F("Automatic\nControl"));
 
@@ -180,6 +185,8 @@ void stopHomePage(void) {
     TouchButtonDirection.setPosition(BUTTON_WIDTH_8_POS_6, BUTTON_HEIGHT_8_LINE_5);
 #ifdef USE_ENCODER_MOTOR_CONTROL
     TouchButtonCalibrate.setPosition(BUTTON_WIDTH_8_POS_6, BUTTON_HEIGHT_8_LINE_2);
+#else
+    TouchButtonCompensation.setPosition(BUTTON_WIDTH_8_POS_6, BUTTON_HEIGHT_8_LINE_2);
 #endif
     startStopRobotCar(false);
 }

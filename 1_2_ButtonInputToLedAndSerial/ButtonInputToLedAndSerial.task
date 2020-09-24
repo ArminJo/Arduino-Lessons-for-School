@@ -25,7 +25,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -34,73 +34,86 @@
 
 #define VERSION_EXAMPLE "1.0"
 
-#define	DELAY_LOOP			100
+#define    DELAY_LOOP            100
 
 // Variablen für Zusatzaufgabe
-static int sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
-static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+static int sOldRightButtonValue;
+static int sOldLeftButtonValue;
 
 // The loop routine runs over and over again forever
 void loop() {
 
-	/*
-	 * Aufgabe 1. - if / else Anweisung, logisches invertieren.
-	 *
-	 * Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
-	 * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
-	 * LOW ist 0 / false, HIGH ist 1 / true
-	 */
-	// Right button handling
-	if (digitalRead(PIN_RIGHT_BUTTON) == 0) {
-		digitalWrite(PIN_RED_LED, HIGH);
-	} else {
-		// hier fehlt noch was
-	}
+    /*
+     * Aufgabe 1. - if / else Anweisung
+     *
+     * Lasse die rechte LED leuchten, solange der rechte Button gedrückt ist.
+     * Lasse die linke LED leuchten, solange der linke Button gedrückt ist.
+     * LOW ist 0 / false, HIGH ist 1 / true
+     *
+     * Aufgabe 2. - logisches invertieren.
+     * Geht das auch ohne if / else?
+     * LOW ist 0 / false, HIGH ist 1 / true
+     *
+     */
+    // Right button handling
+    if (digitalRead(PIN_RIGHT_BUTTON) == 0) {
+        digitalWrite(PIN_GREEN_LED, HIGH);
+    } else {
+        // hier fehlt noch was
+    }
 
-	// Left button handling
+    // Left button handling
 
-	/*
-	 * Aufgabe 2. - Statische Variable.
-	 *
-	 * Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
-	 * Vergleiche dazu aktuellen Wert mit altem Wert ( z.B. sOldRightButtonValue).
-	 */
-	int tNewRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
-	int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
-	if (tNewRightButtonValue == 0) {
-		Serial.println("RightButton is 0");
-	} else {
-		Serial.println("RightButton is 1");
-	}
+    int tNewRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+    int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
-	if (sOldLeftButtonValue != tNewLeftButtonValue) {
-		// Das ist die einfachere Ausgabemöglichkeit
-		Serial.print("LeftButton is ");
-		Serial.println(tNewLeftButtonValue);
-		// Was fehlt hier?
-	}
+    if (tNewRightButtonValue == 0) {
+        Serial.println("RightButton is 0");
+    } else {
+        Serial.println("RightButton is 1");
+    }
+    // Das ist die einfachere Ausgabemöglichkeit ohne if else
+    Serial.print("LeftButton is ");
+    Serial.println(tNewLeftButtonValue);
 
-	// Wait to reduce serial output
-	delay(DELAY_LOOP);
+    /*
+     * Aufgabe 3. - Statische Variable.
+     *
+     * Rufe Serial.print nur dann auf, wenn der Zustand des Buttons sich geändert hat.
+     * Vergleiche dazu aktuellen Wert mit altem Wert ( z.B. sOldRightButtonValue).
+     */
+    if (sOldLeftButtonValue != tNewLeftButtonValue) {
+        // Ausgabe nur, wenn sich der Wert von tNewLeftButtonValue gegenüber dem letzten loop Durchlauf geändert hat.
+
+    }
+
+    if (sOldRightButtonValue != tNewRightButtonValue) {
+
+    }
+
+    // Wait to reduce serial output
+    delay(DELAY_LOOP);
 }
 
 // The setup function is called once at startup of the program
 void setup() {
-	// Start serial output
-	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
-	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+    // Start serial output
+    Serial.begin(115200);
+    // Just to know which program is running on my Arduino
+    Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
-	initBreadboardPins();
+    initBreadboardPins();
 
-	// Let LED blink for 600 ms
-	digitalWrite(PIN_RED_LED, HIGH);
-	digitalWrite(PIN_GREEN_LED, HIGH);
-	delay(600);
+    // Let LED blink for 600 ms
+    digitalWrite(PIN_RED_LED, HIGH);
+    digitalWrite(PIN_GREEN_LED, HIGH);
+    delay(600);
 
-	digitalWrite(PIN_RED_LED, LOW);
-	digitalWrite(PIN_GREEN_LED, LOW);
+    digitalWrite(PIN_RED_LED, LOW);
+    digitalWrite(PIN_GREEN_LED, LOW);
 
+    sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+    sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 }
 

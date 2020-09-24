@@ -21,9 +21,10 @@
  * Formatieren: "strg" + "F"
  * Definition finden: "F3"
  * Autocompletion: "strg" + Leertaste
+ * Zeile ein/aus-kommentieren: "strg" + / (= "strg" + "shift" + 7)
  * Verwendung suchen: "strg" + "G"
  *
- * Vergleichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 

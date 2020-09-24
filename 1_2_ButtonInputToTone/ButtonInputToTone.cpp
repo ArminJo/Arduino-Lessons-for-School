@@ -24,7 +24,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -33,81 +33,86 @@
 
 #define VERSION_EXAMPLE "1.0"
 
-#define	DELAY_LOOP			100
+#define    DELAY_LOOP            100
 
 void handleLedAndSerial();
 
 // The loop routine runs over and over again forever
 void loop() {
 
-	handleLedAndSerial();
-	uint8_t tRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
-	uint8_t tLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+    handleLedAndSerial();
+    uint8_t tRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+    uint8_t tLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
-	/*
-	 * Aufgabe 1. Verknüpfung von Bedingungen:
-	 *
-	 * Gebe einen Ton von 1760 Hz aus, wenn nur der rechte Button gedrückt ist.
-	 * Gebe einen Ton von 2200 Hz aus, wenn nur der linke Button gedrückt ist.
-	 * Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
-	 *
-	 * Was ist der Unterschied zwischen der Verwendung von tRightButtonValue und digitalRead(PIN_RIGHT_BUTTON)?
-	 * Wann ist was besser?
-	 *
-	 * Bedingungen weden mit "&&" AND verknüpft
-	 */
-	if (tRightButtonValue == 0 && digitalRead(PIN_LEFT_BUTTON) == 1) {
-		tone(PIN_SPEAKER, 1760);
-	} else {
-		noTone(PIN_SPEAKER);
-	}
+    /*
+     * Aufgabe 1. Verknüpfung von Bedingungen:
+     *
+     * Gebe einen Ton von 1760 Hz aus, wenn nur der rechte Button gedrückt ist.
+     * Gebe einen Ton von 2200 Hz aus, wenn nur der linke Button gedrückt ist.
+     * Gebe 2640 Hz aus, wenn beide Buttons gedrückt sind.
+     *
+     * Was ist der Unterschied zwischen der Verwendung von tRightButtonValue und digitalRead(PIN_RIGHT_BUTTON)?
+     * Wann ist was besser?
+     *
+     * Bedingungen weden mit "&&" AND verknüpft
+     */
+    if (tRightButtonValue == 0 && tLeftButtonValue == 1) {
+        // Wenn nur der rechte Button gedrückt ist
+        tone(PIN_SPEAKER, 1760);
+//    } else if () {
+        // Wenn nur der linke Button gedrückt ist
+//    } else if () {
+        // Wenn beide Buttons gedrückt sind
+    } else { // Warum darf hier das "if" fehlen?
+        // Wenn kein Button gedrückt ist
+        noTone(PIN_SPEAKER);
+    }
 
-	// Wait to reduce serial output
-	delay(DELAY_LOOP);
+    // Wait to reduce serial output
+    delay(DELAY_LOOP);
 }
 
 void handleLedAndSerial() {
-	static int sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
-	static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+    static int sOldRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+    static int sOldLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
-	int tNewRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
-	int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
+    int tNewRightButtonValue = digitalRead(PIN_RIGHT_BUTTON);
+    int tNewLeftButtonValue = digitalRead(PIN_LEFT_BUTTON);
 
-	digitalWrite(PIN_RED_LED, !tNewRightButtonValue);
-	digitalWrite(PIN_GREEN_LED, !tNewLeftButtonValue);
-	if (sOldRightButtonValue != tNewRightButtonValue) {
-		sOldRightButtonValue = tNewRightButtonValue;
-		Serial.print("RightButton is ");
-		Serial.println(tNewRightButtonValue);
-	}
-	if (sOldLeftButtonValue != tNewLeftButtonValue) {
-		sOldLeftButtonValue = tNewLeftButtonValue;
-		Serial.print("LeftButton is ");
-		Serial.println(tNewLeftButtonValue);
-	}
+    digitalWrite(PIN_RED_LED, !tNewRightButtonValue);
+    digitalWrite(PIN_GREEN_LED, !tNewLeftButtonValue);
+    if (sOldRightButtonValue != tNewRightButtonValue) {
+        sOldRightButtonValue = tNewRightButtonValue;
+        Serial.print("RightButton is ");
+        Serial.println(tNewRightButtonValue);
+    }
+    if (sOldLeftButtonValue != tNewLeftButtonValue) {
+        sOldLeftButtonValue = tNewLeftButtonValue;
+        Serial.print("LeftButton is ");
+        Serial.println(tNewLeftButtonValue);
+    }
 }
 
 // The setup function is called once at startup of the program
 void setup() {
-	// Start serial output
-	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
-	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+    // Start serial output
+    Serial.begin(115200);
+    // Just to know which program is running on my Arduino
+    Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
-	initBreadboardPins();
+    initBreadboardPins();
 
-	// Play 2200 Hz.
-	tone(PIN_SPEAKER, 2200);
+    // Play 2200 Hz.
+    tone(PIN_SPEAKER, 2200);
 
-	// Let LED blink for 600 ms
-	digitalWrite(PIN_RED_LED, HIGH);
-	digitalWrite(PIN_GREEN_LED, HIGH);
-	delay(600);
+    // Let LED blink for 600 ms
+    digitalWrite(PIN_RED_LED, HIGH);
+    digitalWrite(PIN_GREEN_LED, HIGH);
+    delay(600);
 
-	// Stop tone
-	noTone(PIN_SPEAKER);
-	digitalWrite(PIN_RED_LED, LOW);
-	digitalWrite(PIN_GREEN_LED, LOW);
-
+    // Stop tone
+    noTone(PIN_SPEAKER);
+    digitalWrite(PIN_RED_LED, LOW);
+    digitalWrite(PIN_GREEN_LED, LOW);
 }
 

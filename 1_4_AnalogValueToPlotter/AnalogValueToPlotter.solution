@@ -25,7 +25,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", ">=".
+ * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -36,63 +36,61 @@
 
 // Die loop Funktion läuft unendlich durch.
 void loop() {
-	static int sLDRMinimum = 1023;
-	static int sLDRMaximum = 0;
-	/*
-	 * Aufgabe 1.
-	 *
-	 * Sieh Dir die Ausgabe einmal im Arduino seriellen Monitor (Strg+Umschalt+M) und einmal im Arduino Plotter (Strg+Umschalt+L) an.
-	 * Die erste Zeile enthält die Texte für die Legende, alle anderen Zeilen enthalten die mit Space getrennten Werte.
-	 */
-	int tAnalogValuePotentiometer = analogRead(PIN_POTENTIOMETER);
-	int tAnalogValueLDR = analogRead(PIN_LDR);
-	Serial.print(tAnalogValuePotentiometer);
-	Serial.print(' '); // This is only one character, no string!
-	Serial.print(tAnalogValueLDR);
+    static int sLDRMinimum = 1023;
+    static int sLDRMaximum = 0;
+    /*
+     * Aufgabe 1.
+     *
+     * Sieh Dir die Ausgabe einmal im Arduino seriellen Monitor (Strg+Umschalt+M) und einmal im Arduino Plotter (Strg+Umschalt+L) an.
+     * Die erste Zeile enthält die Texte für die Legende, alle anderen Zeilen enthalten die mit Space getrennten Werte.
+     */
+    int tAnalogValuePotentiometer = analogRead(PIN_POTENTIOMETER);
+    int tAnalogValueLDR = analogRead(PIN_LDR);
+    Serial.print(tAnalogValuePotentiometer);
+    Serial.print(' '); // This is only one character, no string!
+    Serial.print(tAnalogValueLDR);
 
-	/*
-	 * Aufgabe 2.
-	 *
-	 * Compute the minimum and maximum of the LDR readout values.
-	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
-	 */
-	if (sLDRMinimum > tAnalogValueLDR) {
-		sLDRMinimum = tAnalogValueLDR;
-	}
-	if (sLDRMaximum < tAnalogValueLDR) {
-		sLDRMaximum = tAnalogValueLDR;
-	}
+    /*
+     * Aufgabe 2.
+     *
+     * Compute the minimum and maximum of the LDR readout values.
+     * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
+     */
+    if (sLDRMinimum > tAnalogValueLDR) {
+        sLDRMinimum = tAnalogValueLDR;
+    }
+    if (sLDRMaximum < tAnalogValueLDR) {
+        sLDRMaximum = tAnalogValueLDR;
+    }
 
-	Serial.print(' ');
-	Serial.print(sLDRMinimum);
-	Serial.print(' ');
-	Serial.print(sLDRMaximum);
-	Serial.println(); // End of data set
+    Serial.print(' ');
+    Serial.print(sLDRMinimum);
+    Serial.print(' ');
+    Serial.print(sLDRMaximum);
+    Serial.println(); // End of data set
 
+    /*
+     * Aufgabe 3.
+     *
+     * Verbessere mit Hilfe des Minimums und Maximums den ausgegebenen Frequenzbereich des LDR Wertes,
+     * der vorher nicht 2 Oktaven war wie beim Potentiometer.
+     * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
+     */
+    int tFrequency = map(tAnalogValueLDR, sLDRMinimum, sLDRMaximum, 440, 1760); // 2 octaves
+    tone(PIN_SPEAKER, tFrequency);
 
-
-	/*
-	 * Aufgabe 3.
-	 *
-	 * Verbessere mit Hilfe des Minimums und Maximums den ausgegebenen Frequenzbereich des LDR Wertes,
-	 * der vorher nicht 2 Oktaven war wie beim Potentiometer.
-	 * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
-	 */
-	int tFrequency = map(tAnalogValueLDR, sLDRMinimum, sLDRMaximum, 440, 1760); // 2 octaves
-	tone(PIN_SPEAKER, tFrequency);
-
-	delay(300);
+    delay(300);
 }
 
 // The setup function is called once at startup of the sketch
 void setup() {
-	// Start serial output
-	Serial.begin(115200);
-	// Just to know which program is running on my Arduino
-//	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+// Start serial output
+    Serial.begin(115200);
+// Just to know which program is running on my Arduino
+//Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
-	initBreadboardPins();
+    initBreadboardPins();
 
-	// Print legend for plotter data
-	Serial.println("Potentiometer LDR Minimum Maximum");
+// Print legend for plotter data
+    Serial.println("Potentiometer LDR Minimum Maximum");
 }
