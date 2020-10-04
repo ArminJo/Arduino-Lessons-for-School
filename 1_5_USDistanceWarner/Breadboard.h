@@ -34,7 +34,7 @@
 #define PIN_NEOPIXEL        8
 #define PIN_TRIGGER_OUT     9
 #define PIN_ECHO_IN        10
-#define PIN_SPEAKER        11
+#define PIN_BUZZER        11
 #define PIN_INTERNAL_LED   13 // aka LED_BUILTIN
 
 #define PIN_POTENTIOMETER  A0
@@ -57,7 +57,7 @@ void initBreadboardPins() {
 	pinMode(PIN_LASER, OUTPUT);
 	pinMode(PIN_TRIGGER_OUT, OUTPUT);
 //  Is done by tone()	
-//	pinMode(PIN_SPEAKER, OUTPUT);
+//	pinMode(PIN_BUZZER, OUTPUT);
 	pinMode(LED_BUILTIN, OUTPUT);
 
 }

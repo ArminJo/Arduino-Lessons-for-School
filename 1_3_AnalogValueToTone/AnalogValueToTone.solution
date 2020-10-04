@@ -67,7 +67,7 @@ void loop() {
      */
 //int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
     int tFrequency = map(tAnalogValue, 0, 1023, 440, 1760); // 2 octaves
-    tone(PIN_SPEAKER, tFrequency);
+    tone(PIN_BUZZER, tFrequency);
 
     /*
      * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition

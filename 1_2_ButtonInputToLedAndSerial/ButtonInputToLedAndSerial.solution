@@ -91,7 +91,7 @@ void setup() {
     initBreadboardPins();
 
     // Play 2200 Hz.
-    tone(PIN_SPEAKER, 2200);
+    tone(PIN_BUZZER, 2200);
 
     // Let LED blink for 600 ms
     digitalWrite(PIN_RED_LED, HIGH);
@@ -99,7 +99,7 @@ void setup() {
     delay(600);
 
     // Stop tone
-    noTone(PIN_SPEAKER);
+    noTone(PIN_BUZZER);
     digitalWrite(PIN_RED_LED, LOW);
     digitalWrite(PIN_GREEN_LED, LOW);
 

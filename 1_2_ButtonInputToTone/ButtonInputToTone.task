@@ -58,14 +58,14 @@ void loop() {
      */
     if (tRightButtonValue == 0 && tLeftButtonValue == 1) {
         // Wenn nur der rechte Button gedrückt ist
-        tone(PIN_SPEAKER, 1760);
+        tone(PIN_BUZZER, 1760);
 //    } else if () {
         // Wenn nur der linke Button gedrückt ist
 //    } else if () {
         // Wenn beide Buttons gedrückt sind
     } else { // Warum darf hier das "if" fehlen?
         // Wenn kein Button gedrückt ist
-        noTone(PIN_SPEAKER);
+        noTone(PIN_BUZZER);
     }
 
     // Wait to reduce serial output
@@ -103,7 +103,7 @@ void setup() {
     initBreadboardPins();
 
     // Play 2200 Hz.
-    tone(PIN_SPEAKER, 2200);
+    tone(PIN_BUZZER, 2200);
 
     // Let LED blink for 600 ms
     digitalWrite(PIN_RED_LED, HIGH);
@@ -111,7 +111,7 @@ void setup() {
     delay(600);
 
     // Stop tone
-    noTone(PIN_SPEAKER);
+    noTone(PIN_BUZZER);
     digitalWrite(PIN_RED_LED, LOW);
     digitalWrite(PIN_GREEN_LED, LOW);
 }

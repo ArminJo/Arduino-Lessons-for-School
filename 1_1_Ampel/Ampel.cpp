@@ -64,7 +64,7 @@ void loop() {
      * Aufgabe 2. Wenn es grün ist: Statt einmal mit "delay(DELAY_LONG_MS);" zu warten, warte 4 mal und gebe jedesmal einen Ton von 440 Hz aus.
      *         Benutze einen loop um das nicht 4 mal hinschreiben zu müssen.
      */
-//    tone(PIN_SPEAKER, 440, DELAY_LONG / 8);
+//    tone(PIN_BUZZER, 440, DELAY_LONG / 8);
 //    delay(DELAY_LONG / 4);
 
     /*

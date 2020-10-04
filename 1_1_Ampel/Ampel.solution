@@ -64,7 +64,7 @@ void loop() {
      *      Benutze einen loop um das nicht 4 mal hinschreiben zu müssen.
      */
     for (int i = 0; i < 4; ++i) {
-        tone(PIN_SPEAKER, 440, DELAY_LONG / 8);
+        tone(PIN_BUZZER, 440, DELAY_LONG / 8);
         delay(DELAY_LONG / 4);
     }
 

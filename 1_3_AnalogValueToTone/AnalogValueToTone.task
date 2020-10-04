@@ -62,7 +62,7 @@ void loop() {
      * Wie muss ich map() ändern, um den vollen Tonumfang zu erreichen?
      */
 //int tFrequency = map(tAnalogValue, ???, ???, 440, 1760); // 2 octaves
-//tone(PIN_SPEAKER, 2200);
+//tone(PIN_BUZZER, 2200);
     delay(200);
 }
 
@@ -76,5 +76,5 @@ void setup() {
     initBreadboardPins();
 
 // Play 2200 Hz for 600 milliseconds.
-    tone(PIN_SPEAKER, 2200, 600);
+    tone(PIN_BUZZER, 2200, 600);
 }

@@ -10,13 +10,13 @@ Each lesson consists of the `.cpp file` the pupils work with, a `.task file` wit
 All lessons work on a universal breadboard layout, and can easily be adapted by just changing the `Breadboard.h` file of the examples.
 
 # Sloeber installation directory and Platform folder
-My sloeber is installed at `E:\Elektro\sloeber`, so it will work out of the box if you use the same location. If you have no E: drive you can use the command subst E: "C:<Path to sloeber root directory>"<br/>
+My sloeber (V4.3.3) is installed at `E:\Elektro\sloeber`, so it will work out of the box if you use the same location. If you have no E: drive you can use the command subst E: "C:<Path to sloeber root directory>"<br/>
 My workspace directory is `E:\WORKSPACE_SLOEBER`, but any other location will do.
 To easy import the examples you must have the right "_Platform folder_" installed. Check under `Arduino/Preferences/Arduino/Platform and Boards/arduino/Arduino AVR Boards` if version `1.8.3` is available and checked.
 If it is not available, you have to check `Update local json files` in `Arduino/Preferences/Arduino/Third party index url's` and then restart sloeber and check the `1.8.3` entry.<br/>
 If `File/Import/General/Existing Projects into Workspace` does not work, just can create a new Arduino project and choose `default cpp file`. Then copy the content of the lesson to the new cpp file.<br/>
 
-After importing the project, you must check if the right `Port` is selected. On my computer it is COM6. After this you may check if the `Processor` -especially the right bootloader- is selected. After import, the `ATmega328P` is selected. It is the new version with the faster and smaller bootloader. If the upload does not work with this setting, just select the other one `ATmega328P (Old Bootloader)`. If this does not work either, check your port number with the Windows device manager (or the Arduino IDE, it shows the available port numbers) and check your USB cable.<br/>
+After importing the project, you must check if the right `Port` is selected. On my computer it is COM6. You can modify the port of your Arduino on Windows in the *device manager* with *Properties/Port Settings/Advanced/Port Number*. You may safely ignore the warnings :-). After this you may check if the `Processor` -especially the right bootloader- is selected. After import, the `ATmega328P` is selected. It is the new version with the faster and smaller bootloader. If the upload does not work with this setting, just select the other one `ATmega328P (Old Bootloader)`. If this does not work either, check your port number with the Windows device manager (or the Arduino IDE, it shows the available port numbers) and check your USB cable.<br/>
 ![Selection of right Nano module](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Sloeber_Nano_choices.jpg)
 
 ### Useful settings in Sloeber/Eclipse
@@ -29,13 +29,14 @@ After importing the project, you must check if the right `Port` is selected. On 
 - Arduino/Preferences/Arduino/Third party index url's/Update local json files - To search for new board versions
 - Arduino/Preferences/Arduino/ - Set Private Library path + Private hardware path
 
-### Useful shortcuts
+### Useful shortcuts in Sloeber/Eclipse
 - Code auto format: Ctrl+Shift+F
 - Open declaration: F3
 - Autocompletion: Ctrl+Space
 - Find references: Ctrl+Shift+G
 
-Universal breadboard layout for all lessons. BOM, schematics and pictures below.
+## Universal breadboard layout for all lessons.
+[BOM, schematics and pictures](https://github.com/ArminJo/Arduino-Lessons-for-School#bom) below.
 ![Universal breadboard fritzing](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
 
 # Kursaufbau
@@ -136,28 +137,29 @@ Bei richtigem Abstand ein zufälliges Weihnachtslied spielen.
 - Ultraschall Abstandssensor einlesen.
 - Eine Library benutzen um Weihnachstlieder abzuspielen.
 
+## 8_1_RobotCarBasics
+Einen Arduino smart robot car bewegen lernen. 
 
 # Universal breadboard layout for all lessons
 ![Universal breadboard fritzing](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
-![Universal breadboard schematic]
 
 ### BOM
 - Breadboard 830 points
-- Adruino Nano
+- Arduino Nano
 - Jumper wires
-- 2 Pushbutton switches
-- 3 LEDS red, green yellow
-- 3 270 Ohm resistor
+- 2 Pushbutton switches (12 mm)
+- 3 LEDS red, green, yellow
+- 3 Resistors 270 ohm 
 - LDR
-- 4.7 kOhm resistor
-- 100 kOhm potentiometer
+- Resistor 4.7k ohm
+- Potentiometer 100k ohm 
 - Piezo buzzer passive 14x7
-- SG (MG) 90 Servo
+- Servo SG (MG) 90 
 - Ultrasonic Sensor HC-SR04
-- WS2812B 8 LED bar/stick
-- 10 kOhm resistor
+- LED bar/stick 8 x WS2812B
+- Resistor 10k ohm
 
-(https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Schaltplan.png)
+![Universal breadboard schematic](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Schaltplan.png)
 ![Universal breadboard front](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Front.jpg)
 ![Universal breadboard top](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Top.jpg)
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Back.jpg)

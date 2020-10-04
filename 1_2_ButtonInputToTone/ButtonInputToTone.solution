@@ -63,22 +63,22 @@ void loop() {
         /*
          * Both buttons pressed
          */
-        tone(PIN_SPEAKER, 2640);
+        tone(PIN_BUZZER, 2640);
     } else if (tRightButtonValue == HIGH && tLeftButtonValue == HIGH) {
         /*
          * No button active
          */
-        noTone(PIN_SPEAKER);
+        noTone(PIN_BUZZER);
     } else if (tRightButtonValue == LOW && tLeftButtonValue == HIGH) {
         /*
          * Only right button active
          */
-        tone(PIN_SPEAKER, 1760);
+        tone(PIN_BUZZER, 1760);
     } else { // Warum darf hier das "if" fehlen?
         /*
          * Only left button active
          */
-        tone(PIN_SPEAKER, 2200);
+        tone(PIN_BUZZER, 2200);
     }
 
     // Wait to reduce serial output
@@ -117,7 +117,7 @@ void setup() {
     initBreadboardPins();
 
     // Play 2200 Hz.
-    tone(PIN_SPEAKER, 2200);
+    tone(PIN_BUZZER, 2200);
 
     // Let LED blink for 600 ms
     digitalWrite(PIN_RED_LED, HIGH);
@@ -125,7 +125,7 @@ void setup() {
     delay(600);
 
     // Stop tone
-    noTone(PIN_SPEAKER);
+    noTone(PIN_BUZZER);
     digitalWrite(PIN_RED_LED, LOW);
     digitalWrite(PIN_GREEN_LED, LOW);
 

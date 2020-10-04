@@ -118,7 +118,7 @@
 void doTest() {
     sActionType = ACTION_TYPE_TEST;
 
-    tone(PIN_SPEAKER, 2000, 400);
+    tone(PIN_BUZZER, 2000, 400);
     delayAndCheck(400);
     centerServos();
 

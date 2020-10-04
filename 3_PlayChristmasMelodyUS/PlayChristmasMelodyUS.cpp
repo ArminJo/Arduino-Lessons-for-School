@@ -3,7 +3,7 @@
  *
  * Thema:
  * - Ultraschall Abstandssensor einlesen.
- * - Eine Library benutzen, um Weichnachstlieder abzuspielen.
+ * - Eine Library benutzen, um Weihnachstlieder abzuspielen.
  *
  *  Copyright 2019 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
@@ -65,7 +65,7 @@ void loop() {
     delay(100);
     if (tCentimeter < 60) {
         int tIndexOfSong = random(ARRAY_SIZE_CHRISTMAS_MELODIES);
-        playRtttlBlockingPGM(PIN_SPEAKER, RTTTLChristmasMelodies[2]);
+        playRtttlBlockingPGM(PIN_BUZZER, RTTTLChristmasMelodies[2]);
         delay(2000);
     }
 }

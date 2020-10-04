@@ -107,9 +107,9 @@ void setup() {
 //    resetServosTo90Degree();
 
 #if defined(QUADRUPED_PLAYS_RTTTL)
-    playRtttlBlockingPGM(PIN_SPEAKER, Short);
+    playRtttlBlockingPGM(PIN_BUZZER, Short);
 #else
-    tone(PIN_SPEAKER, 2000, 300);
+    tone(PIN_BUZZER, 2000, 300);
 #endif
 
     delay(1000);
@@ -187,13 +187,13 @@ void loop() {
 
     if (checkForLowVoltage()) {
         shutdownServos();
-        tone(PIN_SPEAKER, 2000, 200);
+        tone(PIN_BUZZER, 2000, 200);
         delay(400);
-        tone(PIN_SPEAKER, 1400, 300);
+        tone(PIN_BUZZER, 1400, 300);
         delay(600);
-        tone(PIN_SPEAKER, 1000, 400);
+        tone(PIN_BUZZER, 1000, 400);
         delay(800);
-        tone(PIN_SPEAKER, 700, 500);
+        tone(PIN_BUZZER, 700, 500);
 #if defined(QUADRUPED_HAS_NEOPIXEL)
         wipeOutPatternsBlocking();
 #endif

@@ -76,7 +76,7 @@ void loop() {
 		// to calculate the note duration, take one second divided by the note type.
 		// e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
 		int tNoteDuration = 1000 / MelodyShortNoteDurations[tNoteIndex];
-		tone(PIN_SPEAKER, MelodyShort[tNoteIndex], tNoteDuration);
+		tone(PIN_BUZZER, MelodyShort[tNoteIndex], tNoteDuration);
 
 		// to distinguish the notes, set a minimum time between them.
 		// the note's duration + 30% seems to work well:
@@ -112,7 +112,7 @@ void loop() {
 		// to calculate the note duration, take one second divided by the note type.
 		// e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
 		int tNoteDuration = 1000 / MelodyAlleMeineEntchenNoteDurations[tNoteIndex];
-		tone(PIN_SPEAKER, MelodyAlleMeineEntchen[tNoteIndex], tNoteDuration);
+		tone(PIN_BUZZER, MelodyAlleMeineEntchen[tNoteIndex], tNoteDuration);
 
 		// to distinguish the notes, set a minimum time between them.
 		// the note's duration + 30% seems to work well:

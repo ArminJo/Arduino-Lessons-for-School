@@ -29,7 +29,7 @@
 void handleUSSensor();
 #endif
 
-#define PIN_SPEAKER     3
+#define PIN_BUZZER     3
 
 #define VCC_STOP_THRESHOLD_MILLIVOLT 3600 // stop moving if below 3.6 Volt
 #define MILLIS_OF_INACTIVITY_BEFORE_SWITCH_TO_AUTO_MOVE 20000 // 20 seconds

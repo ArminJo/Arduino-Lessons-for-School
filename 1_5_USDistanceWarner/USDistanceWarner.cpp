@@ -76,7 +76,7 @@ void loop() {
         ;
     }
 
-//tone(PIN_SPEAKER, 2200);
+//tone(PIN_BUZZER, 2200);
     delay(200); // Delay to make is easier to play a melody
 }
 
@@ -101,7 +101,7 @@ void setup() {
     delay(300);
     digitalWrite(PIN_RED_LED, LOW);
 
-    tone(PIN_SPEAKER, 2200);
+    tone(PIN_BUZZER, 2200);
     delay(500);
-    noTone(PIN_SPEAKER);
+    noTone(PIN_BUZZER);
 }

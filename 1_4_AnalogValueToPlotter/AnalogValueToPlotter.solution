@@ -77,7 +77,7 @@ void loop() {
      * Ermittele das Minimum  und das Maximum der eingelesen Werte des LDR's.
      */
     int tFrequency = map(tAnalogValueLDR, sLDRMinimum, sLDRMaximum, 440, 1760); // 2 octaves
-    tone(PIN_SPEAKER, tFrequency);
+    tone(PIN_BUZZER, tFrequency);
 
     delay(300);
 }

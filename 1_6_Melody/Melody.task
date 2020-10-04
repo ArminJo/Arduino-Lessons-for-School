@@ -65,16 +65,16 @@ void loop() {
     Serial.print(300 / MelodyShortNoteDurations[0]);
     Serial.println(" Millisekunden");
 
-    tone(PIN_SPEAKER, MelodyShort[0], 1000 / MelodyShortNoteDurations[0]);
+    tone(PIN_BUZZER, MelodyShort[0], 1000 / MelodyShortNoteDurations[0]);
     // Warte bis der Ton zu Ende ist und ein bischen (0.3 mal) länger
     delay(1300 / MelodyShortNoteDurations[0]);
 
     // Spiele den zweiten Ton
-    tone(PIN_SPEAKER, MelodyShort[1], 1000 / MelodyShortNoteDurations[1]);
+    tone(PIN_BUZZER, MelodyShort[1], 1000 / MelodyShortNoteDurations[1]);
     delay(1300 / MelodyShortNoteDurations[1]);
 
     // Spiele den dritten Ton
-    tone(PIN_SPEAKER, MelodyShort[2], 1000 / MelodyShortNoteDurations[2]);
+    tone(PIN_BUZZER, MelodyShort[2], 1000 / MelodyShortNoteDurations[2]);
     delay(1300 / MelodyShortNoteDurations[2]);
 
     /*
