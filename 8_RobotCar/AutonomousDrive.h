@@ -39,9 +39,10 @@ extern uint8_t sDriveMode;
 extern uint8_t sStepMode;
 extern bool sDoStep;
 
-#define FOLLOWER_MIN_DISTANCE       22
-#define FOLLOWER_MAX_DISTANCE       30
-#define FOLLOWER_RESCAN_DISTANCE    50 // search if target moved to side
+#define FOLLOWER_MIN_DISTANCE_CENTIMETER     22
+#define FOLLOWER_MAX_DISTANCE_CENTIMETER     30
+#define FOLLOWER_DELTA_DISTANCE_CENTIMETER   (FOLLOWER_MAX_DISTANCE_CENTIMETER - FOLLOWER_MIN_DISTANCE_CENTIMETER)
+#define FOLLOWER_RESCAN_DISTANCE_CENTIMETER  50 // search if target moved to side
 
 /*
  * Different result types acquired at one scan

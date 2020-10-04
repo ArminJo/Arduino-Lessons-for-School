@@ -204,7 +204,7 @@ bool __attribute__((weak)) fillAndShowForwardDistancesInfo(bool aDoFirstValue, b
             return true;
         }
 
-        unsigned int tCentimeter = getDistanceAsCentiMeter();
+        unsigned int tCentimeter = getDistanceAsCentiMeter(false);
         if ((tIndex == INDEX_FORWARD_1 || tIndex == INDEX_FORWARD_2) && tCentimeter <= sCentimeterPerScanTimesTwo) {
             /*
              * Emergency motor stop if index is forward and measured distance is less than distance driven during two scans
@@ -226,7 +226,7 @@ bool __attribute__((weak)) fillAndShowForwardDistancesInfo(bool aDoFirstValue, b
             }
 
             /*
-             * Clear old and draw new line
+             * Clear old and draw new distance line
              */
             BlueDisplay1.drawVectorDegrees(US_DISTANCE_MAP_ORIGIN_X, US_DISTANCE_MAP_ORIGIN_Y,
                     sForwardDistancesInfo.RawDistancesArray[tIndex], tCurrentDegrees, COLOR_WHITE, 3);
@@ -280,7 +280,7 @@ void readAndShowDistancePeriodically(uint16_t aPeriodMillis) {
     static long sLastUSMeasurementMillis;
 
     // Do not show distanced during (time critical) acceleration or deceleration
-    if (!RobotCarMotorControl.needsFastUpdates()) {
+    if (!RobotCarMotorControl.isStateRamp()) {
         long tMillis = millis();
         if (sLastUSMeasurementMillis + aPeriodMillis < tMillis) {
             sLastUSMeasurementMillis = tMillis;

@@ -125,7 +125,7 @@ void doChangeScanSpeed(BDButton * aTheTouchedButton, int16_t aValue) {
 
 void doSingleScan(BDButton * aTheTouchedButton, int16_t aValue) {
     clearPrintedForwardDistancesInfos();
-    fillAndShowForwardDistancesInfo( true, true);
+    fillAndShowForwardDistancesInfo(true, true);
 
     postProcessAndCollisionDetection();
 }
@@ -289,11 +289,12 @@ void drawCollisionDecision(int aDegreeToTurn, uint8_t aLengthOfVector, bool aDoC
         color16_t tColor = COLOR_BLUE;
         int tDegreeToDisplay = aDegreeToTurn;
 
+        if (tDegreeToDisplay == 180) {
+            tColor = COLOR_RED;
+            tDegreeToDisplay = 0;
+        }
         if (aDoClearVector) {
             tColor = COLOR_WHITE;
-        } else if (tDegreeToDisplay == 180) {
-            tColor = COLOR_PURPLE;
-            tDegreeToDisplay = 0;
         }
 
         BlueDisplay1.drawVectorDegrees(US_DISTANCE_MAP_ORIGIN_X, US_DISTANCE_MAP_ORIGIN_Y, aLengthOfVector, tDegreeToDisplay + 90,

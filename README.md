@@ -1,5 +1,6 @@
 # Arduino lessons for school
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Commits since latest](https://img.shields.io/github/commits-since/ArminJo/Arduino-Lessons-for-School/latest)](https://github.com/ArminJo/Arduino-Lessons-for-School/commits/master)
 [![Hit Counter](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2FArminJo%2FArduino-Lessons-for-School)](https://github.com/brentvollebregt/hit-counter)
 
 These lessons are for my course at a Gymnasium in Cologne. The course is addressed at eighth or ninth grade pupils.<br/> 
@@ -17,6 +18,25 @@ If `File/Import/General/Existing Projects into Workspace` does not work, just ca
 
 After importing the project, you must check if the right `Port` is selected. On my computer it is COM6. After this you may check if the `Processor` -especially the right bootloader- is selected. After import, the `ATmega328P` is selected. It is the new version with the faster and smaller bootloader. If the upload does not work with this setting, just select the other one `ATmega328P (Old Bootloader)`. If this does not work either, check your port number with the Windows device manager (or the Arduino IDE, it shows the available port numbers) and check your USB cable.<br/>
 ![Selection of right Nano module](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Sloeber_Nano_choices.jpg)
+
+### Useful settings in Sloeber/Eclipse
+- Windows/Preferences/General/Editors/Text Editor - Insert spaces for tabs + Show line number
+- Windows/Preferences/General/Workspace/LocalHistory - Disable history limits
+- Windows/Preferences/General/Workspace/Build - Save before  build
+- Windows/Preferences/C++/Indexer - Use active build configuration
+- Windows/Preferences/C++/CodeStyle/Formatter/New/Line Wrapping/Maximal line width - K&R with 132 characters per line
+- Arduino/Preferences/Arduino/Third party index url's - Add urls for other boards (like in the Arduino IDE)
+- Arduino/Preferences/Arduino/Third party index url's/Update local json files - To search for new board versions
+- Arduino/Preferences/Arduino/ - Set Private Library path + Private hardware path
+
+### Useful shortcuts
+- Code auto format: Ctrl+Shift+F
+- Open declaration: F3
+- Autocompletion: Ctrl+Space
+- Find references: Ctrl+Shift+G
+
+Universal breadboard layout for all lessons. BOM, schematics and pictures below.
+![Universal breadboard fritzing](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
 
 # Kursaufbau
 Der Arduino Kurs besteht aus **8-10 Schülern** der 8. und 9. Klassen. Er dauert eine **Doppelstunde** / 1,5 Zeitstunden pro Woche. 
@@ -112,14 +132,32 @@ Eine Melodie ausgeben.
 - sizeof() Funktion.
 
 ## 3_PlayChristmasMelodyUS
-Bei richtigem Abstand ein zufälliges Weichnachtslied spielen.
+Bei richtigem Abstand ein zufälliges Weihnachtslied spielen.
 - Ultraschall Abstandssensor einlesen.
-- Eine Library benutzen um Weichnachstlieder abzuspielen.
+- Eine Library benutzen um Weihnachstlieder abzuspielen.
 
 
 # Universal breadboard layout for all lessons
-![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
-![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Schaltplan.png)
+![Universal breadboard fritzing](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Steckplatine.png)
+![Universal breadboard schematic]
+
+### BOM
+- Breadboard 830 points
+- Adruino Nano
+- Jumper wires
+- 2 Pushbutton switches
+- 3 LEDS red, green yellow
+- 3 270 Ohm resistor
+- LDR
+- 4.7 kOhm resistor
+- 100 kOhm potentiometer
+- Piezo buzzer passive 14x7
+- SG (MG) 90 Servo
+- Ultrasonic Sensor HC-SR04
+- WS2812B 8 LED bar/stick
+- 10 kOhm resistor
+
+(https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Nano_Lessons_Breadboard_Schaltplan.png)
 ![Universal breadboard front](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Front.jpg)
 ![Universal breadboard top](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Top.jpg)
 ![Universal breadboard back](https://github.com/ArminJo/Arduino-Lessons-for-School/blob/master/Media/Breadboard_Back.jpg)
