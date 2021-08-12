@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>8_RobotCar</name>
+	<name>8_1_RobotCarBasics</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -25,10 +25,10 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
-		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
-		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>io.sloeber.arduinonature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
@@ -42,24 +42,9 @@
 			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/eightanaloginputs</locationURI>
 		</link>
 		<link>
-			<name>libraries/Adafruit_Motor_Shield_V2_Library</name>
+			<name>libraries/PWMMotorControl</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/libraries/Adafruit_Motor_Shield_V2_Library</locationURI>
-		</link>
-		<link>
-			<name>libraries/ArduinoUtils</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/libraries/ArduinoUtils</locationURI>
-		</link>
-		<link>
-			<name>libraries/BlueDisplay</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/libraries/BlueDisplay</locationURI>
-		</link>
-		<link>
-			<name>libraries/HCSR04</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/HCSR04/1.0.0</locationURI>
+			<locationURI>WORKSPACE_LOC/libraries/PWMMotorControl</locationURI>
 		</link>
 		<link>
 			<name>libraries/PlayRtttl</name>
@@ -69,7 +54,7 @@
 		<link>
 			<name>libraries/Servo</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.6</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.7</locationURI>
 		</link>
 		<link>
 			<name>libraries/Wire</name>

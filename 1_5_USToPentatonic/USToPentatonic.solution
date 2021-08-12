@@ -30,7 +30,9 @@
  */
 
 #include <Arduino.h>
-#include "Breadboard.h"
+//#include "Breadboard.h" // comment this out if you want to run this example on the breadboard
+//#define USE_LAYOUT_FOR_NANO
+#include "RobotCar.h" // comment this out if you want to run this example on a smart car
 #include "pitches.h"
 
 #define VERSION_EXAMPLE "1.0"
@@ -92,7 +94,11 @@ void setup() {
     // Just to know which program is running on my Arduino
     Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
 
+#ifdef PIN_POTENTIOMETER
     initBreadboardPins();
+#else
+    pinMode(PIN_TRIGGER_OUT, OUTPUT);
+#endif
     for (uint8_t i = 0; i < ARRAY_SIZE_NOTE_C5_TO_C7_PENTATONIC - 1; ++i) {
         tone(PIN_BUZZER, NoteC5ToC7Pentatonic[i]);
         delay(300);
