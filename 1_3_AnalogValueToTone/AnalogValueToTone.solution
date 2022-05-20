@@ -27,7 +27,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -70,7 +70,7 @@ void loop() {
     tone(PIN_BUZZER, tFrequency);
 
     /*
-     * Schwere Zusatzaufgabe für die Pro's. Print bargraph - Verwendung von Variablen in der Loopdefinition
+     * Schwere Zusatzaufgabe für die Pro's. Print Bargraph - Verwendung von Variablen in der Loopdefinition
      *
      * Gebe den analogen Wert als variabel lange Zeichenkette von '#' aus.
      * Für die Werte 16 bis 31 gebe "#" aus, für die Werte 32 bis 47 "##",

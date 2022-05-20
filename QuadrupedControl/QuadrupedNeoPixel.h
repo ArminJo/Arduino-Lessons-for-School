@@ -5,10 +5,11 @@
  *      Author: Armin
  */
 
-#ifndef QUADRUPED_NEOPIXEL_H_
-#define QUADRUPED_NEOPIXEL_H_
+#ifndef _QUADRUPED_NEOPIXEL_H
+#define _QUADRUPED_NEOPIXEL_H
 
-#include "NeoPatterns.h" // Click here to get the library: http://librarymanager/All#NeoPatterns
+#if defined(QUADRUPED_HAS_NEOPIXEL)
+#include <NeoPatterns.h>
 
 #define PIN_NEOPIXEL    4
 // How many NeoPixels are mounted?
@@ -19,15 +20,24 @@
 #define PIXEL_OFFSET_FRONT_BAR PIXELS_ON_ONE_BAR
 #define PIXEL_OFFSET_LEFT_BAR (2*PIXELS_ON_ONE_BAR)
 
-void doPattern1();
-
 void initNeoPatterns();
-void wipeOutPatterns();
+
+#if defined(HAS_ADDITIONAL_REMOTE_COMMANDS)
+void doPattern1();
+void doPattern2();
+void doPatternStripes();
+void doPatternHeartbeat();
+void doPatternFire();
+void doRandomMelody();
+#endif
+
+void doWipeOutPatterns();
+
 void wipeOutPatternsBlocking();
 
 bool isAtLeastOnePatternActive();
 
-void showPatternSynchronized();
+void showPatternSynchronizedWithServos();
 
 void handleAutomaticMovementPattern();
 void handleQuadrupedNeoPixelUpdate();
@@ -39,9 +49,10 @@ extern NeoPatterns QuadrupedNeoPixelBar; // The main 24 pixel bar containing all
 extern NeoPatterns RightNeoPixelBar;     // 8 Pixel bar at the right
 extern NeoPatterns FrontNeoPixelBar;
 extern NeoPatterns LeftNeoPixelBar;
+extern color32_t sBarBackgroundColorArrayForDistance[]; // // The color background for front distance bar
 
 extern bool sStartOrChangeNeoPatterns;
 
-#endif /* QUADRUPED_NEOPIXEL_H_ */
+#endif // #if defined(QUADRUPED_HAS_NEOPIXEL)
 
-#pragma once
+#endif // _QUADRUPED_NEOPIXEL_H

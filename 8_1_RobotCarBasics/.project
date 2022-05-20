@@ -34,12 +34,12 @@
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/cores/arduino</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.5/cores/arduino</locationURI>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/eightanaloginputs</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.5/variants/standard</locationURI>
 		</link>
 		<link>
 			<name>libraries/PWMMotorControl</name>
@@ -54,12 +54,7 @@
 		<link>
 			<name>libraries/Servo</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.7</locationURI>
-		</link>
-		<link>
-			<name>libraries/Wire</name>
-			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/libraries/Wire</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.8</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

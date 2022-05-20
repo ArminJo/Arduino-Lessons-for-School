@@ -2,13 +2,17 @@
  *  RobotCar.cpp
  *
  *  Template for your RobotCar control.
- *  Currently implemented is: drive until distance too low, then stop, and turn random amount.
+ *  Like https://github.com/ArminJo/PWMMotorControl/blob/master/examples/RobotCarBasic/RobotCarBasic.ino
  *
- *  Copyright (C) 2020  Armin Joachimsmeyer
- *  armin.joachimsmeyer@gmail.com
+ *  Copyright 2019-2022 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
  *
- *  This file is part of Arduino-RobotCar https://github.com/ArminJo/Arduino-RobotCar.
- *  This file is part of PWMMotorControl https://github.com/ArminJo/PWMMotorControl.
+ *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
+ *
+ *  Arduino-Lessons-for-School is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,157 +20,108 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/gpl.html>.
- *
+ *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
  */
 
 #include <Arduino.h>
 
-#include "CarPWMMotorControl.h"
+/*
+ * Car configuration
+ * For a complete list of available configurations see RobotCarConfigurations.h
+ * https://github.com/ArminJo/Arduino-RobotCar/blob/master/src/RobotCarConfigurations.h
+ */
+//#define TBB6612_4WD_4AA_BASIC_CONFIGURATION       // China set with TB6612 mosfet bridge + 4AA.
+//#define TBB6612_4WD_4AA_VIN_CONFIGURATION         // China set with TB6612 mosfet bridge + 4AA + VIN voltage divider.
+//#define TBB6612_4WD_4AA_FULL_CONFIGURATION        // China set with TB6612 mosfet bridge + 4AA + VIN voltage divider + MPU6050.
+//#define TBB6612_4WD_2LI_ION_BASIC_CONFIGURATION   // China set with TB6612 mosfet bridge + 2 Li-ion.
+//#define TBB6612_4WD_2LI_ION_FULL_CONFIGURATION    // China set with TB6612 mosfet bridge + 2 Li-ion + VIN voltage divider + MPU6050.
+//#define L298_2WD_4AA_BASIC_CONFIGURATION          // Default. Basic = Lafvin 2WD model using L298 bridge. Uno board with series diode for VIN + 4 AA batteries.
+//#define L298_4WD_4AA_BASIC_CONFIGURATION          // China set with L298 + 4AA.
+//#define L298_2WD_2LI_ION_BASIC_CONFIGURATION      // Basic = Lafvin 2WD model using L298 bridge. Uno board with series diode for VIN + 2 Li-ion.
+//#define L298_2WD_VIN_IR_DISTANCE_CONFIGURATION    // L298_2WD_2LI_ION_BASIC + VIN voltage divider + IR distance
+//#define L298_2WD_VIN_IR_IMU_CONFIGURATION         // L298_2WD_2LI_ION_BASIC + VIN voltage divider + IR distance + MPU6050
+//#define MECANUM_DISTANCE_CONFIGURATION            // Nano Breadboard version with Arduino NANO, TB6612 mosfet bridge and 4 mecanum wheels + US distance + servo
+
+#define USE_STANDARD_SERVO_LIBRARY
+#include "RobotCarConfigurations.h" // sets e.g. USE_ENCODER_MOTOR_CONTROL, USE_ADAFRUIT_MOTOR_SHIELD
+#include "RobotCarPinDefinitionsAndMore.h"
+
 #include "Servo.h"
+#include "Distance.hpp"
 #include "HCSR04.h"
+#include "CarPWMMotorControl.hpp"
+#include "RobotCarUtils.hpp"
 
-#define VERSION_EXAMPLE "1.0"
-
-/*
- * Speed compensation to enable driving straight ahead.
- * If positive, this value is subtracted from the speed of the right motor -> the car turns slightly right.
- * If negative, -value is subtracted from the left speed -> the car turns slightly left.
- */
-#define SPEED_PWM_COMPENSATION_RIGHT    0
-
-#if ! defined(USE_ADAFRUIT_MOTOR_SHIELD) // enable it in PWMDCMotor.h
-/*
- * Pins for direct motor control with PWM and a dual full bridge e.g. TB6612 or L298.
- * 2 + 3 are reserved for encoder input
- */
-#define PIN_RIGHT_MOTOR_FORWARD     4 // IN4 <- Label on the L298N board
-#define PIN_RIGHT_MOTOR_BACKWARD    7 // IN3
-#define PIN_RIGHT_MOTOR_PWM         5 // ENB - Must be PWM capable
-
-#define PIN_LEFT_MOTOR_FORWARD      9 // IN1
-#define PIN_LEFT_MOTOR_BACKWARD     8 // IN2
-#define PIN_LEFT_MOTOR_PWM          6 // ENA - Must be PWM capable
-#endif
-
-#ifdef USE_ENCODER_MOTOR_CONTROL
-#define RIGHT_MOTOR_INTERRUPT    INT0 // Pin 2
-#define LEFT_MOTOR_INTERRUPT     INT1 // Pin 3
-#endif
-
-#define PIN_DISTANCE_SERVO         10 // Servo Nr. 2 on Adafruit Motor Shield
-
-#define PIN_BUZZER                 12
-
-#define PIN_TRIGGER_OUT            A0 // Connections on the Arduino Sensor Shield
-#define PIN_ECHO_IN                A1
-
-//Car Control
-CarPWMMotorControl RobotCarMotorControl;
-
-Servo DistanceServo;
-
-void simpleObjectAvoidance();
-
+#define rightMotor RobotCar.rightCarMotor
+#define leftMotor   RobotCar.leftCarMotor
 /*
  * Start of robot car control program
  */
 void setup() {
     Serial.begin(115200);
+    Serial.println("START " __FILE__ " from " __DATE__); // Just to know which program is running on my Arduino
 
-    // Just to know which program is running on my Arduino
-    Serial.println("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__);
-
-#ifdef USE_ADAFRUIT_MOTOR_SHIELD
-    RobotCarMotorControl.init();
-#else
-#  ifdef USE_ENCODER_MOTOR_CONTROL
-    RobotCarMotorControl.init(PIN_RIGHT_MOTOR_FORWARD, PIN_RIGHT_MOTOR_BACKWARD, PIN_RIGHT_MOTOR_PWM, RIGHT_MOTOR_INTERRUPT, PIN_LEFT_MOTOR_FORWARD,
-    PIN_LEFT_MOTOR_BACKWARD, PIN_LEFT_MOTOR_PWM, LEFT_MOTOR_INTERRUPT);
-#  else
-    RobotCarMotorControl.init(PIN_RIGHT_MOTOR_FORWARD, PIN_RIGHT_MOTOR_BACKWARD, PIN_RIGHT_MOTOR_PWM, PIN_LEFT_MOTOR_FORWARD,
-    PIN_LEFT_MOTOR_BACKWARD, PIN_LEFT_MOTOR_PWM);
-#  endif
-#endif
+    initRobotCarPWMMotorControl();
 
     /*
-     * You will need to change these values according to your motor, wheels and motor supply voltage.
+     * Initialize pins for the servo and the HC-SR04 ultrasonic distance measurement
      */
-    RobotCarMotorControl.setValuesForFixedDistanceDriving(DEFAULT_START_SPEED_PWM, DEFAULT_DRIVE_SPEED_PWM, SPEED_PWM_COMPENSATION_RIGHT); // Set compensation
-#if ! defined(USE_ENCODER_MOTOR_CONTROL)
-    // set factor for converting distance to drive time
-    RobotCarMotorControl.setMillimeterPerSecondForFixedDistanceDriving(DEFAULT_MILLIMETER_PER_SECOND);
-#endif
+    initDistance();
 
     /*
      * Set US servo to forward position
      */
-    DistanceServo.attach(PIN_DISTANCE_SERVO);
     DistanceServo.write(90);
 
-    initUSDistancePins(PIN_TRIGGER_OUT, PIN_ECHO_IN);
-
-    tone(PIN_BUZZER, 2200, 100);
-    delay(2000);
-    DistanceServo.write(120);
-    delay(500);
-    DistanceServo.write(60);
-    delay(500);
-    DistanceServo.write(90);
-    delay(1000);
-#ifdef USE_MPU6050_IMU
     /*
-     * Wait after pressing the reset button, or attaching the power
-     * and then take offset values for 1/2 second
+     * Move it as signal, that we are booted
      */
-    tone(PIN_BUZZER, 2200, 50);
-    delay(100);
-    RobotCarMotorControl.initIMU();
-    RobotCarMotorControl.printIMUOffsets(&Serial);
-    tone(PIN_BUZZER, 2200, 50);
-#endif
-    delay(1000);
+    delay(500);
+    DistanceServo.write(135);
+    delay(500);
+    DistanceServo.write(45);
+    delay(500);
+    DistanceServo.write(90);
+
+    tone(PIN_BUZZER, 2200, 200);
+    delay(2000);
+
+    /*
+     * Rotate both motors forward, wait a second and then stop
+     * Speed can go from 0 to 255 (MAX_SPEED_PWM)
+     * DEFAULT_DRIVE_SPEED_PWM corresponds to 2 volt motor supply
+     */
+    leftMotor.setSpeedPWMAndDirection(120, DIRECTION_FORWARD);
+    rightMotor.setSpeedPWMAndDirection(120, DIRECTION_FORWARD);
+    delay(500); // do not go too far
+    leftMotor.stop();
+    rightMotor.stop();
+
+    // wait 10 seconds before entering the loop
+    delay(10000);
 
 }
 
 void loop() {
 
-    RobotCarMotorControl.goDistanceMillimeter(200, DIRECTION_FORWARD);
-    delay(2000);
     /*
-     * Try to turn by 90 degree.
+     * Measure distance with the HC-SR04 ultrasonic distance device and print it
      */
-    RobotCarMotorControl.rotate(90, DIRECTION_FORWARD);
-    delay(2000);
-
-}
-
-void simpleObjectAvoidance() {
-    /*
-     * Drive until distance too low, then stop, go back, turn random amount and drive again.
-     */
-    unsigned int tCentimeter = getUSDistanceAsCentiMeter();
-    Serial.print("US distance=");
+    unsigned int tCentimeter = getUSDistanceAsCentimeter(); // Timeout returns 0
+//    unsigned int tCentimeter = getIRDistanceAsCentimeter();
+    Serial.print("Distance=");
     Serial.print(tCentimeter);
     Serial.println(" cm");
 
-    if (tCentimeter < 20) {
-        RobotCarMotorControl.stop();
-        delay(1000);
-        RobotCarMotorControl.setSpeedPWMCompensated(DEFAULT_DRIVE_SPEED_PWM, DIRECTION_BACKWARD);
-        delay(200);
-        RobotCarMotorControl.stop();
-        delay(1000);
-
-        int tTurnValueDegree = random(20, 180);
-        Serial.print("Turn ");
-        Serial.print(tTurnValueDegree);
-        Serial.println(" degree");
-        RobotCarMotorControl.rotate(tTurnValueDegree, TURN_IN_PLACE);
-        delay(1000);
-        RobotCarMotorControl.setSpeedPWMCompensated(DEFAULT_DRIVE_SPEED_PWM, DIRECTION_FORWARD);
+    if (tCentimeter > 0 && tCentimeter < 5) {
+        RobotCar.setSpeedPWMAndDirection(DEFAULT_DRIVE_SPEED_PWM, DIRECTION_BACKWARD);
+    } else {
+        RobotCar.stop();
     }
 
-    delay(50);
+    /*
+     * 1. Keep distance: If distance too high, drive forward, if distance too low drive backwards.
+     * 2. Drive until distance too low, then stop, go back, turn random amount and measure and drive/turn again.
+     */
+    delay(500);
 }
-

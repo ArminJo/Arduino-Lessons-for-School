@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1e3" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g id="i">
+  <g id="e">
+   <use transform="matrix(1 0 0 -1 0 272.47)" xlink:href="#l"/>
+   <path d="m105.2 76.69h99.5v120.71h-99.5z" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+   <path d="m24.2 137.05h261.42" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+   <g id="k">
+    <path d="m274.9 132.63 12.018 4.4195-12.018 4.4195c1.92-2.6093 1.9089-6.1792 0-8.839z" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m274.9 132.29a0.34378 0.34378 0 0 0-0.2539 0.54297c1.8243 2.5419 1.8349 5.9473 0 8.4355a0.34378 0.34378 0 0 0 0.3946 0.5254l12.018-4.4199a0.34378 0.34378 0 0 0 0-0.64453l-12.018-4.4199a0.34378 0.34378 0 0 0-0.1446-0.0195zm0.7168 0.96094 10.332 3.8008-10.322 3.7969c1.3282-2.3636 1.3182-5.2053-0.01-7.5976z" stroke-linecap="round" stroke-linejoin="round"/>
+   </g>
+   <path d="m154.9 227.76v-181.43" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+   <g font-family="DejaVu Sans" font-size="16px">
+   <text x="162" y="55">y</text>
+   <text x="273" y="130">x</text>
+   </g>
+   <g id="l">
+    <use transform="translate(128.7,120.71)" xlink:href="#m"/>
+    <g id="m">
+     <path d="m81.8 50.25h17.428c2.2717 0 4.1006 1.8289 4.1006 4.1006v43.057c0 2.2717-1.8289 4.1006-4.1006 4.1006h-17.428c-2.2717 0-4.1006-1.8289-4.1006-4.1006v-43.057c0-2.2717 1.8289-4.1006 4.1006-4.1006z" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="m77.7 60.031v12.361l25.629 18.619v-12.359z" stroke-linecap="round" stroke-linejoin="round"/>
+     <path id="g" d="m81.8 50.25c-2.2717 0-4.0996 1.8279-4.0996 4.0996v1.25l25.629 18.619v-12.361l-15.977-11.607z" stroke-linecap="round" stroke-linejoin="round"/>
+     <use transform="rotate(180 90.515 75.7)" xlink:href="#g"/>
+    </g>
+   </g>
+   <use transform="rotate(-90 174.65 156.78)" xlink:href="#k"/>
+  </g>
+  <use transform="translate(344.6 -.3557)" xlink:href="#e"/>
+  <use transform="translate(689.2)" xlink:href="#e"/>
+ </g>
+ <use transform="translate(-2.4414e-5 253.73)" xlink:href="#i"/>
+ <path id="c" d="m186.2 130.62-31.265-31.265-31.266 31.265h14.9v44.117l32.731 4e-5v-44.117z" fill="#f00" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+ <g id="b">
+  <path id="a" d="m33.5 64.71 11.428-11.429 11.429 11.429h-5.4465v33.75l-11.964 1e-5v-33.75z" fill="#00f" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+  <use transform="translate(0,120.72)" xlink:href="#a"/>
+ </g>
+ <use transform="translate(219.94 1e-5)" xlink:href="#b"/>
+ <use transform="translate(0,253.73)" xlink:href="#b"/>
+ <use transform="translate(344.6,253.73)" xlink:href="#b"/>
+ <use transform="matrix(1 0 0 -1 564.44 526.19)" xlink:href="#b"/>
+ <g id="f">
+  <use transform="translate(344.6)" xlink:href="#a"/>
+  <use transform="matrix(1 0 0 -1 564.44 151.75)" xlink:href="#a"/>
+ </g>
+ <use transform="translate(689.2)" xlink:href="#a"/>
+ <use transform="translate(344.6,253.73)" xlink:href="#f"/>
+ <use transform="matrix(1,0,0,-1,0,272.46)" xlink:href="#f"/>
+ <use transform="translate(909.04 120.72)" xlink:href="#a"/>
+ <g id="j">
+  <path id="h" d="m504.4 390.78a4.9245 7.968 0 0 1-4.9245 7.968 4.9245 7.968 0 0 1-4.9245-7.968 4.9245 7.968 0 0 1 4.9245-7.968 4.9245 7.968 0 0 1 4.9245 7.968" fill="#f00" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="d">
+   <path d="m460.8 381.22h11.24c2.4385-25.081 14.002-43.291 27.49-43.291-19.003 0-35.295 18.21-38.73 43.291z" fill="#ae0000" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+   <path d="m525.1 369.44h-6.3867l11.785 11.785 11.785-11.785h-6.7285c-6.2989-19.151-20.428-31.506-36.027-31.506 11.072 4e-5 21.101 12.356 25.572 31.506z" fill="#f00" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+ </g>
+ <use transform="rotate(-45 424.94 776.78)" xlink:href="#d"/>
+ <use transform="rotate(180 499.45 390.78)" xlink:href="#d"/>
+ <use transform="translate(-294.88 59.54)" xlink:href="#h"/>
+ <use transform="translate(344.62 59.54)" xlink:href="#j"/>
+ <use transform="rotate(90 327.2 309.32)" xlink:href="#c"/>
+ <use transform="rotate(45 509.38 972.99)" xlink:href="#c"/>
+ <g font-family="DejaVu Sans" font-size="25px">
+  <text x="23" y="37">a)</text>
+  <text x="367" y="37">b)</text>
+  <text x="712" y="37">c)</text>
+  <text x="23" y="291">d)</text>
+  <text x="368" y="291">e)</text>
+  <text x="713" y="291">f)</text>
+ </g>
+</svg>

@@ -30,7 +30,7 @@
 
 #include "HCSR04.h"
 #include "BlinkLed.h"
-#include <PlayRtttl.h>
+#include <PlayRtttl.hpp>
 
 #define VERSION_EXAMPLE "1.0"
 
@@ -56,10 +56,10 @@ void setup() {
  * Aufgabe: 1. Verändere die Bedingung so, dass die Melodie nur dann abgespielt wird, wenn die Entfernung zwischen 2 Werten liegt.
  *             Zwei Bedingungen werden mit && "UND" verknüpft.
  *          2. Benutze die random() Funktion um ein zufälliges Lied abzuspielen.
- *          3. Warte solange bis eine Messung ausserhalb der obigen 2 Werte liegt, um zu vermeiden, dass andauernd Melodien gespielt werden.
+ *          3. Warte solange bis eine Messung außerhalb der obigen 2 Werte liegt, um zu vermeiden, dass andauernd Melodien gespielt werden.
  */
 void loop() {
-    unsigned int tCentimeter = getUSDistanceAsCentiMeter();
+    unsigned int tCentimeter = getUSDistanceAsCentimeter();
     Serial.print("Distance=");
     Serial.println(tCentimeter);
     delay(100);

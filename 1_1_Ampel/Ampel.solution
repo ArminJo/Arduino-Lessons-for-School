@@ -2,7 +2,7 @@
  * Lesson traffic light with 3 LEDs red, yellow and green
  * Solution
  *
- *  Copyright 2019 Armin Joachimsmeyer
+ *  Copyright 2019-2022 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
  *
  *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
@@ -29,8 +29,8 @@
 
 #define VERSION_EXAMPLE "1.0"
 
-#define    DELAY_SHORT            700
-#define    DELAY_LONG            4000
+#define    DELAY_SHORT            700    // 0,7 Sekunden
+#define    DELAY_LONG            4000    // 4 Sekunden
 
 
 // the loop routine runs over and over again forever

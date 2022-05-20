@@ -34,12 +34,12 @@
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/cores/arduino</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.5/cores/arduino</locationURI>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/variants/eightanaloginputs</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.5/variants/eightanaloginputs</locationURI>
 		</link>
 		<link>
 			<name>libraries/Adafruit_NeoPixel</name>
@@ -52,19 +52,14 @@
 			<locationURI>WORKSPACE_LOC/libraries/FrequencyDetector</locationURI>
 		</link>
 		<link>
-			<name>libraries/IRLremote</name>
+			<name>libraries/IRremote</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/libraries/IRLremote</locationURI>
+			<locationURI>WORKSPACE_LOC/libraries/IRremote</locationURI>
 		</link>
 		<link>
 			<name>libraries/NeoPatterns</name>
 			<type>2</type>
 			<locationURI>WORKSPACE_LOC/libraries/NeoPatterns</locationURI>
-		</link>
-		<link>
-			<name>libraries/PinChangeInterrupt</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/libraries/PinChangeInterrupt</locationURI>
 		</link>
 		<link>
 			<name>libraries/PlayRtttl</name>
@@ -79,7 +74,7 @@
 		<link>
 			<name>libraries/Servo</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.6</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/libraries/Servo/1.1.7</locationURI>
 		</link>
 		<link>
 			<name>libraries/ServoEasing</name>
@@ -89,7 +84,7 @@
 		<link>
 			<name>libraries/Wire</name>
 			<type>2</type>
-			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.3/libraries/Wire</locationURI>
+			<locationURI>ECLIPSE_HOME/arduinoPlugin/packages/arduino/hardware/avr/1.8.5/libraries/Wire</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

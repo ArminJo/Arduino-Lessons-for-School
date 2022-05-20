@@ -7,7 +7,7 @@
  * - if / else Anweisung, logisches invertieren.
  * - Statische Variable.
  *
- *  Copyright 2019 Armin Joachimsmeyer
+ *  Copyright 2019-2022 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
  *
  *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
@@ -16,6 +16,16 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
+ *  Copyright 2019-2022 Armin Joachimsmeyer
+ *  This code is released under GPLv3 license.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
  */
 
 /*
@@ -25,7 +35,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 

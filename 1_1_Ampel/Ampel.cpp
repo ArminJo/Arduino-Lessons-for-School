@@ -1,11 +1,13 @@
 /*
+ * Ampel.cpp
  * Lesson traffic light with 3 LEDs red, yellow and green
+ *  The duration of red and green is 4 seconds
  *
  * Thema:
- * - Ausgabe digitaler Werte auf einem Ardiono Pin.
+ * - Ausgabe digitaler Werte auf einem Arduino Pin.
  * - Warten mit delay().
  *
- *  Copyright 2019 Armin Joachimsmeyer
+ *  Copyright 2019-2022 Armin Joachimsmeyer
  *  This code is released under GPLv3 license.
  *
  *  This file is part of Arduino-Lessons-for-School https://github.com/ArminJo/Arduino-Lessons-for-School.
@@ -14,6 +16,14 @@
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
  */
 
 /*
@@ -33,8 +43,8 @@
 
 #define VERSION_EXAMPLE "1.0"
 
-#define    DELAY_SHORT            700      // 0,7 Sekunden
-#define    DELAY_LONG            3000    // 3 Sekunden
+#define    DELAY_SHORT            700    // 0,7 Sekunden
+#define    DELAY_LONG            4000    // 4 Sekunden
 
 // Die loop Funktion läuft unendlich durch.
 void loop() {
@@ -43,7 +53,7 @@ void loop() {
     //Rote LED an (HIGH)
     digitalWrite(PIN_RED_LED, HIGH);
 
-    // 3 Sekunden warten
+    // 4 Sekunden warten
     delay(DELAY_LONG);
 
     // Gelbe LED auch an
@@ -61,7 +71,7 @@ void loop() {
      */
 
     /*
-     * Aufgabe 2. Wenn es grün ist: Statt einmal mit "delay(DELAY_LONG_MS);" zu warten, warte 4 mal und gebe jedesmal einen Ton von 440 Hz aus.
+     * Aufgabe 2. Wenn es grün ist: Statt einmal mit "delay(DELAY_LONG_MS);" zu warten, warte 4 mal und gebe jedes mal einen Ton von 440 Hz aus.
      *         Benutze einen loop um das nicht 4 mal hinschreiben zu müssen.
      */
 //    tone(PIN_BUZZER, 440, DELAY_LONG / 8);

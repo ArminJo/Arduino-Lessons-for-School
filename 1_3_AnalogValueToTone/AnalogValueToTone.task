@@ -26,7 +26,7 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
@@ -50,7 +50,7 @@ void loop() {
     Serial.println(tAnalogValue);
 
     /*
-     * Aufgabe 2. - Umwandeld des eingelesenen Werts in einen Ton.
+     * Aufgabe 2. - Umwandeln des eingelesenen Werts in einen Ton.
      *
      * Erzeuge einen Ton mit "tone()" dessen Tonhöhe abhängig vom eingelesenen Wert des Potentiometers ist.
      * Mit "map()" werden Werte aus einem Bereich in einen anderen transformiert.

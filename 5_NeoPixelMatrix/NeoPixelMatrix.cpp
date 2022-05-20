@@ -9,14 +9,14 @@
  * Autocompletion: "strg" + Leertaste
  * Verwendung suchen: "strg" + "G"
  *
- * Vergeichsoperatoren sind: "==", "!=", ">=", "<=".
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
  * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
  */
 
 #include <Arduino.h>
 #include "Breadboard.h"
 
-#include <MatrixNeoPixel.h>
+#include <MatrixNeoPixel.hpp>
 #include <math.h>
 
 #define VERSION_EXAMPLE "1.0"

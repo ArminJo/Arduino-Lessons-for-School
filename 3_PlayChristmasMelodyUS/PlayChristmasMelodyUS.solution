@@ -70,12 +70,12 @@ void setup() {
  * Aufgabe: 1. Verändere die Bedingung so, dass die Melodie nur dann abgespielt wird, wenn die Entfernung zwischen 2 Werten liegt.
  *             Zwei Bedingungen werden mit && "UND" verknüpft.
  *          2. Benutze die random() Funktion um ein zufälliges Lied abzuspielen.
- *          3. Warte solange bis eine Messung ausserhalb der obigen 2 Werte liegt, um zu vermeiden, dass andauernd Melodien gespielt werden.
+ *          3. Warte solange bis eine Messung außerhalb der obigen 2 Werte liegt, um zu vermeiden, dass andauernd Melodien gespielt werden.
  */
 void loop() {
     static uint8_t sInRangeCounter = 0;
 
-    unsigned int tCentimeter = getUSDistanceAsCentiMeter();
+    unsigned int tCentimeter = getUSDistanceAsCentimeter();
     Serial.print("Distance=");
     Serial.print(tCentimeter);
     Serial.println("cm.");
@@ -93,7 +93,7 @@ void loop() {
 
             // wait for distance to be out of range for 4 consecutive readings
             uint8_t tCounter = 0;
-            tCentimeter = getUSDistanceAsCentiMeter();
+            tCentimeter = getUSDistanceAsCentimeter();
             while (tCounter < 4) {
                 Serial.print("Distance=");
                 Serial.print(tCentimeter);

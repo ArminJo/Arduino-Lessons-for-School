@@ -1,0 +1,123 @@
+/*
+ * Lessons generating pitches using a LDR.
+ * Play and melody using arrays
+ * Based on the arduino digital example: http://www.arduino.cc/en/Tutorial/Tone
+ *
+ * Copyright 2018 Armin Joachimsmeyer
+ * This code is released under GPLv3 license.
+ */
+
+/*
+ * WICHTIGE TASTENKOMBINATIONEN
+ * Formatieren: "strg" + "F"
+ * Definition finden: "F3"
+ * Autocompletion: "strg" + Leertaste
+ * Verwendung suchen: "strg" + "G"
+ *
+ * Vergleichsoperatoren sind: "==", "!=", ">=", "<=".
+ * Bedingungen werden verknüpft mit: "and" / "&&" oder "or" / "||"  und mit "not" / "!" negiert.
+ */
+
+#include <Arduino.h>
+
+#include "Breadboard.h"
+
+#define VERSION_EXAMPLE "1.0"
+
+#include "pitches.h"
+
+// notes in the start melody:
+int MelodyShort[] = {
+NOTE_C4, NOTE_G3, NOTE_G3, NOTE_A3, NOTE_G3, 0, NOTE_B3, NOTE_C4 };
+// note durations: 4 = quarter note, 8 = eighth note, etc.:
+uint8_t MelodyShortNoteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
+
+int NoteC4ToC6Pentatonic[11] = { NOTE_C4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_A4, NOTE_C5, NOTE_D5, NOTE_E5, NOTE_G5, NOTE_A5, NOTE_C6 };
+
+//The setup function is called once at startup of the sketch
+void setup() {
+	// Start serial output
+	Serial.begin(115200);
+	// Just to know which program is running on my Arduino
+	Serial.println(F("START " __FILE__ "\r\nVersion " VERSION_EXAMPLE " from " __DATE__));
+
+	initBreadboardPins();
+
+	/*
+	 * Play a melody - iterate over the notes in the array
+	 */
+	for (int tNoteIndex = 0; tNoteIndex < 8; tNoteIndex++) {
+
+		// to calculate the note duration, take one second divided by the note type.
+		// e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+		uint8_t tNoteDuration = 1000 / MelodyShortNoteDurations[tNoteIndex];
+		tone(PIN_BUZZER, MelodyShort[tNoteIndex], tNoteDuration);
+
+		// to distinguish the notes, set a minimum time between them.
+		// the note's duration + 30% seems to work well:
+		int tPauseBetweenNotes = tNoteDuration * 1.30;
+		delay(tPauseBetweenNotes);
+	}
+}
+
+// the loop routine runs over and over again forever
+void loop() {
+	static int sMinimum = 1024, sMaximum = 0;
+	int tFrequency;
+
+	// read the input on analog pin:
+	int tLDRValue = analogRead(PIN_LDR);
+	Serial.print("LDRValue=");
+	Serial.println(tLDRValue);
+
+	/*
+	 * Task 2. Compute min and max and print changed values
+	 * Bestimme bei das Minimum und Maximum des eingelesenen Werts und gebe beide aus, wenn sich mindestens einer ändert.
+	 *      Belege Maximum und Minimum sinvoll vor. Benutze Serial.print().
+	 */
+	if (tLDRValue < sMinimum || tLDRValue > sMaximum) {
+		if (tLDRValue < sMinimum) {
+			sMinimum = tLDRValue;
+		}
+		if (tLDRValue > sMaximum) {
+			sMaximum = tLDRValue;
+		}
+		Serial.print("Minimum=");
+		Serial.print(sMinimum);
+		Serial.print(" Maximum=");
+		Serial.println(sMaximum);
+	}
+
+	/*
+	 * Task 1. Map value and call tone
+	 * Wandle den Wert vom PIN_LDR in einen Bereich von 262 bis 2093 um und gebe ihn als Ton aus.
+	 *    	Je heller es ist, desto höher soll der Ton sein.
+	 * 		Benutze map() und tone().
+	 */
+//	tFrequency = map(tLDRValue, 0, 1023, 2093, 262);
+	/*
+	 * Task 3. Use sMinimum, sMaximum for mapping
+	 * Verwende den Maximum und Minimum Wert als Parameter bei map, um immer den vollen Tonumfang auszunutzen.
+	 */
+	tFrequency = map(tLDRValue, sMinimum, sMaximum, 2093, 262);
+	/*
+	 * Task 4. Use only frequencies from a note array
+	 * Size of an array is sizeof(<ArrayName>) / sizeof(<ArrayType>)
+	 * !!! Biggest index in an array is <Arraysize> - 1, because it starts with 0 !!!
+	 * Passe die Parameter für map() so an, dass du eine Zahl von 0 bis 10 bekommst.
+	 *      Verwende sie als Index in das Array NoteC4ToC7Pentatonic um die Frequenz für tone() zu holen.
+	 *      Benutze tFrequency = NoteC4ToC7Pentatonic[tIndex].
+	 *      Füge danach noch ein zusätzliches delay(200) ein
+	 */
+//	int tIndex = map(tLDRValue, sMinimum, sMaximum, (sizeof(NoteC4ToC6Pentatonic) / sizeof(int)) - 1, 0);
+//	tFrequency = NoteC4ToC6Pentatonic[tIndex];
+//	delay(200); // add an additional delay to make is easier to play a melody
+	/*
+	 * Play tone
+	 */
+	Serial.print("Frequency=");
+	Serial.println(tFrequency);
+	tone(PIN_BUZZER, tFrequency);
+
+	delay(50);
+}
